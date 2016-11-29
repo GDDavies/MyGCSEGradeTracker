@@ -7,13 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		69E5579E63DD6C6E3A8EF743 /* Pods_MyGCSEGradeTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5256637F53163EDADECE8AFB /* Pods_MyGCSEGradeTracker.framework */; };
+		91D6B8E69FAB9D60564051D9 /* Pods_MyGCSEGradeTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A6E06AD9473B4A62C65C701 /* Pods_MyGCSEGradeTrackerTests.framework */; };
 		935CC7751DEDC7C200A6DEFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935CC7741DEDC7C200A6DEFA /* AppDelegate.swift */; };
-		935CC7771DEDC7C200A6DEFA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935CC7761DEDC7C200A6DEFA /* ViewController.swift */; };
-		935CC77A1DEDC7C200A6DEFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 935CC7781DEDC7C200A6DEFA /* Main.storyboard */; };
 		935CC77C1DEDC7C200A6DEFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 935CC77B1DEDC7C200A6DEFA /* Assets.xcassets */; };
 		935CC77F1DEDC7C200A6DEFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 935CC77D1DEDC7C200A6DEFA /* LaunchScreen.storyboard */; };
 		935CC78A1DEDC7C200A6DEFA /* MyGCSEGradeTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935CC7891DEDC7C200A6DEFA /* MyGCSEGradeTrackerTests.swift */; };
 		935CC7951DEDC7C200A6DEFA /* MyGCSEGradeTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935CC7941DEDC7C200A6DEFA /* MyGCSEGradeTrackerUITests.swift */; };
+		939EFEBE1DEDC8D700368533 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFEBA1DEDC8D700368533 /* Component.swift */; };
+		939EFEBF1DEDC8D700368533 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFEBB1DEDC8D700368533 /* Grade.swift */; };
+		939EFEC01DEDC8D700368533 /* Qualification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFEBC1DEDC8D700368533 /* Qualification.swift */; };
+		939EFEC11DEDC8D700368533 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFEBD1DEDC8D700368533 /* Result.swift */; };
+		939EFEC81DEDC90B00368533 /* CustomQualificationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFEC31DEDC90B00368533 /* CustomQualificationCollectionViewCell.swift */; };
+		939EFEC91DEDC90B00368533 /* QualificationCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFEC41DEDC90B00368533 /* QualificationCollectionView.swift */; };
+		939EFECA1DEDC90B00368533 /* QualificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFEC51DEDC90B00368533 /* QualificationsViewController.swift */; };
+		939EFECB1DEDC90B00368533 /* ResultsSetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFEC61DEDC90B00368533 /* ResultsSetTableViewCell.swift */; };
+		939EFECC1DEDC90B00368533 /* ResultsSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFEC71DEDC90B00368533 /* ResultsSetViewController.swift */; };
+		939EFECE1DEDC93A00368533 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 939EFECD1DEDC93A00368533 /* Main.storyboard */; };
+		939EFED31DEDCAD500368533 /* CollectionPushAndPoppable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFECF1DEDCAD500368533 /* CollectionPushAndPoppable.swift */; };
+		939EFED41DEDCAD500368533 /* PopInAndOutAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFED01DEDCAD500368533 /* PopInAndOutAnimator.swift */; };
+		939EFED51DEDCAD500368533 /* UIView+Screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFED21DEDCAD500368533 /* UIView+Screenshot.swift */; };
+		9A357874855CC6B09A538A5E /* Pods_MyGCSEGradeTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D4BA1D6706A089ABB62A15 /* Pods_MyGCSEGradeTrackerUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,10 +48,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		10F99E09A480C60AD1786478 /* Pods-MyGCSEGradeTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGCSEGradeTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyGCSEGradeTrackerTests/Pods-MyGCSEGradeTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
+		2A6E06AD9473B4A62C65C701 /* Pods_MyGCSEGradeTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyGCSEGradeTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		347BAAE368E530E63EB810EB /* Pods-MyGCSEGradeTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGCSEGradeTrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyGCSEGradeTrackerTests/Pods-MyGCSEGradeTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3522BA054D28EA860C777BE3 /* Pods-MyGCSEGradeTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGCSEGradeTrackerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyGCSEGradeTrackerUITests/Pods-MyGCSEGradeTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		3EB1B0A75474880A02A9B3F3 /* Pods-MyGCSEGradeTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGCSEGradeTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyGCSEGradeTracker/Pods-MyGCSEGradeTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		4C37D820898C07F9D590CC6D /* Pods-MyGCSEGradeTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGCSEGradeTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyGCSEGradeTracker/Pods-MyGCSEGradeTracker.release.xcconfig"; sourceTree = "<group>"; };
+		5256637F53163EDADECE8AFB /* Pods_MyGCSEGradeTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyGCSEGradeTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		935CC7711DEDC7C200A6DEFA /* MyGCSEGradeTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGCSEGradeTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		935CC7741DEDC7C200A6DEFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		935CC7761DEDC7C200A6DEFA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		935CC7791DEDC7C200A6DEFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		935CC77B1DEDC7C200A6DEFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		935CC77E1DEDC7C200A6DEFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		935CC7801DEDC7C200A6DEFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +66,22 @@
 		935CC7901DEDC7C200A6DEFA /* MyGCSEGradeTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyGCSEGradeTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		935CC7941DEDC7C200A6DEFA /* MyGCSEGradeTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGCSEGradeTrackerUITests.swift; sourceTree = "<group>"; };
 		935CC7961DEDC7C200A6DEFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		939EFEBA1DEDC8D700368533 /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
+		939EFEBB1DEDC8D700368533 /* Grade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
+		939EFEBC1DEDC8D700368533 /* Qualification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Qualification.swift; sourceTree = "<group>"; };
+		939EFEBD1DEDC8D700368533 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		939EFEC31DEDC90B00368533 /* CustomQualificationCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomQualificationCollectionViewCell.swift; sourceTree = "<group>"; };
+		939EFEC41DEDC90B00368533 /* QualificationCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualificationCollectionView.swift; sourceTree = "<group>"; };
+		939EFEC51DEDC90B00368533 /* QualificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualificationsViewController.swift; sourceTree = "<group>"; };
+		939EFEC61DEDC90B00368533 /* ResultsSetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsSetTableViewCell.swift; sourceTree = "<group>"; };
+		939EFEC71DEDC90B00368533 /* ResultsSetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsSetViewController.swift; sourceTree = "<group>"; };
+		939EFECD1DEDC93A00368533 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		939EFECF1DEDCAD500368533 /* CollectionPushAndPoppable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionPushAndPoppable.swift; sourceTree = "<group>"; };
+		939EFED01DEDCAD500368533 /* PopInAndOutAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopInAndOutAnimator.swift; sourceTree = "<group>"; };
+		939EFED11DEDCAD500368533 /* PopInAndOutCollectionViewTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopInAndOutCollectionViewTransition.h; sourceTree = "<group>"; };
+		939EFED21DEDCAD500368533 /* UIView+Screenshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Screenshot.swift"; sourceTree = "<group>"; };
+		A6D4BA1D6706A089ABB62A15 /* Pods_MyGCSEGradeTrackerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyGCSEGradeTrackerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B06B3AB223521583E7FD5615 /* Pods-MyGCSEGradeTrackerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGCSEGradeTrackerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyGCSEGradeTrackerUITests/Pods-MyGCSEGradeTrackerUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69E5579E63DD6C6E3A8EF743 /* Pods_MyGCSEGradeTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91D6B8E69FAB9D60564051D9 /* Pods_MyGCSEGradeTrackerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,19 +105,46 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A357874855CC6B09A538A5E /* Pods_MyGCSEGradeTrackerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2CAB77B6CA84CDD4E46C54E7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5256637F53163EDADECE8AFB /* Pods_MyGCSEGradeTracker.framework */,
+				2A6E06AD9473B4A62C65C701 /* Pods_MyGCSEGradeTrackerTests.framework */,
+				A6D4BA1D6706A089ABB62A15 /* Pods_MyGCSEGradeTrackerUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		30D09BA848A641ABB613837A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3EB1B0A75474880A02A9B3F3 /* Pods-MyGCSEGradeTracker.debug.xcconfig */,
+				4C37D820898C07F9D590CC6D /* Pods-MyGCSEGradeTracker.release.xcconfig */,
+				347BAAE368E530E63EB810EB /* Pods-MyGCSEGradeTrackerTests.debug.xcconfig */,
+				10F99E09A480C60AD1786478 /* Pods-MyGCSEGradeTrackerTests.release.xcconfig */,
+				3522BA054D28EA860C777BE3 /* Pods-MyGCSEGradeTrackerUITests.debug.xcconfig */,
+				B06B3AB223521583E7FD5615 /* Pods-MyGCSEGradeTrackerUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		935CC7681DEDC7C200A6DEFA = {
 			isa = PBXGroup;
 			children = (
+				939EFED61DEDCADB00368533 /* PushAndPop */,
 				935CC7731DEDC7C200A6DEFA /* MyGCSEGradeTracker */,
 				935CC7881DEDC7C200A6DEFA /* MyGCSEGradeTrackerTests */,
 				935CC7931DEDC7C200A6DEFA /* MyGCSEGradeTrackerUITests */,
 				935CC7721DEDC7C200A6DEFA /* Products */,
+				30D09BA848A641ABB613837A /* Pods */,
+				2CAB77B6CA84CDD4E46C54E7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,11 +162,16 @@
 			isa = PBXGroup;
 			children = (
 				935CC7741DEDC7C200A6DEFA /* AppDelegate.swift */,
-				935CC7761DEDC7C200A6DEFA /* ViewController.swift */,
-				935CC7781DEDC7C200A6DEFA /* Main.storyboard */,
+				939EFEC31DEDC90B00368533 /* CustomQualificationCollectionViewCell.swift */,
+				939EFEC41DEDC90B00368533 /* QualificationCollectionView.swift */,
+				939EFEC51DEDC90B00368533 /* QualificationsViewController.swift */,
+				939EFEC61DEDC90B00368533 /* ResultsSetTableViewCell.swift */,
+				939EFEC71DEDC90B00368533 /* ResultsSetViewController.swift */,
+				939EFECD1DEDC93A00368533 /* Main.storyboard */,
 				935CC77B1DEDC7C200A6DEFA /* Assets.xcassets */,
 				935CC77D1DEDC7C200A6DEFA /* LaunchScreen.storyboard */,
 				935CC7801DEDC7C200A6DEFA /* Info.plist */,
+				939EFEC21DEDC8DF00368533 /* Model */,
 			);
 			path = MyGCSEGradeTracker;
 			sourceTree = "<group>";
@@ -125,6 +194,28 @@
 			path = MyGCSEGradeTrackerUITests;
 			sourceTree = "<group>";
 		};
+		939EFEC21DEDC8DF00368533 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				939EFEBA1DEDC8D700368533 /* Component.swift */,
+				939EFEBB1DEDC8D700368533 /* Grade.swift */,
+				939EFEBC1DEDC8D700368533 /* Qualification.swift */,
+				939EFEBD1DEDC8D700368533 /* Result.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		939EFED61DEDCADB00368533 /* PushAndPop */ = {
+			isa = PBXGroup;
+			children = (
+				939EFECF1DEDCAD500368533 /* CollectionPushAndPoppable.swift */,
+				939EFED01DEDCAD500368533 /* PopInAndOutAnimator.swift */,
+				939EFED11DEDCAD500368533 /* PopInAndOutCollectionViewTransition.h */,
+				939EFED21DEDCAD500368533 /* UIView+Screenshot.swift */,
+			);
+			name = PushAndPop;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +223,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 935CC7991DEDC7C200A6DEFA /* Build configuration list for PBXNativeTarget "MyGCSEGradeTracker" */;
 			buildPhases = (
+				58BCBE223A3C573441BCA008 /* [CP] Check Pods Manifest.lock */,
 				935CC76D1DEDC7C200A6DEFA /* Sources */,
 				935CC76E1DEDC7C200A6DEFA /* Frameworks */,
 				935CC76F1DEDC7C200A6DEFA /* Resources */,
+				8184B4F30DA61096F3FF1A83 /* [CP] Embed Pods Frameworks */,
+				B88DC1BD1CDFF980D59D3F82 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,9 +243,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 935CC79C1DEDC7C200A6DEFA /* Build configuration list for PBXNativeTarget "MyGCSEGradeTrackerTests" */;
 			buildPhases = (
+				34D70C02F1C68314D891B93C /* [CP] Check Pods Manifest.lock */,
 				935CC7811DEDC7C200A6DEFA /* Sources */,
 				935CC7821DEDC7C200A6DEFA /* Frameworks */,
 				935CC7831DEDC7C200A6DEFA /* Resources */,
+				8319E2EAEFC6A0F1068C9125 /* [CP] Embed Pods Frameworks */,
+				6689FB31E08F20C225F335BB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +264,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 935CC79F1DEDC7C200A6DEFA /* Build configuration list for PBXNativeTarget "MyGCSEGradeTrackerUITests" */;
 			buildPhases = (
+				63E220E0FB9B961CBF90FB2C /* [CP] Check Pods Manifest.lock */,
 				935CC78C1DEDC7C200A6DEFA /* Sources */,
 				935CC78D1DEDC7C200A6DEFA /* Frameworks */,
 				935CC78E1DEDC7C200A6DEFA /* Resources */,
+				1799EB428E8DC2C622E825FF /* [CP] Embed Pods Frameworks */,
+				FBD388528336EDC294D43A1C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -235,9 +335,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				939EFECE1DEDC93A00368533 /* Main.storyboard in Resources */,
 				935CC77F1DEDC7C200A6DEFA /* LaunchScreen.storyboard in Resources */,
 				935CC77C1DEDC7C200A6DEFA /* Assets.xcassets in Resources */,
-				935CC77A1DEDC7C200A6DEFA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,12 +357,161 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1799EB428E8DC2C622E825FF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyGCSEGradeTrackerUITests/Pods-MyGCSEGradeTrackerUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		34D70C02F1C68314D891B93C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		58BCBE223A3C573441BCA008 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		63E220E0FB9B961CBF90FB2C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6689FB31E08F20C225F335BB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyGCSEGradeTrackerTests/Pods-MyGCSEGradeTrackerTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8184B4F30DA61096F3FF1A83 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyGCSEGradeTracker/Pods-MyGCSEGradeTracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8319E2EAEFC6A0F1068C9125 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyGCSEGradeTrackerTests/Pods-MyGCSEGradeTrackerTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B88DC1BD1CDFF980D59D3F82 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyGCSEGradeTracker/Pods-MyGCSEGradeTracker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FBD388528336EDC294D43A1C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyGCSEGradeTrackerUITests/Pods-MyGCSEGradeTrackerUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		935CC76D1DEDC7C200A6DEFA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				935CC7771DEDC7C200A6DEFA /* ViewController.swift in Sources */,
+				939EFECC1DEDC90B00368533 /* ResultsSetViewController.swift in Sources */,
+				939EFEC11DEDC8D700368533 /* Result.swift in Sources */,
+				939EFECB1DEDC90B00368533 /* ResultsSetTableViewCell.swift in Sources */,
+				939EFEC81DEDC90B00368533 /* CustomQualificationCollectionViewCell.swift in Sources */,
+				939EFED41DEDCAD500368533 /* PopInAndOutAnimator.swift in Sources */,
+				939EFECA1DEDC90B00368533 /* QualificationsViewController.swift in Sources */,
+				939EFED51DEDCAD500368533 /* UIView+Screenshot.swift in Sources */,
+				939EFEBF1DEDC8D700368533 /* Grade.swift in Sources */,
+				939EFEC91DEDC90B00368533 /* QualificationCollectionView.swift in Sources */,
+				939EFEC01DEDC8D700368533 /* Qualification.swift in Sources */,
+				939EFEBE1DEDC8D700368533 /* Component.swift in Sources */,
+				939EFED31DEDCAD500368533 /* CollectionPushAndPoppable.swift in Sources */,
 				935CC7751DEDC7C200A6DEFA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,14 +548,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		935CC7781DEDC7C200A6DEFA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				935CC7791DEDC7C200A6DEFA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		935CC77D1DEDC7C200A6DEFA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -336,6 +577,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -386,6 +628,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -413,6 +656,7 @@
 		};
 		935CC79A1DEDC7C200A6DEFA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3EB1B0A75474880A02A9B3F3 /* Pods-MyGCSEGradeTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = CALM89H945;
@@ -426,6 +670,7 @@
 		};
 		935CC79B1DEDC7C200A6DEFA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C37D820898C07F9D590CC6D /* Pods-MyGCSEGradeTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = CALM89H945;
@@ -439,6 +684,7 @@
 		};
 		935CC79D1DEDC7C200A6DEFA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 347BAAE368E530E63EB810EB /* Pods-MyGCSEGradeTrackerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -454,6 +700,7 @@
 		};
 		935CC79E1DEDC7C200A6DEFA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10F99E09A480C60AD1786478 /* Pods-MyGCSEGradeTrackerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -469,6 +716,7 @@
 		};
 		935CC7A01DEDC7C200A6DEFA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3522BA054D28EA860C777BE3 /* Pods-MyGCSEGradeTrackerUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = CALM89H945;
@@ -483,6 +731,7 @@
 		};
 		935CC7A11DEDC7C200A6DEFA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B06B3AB223521583E7FD5615 /* Pods-MyGCSEGradeTrackerUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = CALM89H945;
@@ -514,6 +763,7 @@
 				935CC79B1DEDC7C200A6DEFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		935CC79C1DEDC7C200A6DEFA /* Build configuration list for PBXNativeTarget "MyGCSEGradeTrackerTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +772,7 @@
 				935CC79E1DEDC7C200A6DEFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		935CC79F1DEDC7C200A6DEFA /* Build configuration list for PBXNativeTarget "MyGCSEGradeTrackerUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +781,7 @@
 				935CC7A11DEDC7C200A6DEFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
