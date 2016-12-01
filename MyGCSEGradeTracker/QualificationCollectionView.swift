@@ -26,9 +26,6 @@ class QualificationCollectionView: UICollectionViewController {
         UIColor(red: 52/255.0, green: 73/255.0, blue: 94/255.0, alpha: 1.0),
         ]
     
-    @IBOutlet var addQualificationView: UIView!
-    var blurEffectView: UIVisualEffectView?
-    
     @IBOutlet weak var qualificationNameTextField: UITextField!
     @IBOutlet weak var numberOfUnitsTextField: UITextField!
     
@@ -36,9 +33,6 @@ class QualificationCollectionView: UICollectionViewController {
     var addedUnit: Unit?
     
     @IBOutlet weak var addButton: UIBarButtonItem!
-    @IBAction func closePopUp(_ sender: UIButton) {
-        animateOut()
-    }
     
     let realm = try! Realm()
     lazy var qualifications: Results<Qualification> = { self.realm.objects(Qualification.self) }()
@@ -47,14 +41,13 @@ class QualificationCollectionView: UICollectionViewController {
 //    var selectedQualificationIndex: IndexPath?
     
     @IBAction func addQualification(_ sender: AnyObject) {
-        animateIn()
+        //animateIn()
     }
     
     @IBAction func saveButton(_ sender: AnyObject) {
         addNewQualification()
         addNewComponents()
-        
-        animateOut()
+
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -64,36 +57,19 @@ class QualificationCollectionView: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // It is important to define a navigationController delegate! In this case
-        // I used the ViewController as delegate... but it is not mandatory
         self.navigationController?.delegate = self
         
-        addQualificationView.layer.cornerRadius = 5
-        
-//        navigationController?.navigationBar.barTintColor = UIColor(red: 41.0/255, green: 128.0/255, blue: 185.0/255, alpha: 1.0)
-//        navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.topItem?.title = "Qualifications"
-        
-//        if let navController = self.navigationController {
-//            navController.navigationBar.tintColor = UIColor.blue
-//            navController.navigationBar.barTintColor = UIColor.white
-//            navController.navigationBar.isTranslucent = false
-//            navController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.black]
-//        }
-        
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadQualifications(_:)),name:NSNotification.Name(rawValue: "load"), object: nil)
         self.navigationItem.leftBarButtonItem = self.editButtonItem
+        
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        if let navController = self.navigationController {
-//            navController.navigationBar.tintColor = UIColor.blue
-//            navController.navigationBar.barTintColor = UIColor.white
-//            navController.navigationBar.isTranslucent = false
-//            navController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.black]
-//        }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -154,47 +130,6 @@ class QualificationCollectionView: UICollectionViewController {
         self.collectionView?.reloadData()
     }
     
-    func animateIn() {
-        blur()
-        
-        self.view.addSubview(addQualificationView)
-        
-        addQualificationView.center = CGPoint(x: view.frame.size.width / 2, y: (view.frame.size.height / 2) - 50.0) //self.view.center
-        
-        addQualificationView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
-        addQualificationView.alpha = 0
-        
-        UIView.animate(withDuration: 0.4) {
-            // visual effect view here
-            
-            self.addQualificationView.alpha = 1
-            self.addQualificationView.transform = CGAffineTransform.identity
-        }
-        addButton.isEnabled = false
-        editButtonItem.isEnabled = false
-    }
-    
-    func animateOut() {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.addQualificationView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
-            self.addQualificationView.alpha = 0
-            
-        }) { (success:Bool) in
-            self.addQualificationView.removeFromSuperview()
-            self.blurEffectView?.removeFromSuperview()
-        }
-        addButton.isEnabled = true
-        editButtonItem.isEnabled = true
-    }
-    
-    func blur() {
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
-        blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView?.frame = view.bounds
-        blurEffectView?.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
-        view.addSubview(blurEffectView!)
-    }
-    
     func addNewQualification() {
         let realm = try! Realm()
         
@@ -224,7 +159,7 @@ class QualificationCollectionView: UICollectionViewController {
                 newComponents.qualification = qualificationNameTextField.text!
                 
                 // Default weighting - NEEDS CHANGING TO ALLOW INPUT
-                newComponents.weighting = Double((100 / Double(addedQualification!.numberOfComponents)) / 100).rounded()
+                newComponents.weighting = Double((100 / Double(addedQualification!.numberOfComponents)) / 100).roundTo(places: 3)
                 
                 i += 1
                 realm.add(newComponents)
@@ -271,13 +206,6 @@ class QualificationCollectionView: UICollectionViewController {
 extension QualificationCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-//        let screenRect = UIScreen.main.bounds
-//        let screenWidth = screenRect.size.width
-//        let cellW = (screenWidth - 2) / 3
-//        let cellH = cellW
-//        
-//        return CGSize(width: cellW, height: cellH)
-        
         screenSize = UIScreen.main.bounds
         screenWidth = screenSize.width
         
@@ -302,3 +230,11 @@ extension QualificationCollectionView: UINavigationControllerDelegate {
 
 //MARK: CollectionPushAndPoppable
 extension QualificationCollectionView: CollectionPushAndPoppable {}
+
+extension Double {
+    /// Rounds the double to decimal places value
+    func roundTo(places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
+}
