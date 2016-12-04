@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class AddQualificationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
 
@@ -15,7 +16,10 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
     
     var textViewOutput = ["", ""]
     
+    var addedQualification: Qualification?
     var componentPercentages = [String]()
+    
+    let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +28,21 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
+    
+    @IBAction func cancelAddQualification(sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
     @IBAction func saveQualification(_ sender: Any) {
         print(textViewOutput)
         print(componentPercentages)
+        
+        addNewQualification()
+        addNewComponents()
+        
+        dismiss(animated: true, completion: nil)
+        
     }
     
     func keyboardWillShow(notification: NSNotification) {
@@ -102,7 +118,7 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
         if indexPath.section == 1 {
             
             cell = tableView.dequeueReusableCell(withIdentifier: "Cell2") as! CustomTableViewCell?
-            cell?.labelOutlet.text = "Edit Components"
+            cell?.labelOutlet.text = "Component Weightings"
             cell?.accessoryType = .disclosureIndicator
         }
         
@@ -137,6 +153,43 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
         if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2") as! CustomTableViewCell?
             cell?.contentView.backgroundColor = .white
+        }
+    }
+    
+    func addNewQualification() {
+        let realm = try! Realm()
+        
+        try! realm.write {
+            let newQualification = Qualification()
+            
+            newQualification.name = textViewOutput[0]
+            newQualification.numberOfComponents = Int(textViewOutput[1])!
+            
+            realm.add(newQualification)
+            self.addedQualification = newQualification
+        }
+        NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: "load"), object: nil)
+    }
+    
+    func addNewComponents() {
+        let realm = try! Realm()
+        
+        var i = 1
+        while i <= (addedQualification?.numberOfComponents)! {
+            
+            try! realm.write {
+                
+                let newComponents = Component()
+                
+                newComponents.name = "Component \(i)"
+                newComponents.qualification = textViewOutput[0]
+                newComponents.weighting = (Double(componentPercentages[i - 1])! / 100)
+                
+                i += 1
+                realm.add(newComponents)
+            }
+            
+            //            self.addedUnit = newUnits
         }
     }
     

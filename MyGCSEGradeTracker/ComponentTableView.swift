@@ -68,6 +68,7 @@ class ComponentTableViewController: UITableViewController, UINavigationControlle
         cell?.placeholderTextOutlet.placeholder = "e.g. \(100 / numberOfComponents!)%"
 
         cell?.selectionStyle = .none
+        cell?.placeholderTextOutlet.keyboardType = UIKeyboardType.decimalPad
         
         cell?.placeholderTextOutlet.tag = indexPath.row
         cell?.placeholderTextOutlet.addTarget(self, action: #selector(textViewValueChange), for: .editingChanged)

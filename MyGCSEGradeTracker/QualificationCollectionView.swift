@@ -26,9 +26,6 @@ class QualificationCollectionView: UICollectionViewController {
         UIColor(red: 52/255.0, green: 73/255.0, blue: 94/255.0, alpha: 1.0),
         ]
     
-    @IBOutlet weak var qualificationNameTextField: UITextField!
-    @IBOutlet weak var numberOfUnitsTextField: UITextField!
-    
     var addedQualification: Qualification?
     var addedUnit: Unit?
     
@@ -42,12 +39,6 @@ class QualificationCollectionView: UICollectionViewController {
     
     @IBAction func addQualification(_ sender: AnyObject) {
         //animateIn()
-    }
-    
-    @IBAction func saveButton(_ sender: AnyObject) {
-        addNewQualification()
-        addNewComponents()
-
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -95,7 +86,7 @@ class QualificationCollectionView: UICollectionViewController {
         //cell.detailTextLabel?.text = "\(String(qualification.numberOfComponents)) Components"
         
         cell.qualificationLabel.text = qualification.name
-        cell.numberOfUnitsLabel.text = "Units: \(String(qualification.numberOfComponents))"
+        cell.numberOfComponentsLabel.text = "Components: \(String(qualification.numberOfComponents))"
         cell.backgroundColor = colorsArray[indexPath.row % colorsArray.count]
         
         return cell
@@ -128,45 +119,6 @@ class QualificationCollectionView: UICollectionViewController {
     func loadQualifications(_ notification: Foundation.Notification){
         //load data here
         self.collectionView?.reloadData()
-    }
-    
-    func addNewQualification() {
-        let realm = try! Realm()
-        
-        try! realm.write {
-            let newQualification = Qualification()
-            
-            newQualification.name = qualificationNameTextField.text!
-            newQualification.numberOfComponents = Int(numberOfUnitsTextField.text!)!
-            
-            realm.add(newQualification)
-            self.addedQualification = newQualification
-        }
-        NotificationCenter.default.post(name: Foundation.Notification.Name(rawValue: "load"), object: nil)
-    }
-    
-    func addNewComponents() {
-        let realm = try! Realm()
-        
-        var i = 1
-        while i <= (addedQualification?.numberOfComponents)! {
-            
-            try! realm.write {
-                
-                let newComponents = Component()
-                
-                newComponents.name = "Component \(i)"
-                newComponents.qualification = qualificationNameTextField.text!
-                
-                // Default weighting - NEEDS CHANGING TO ALLOW INPUT
-                newComponents.weighting = Double((100 / Double(addedQualification!.numberOfComponents)) / 100).roundTo(places: 3)
-                
-                i += 1
-                realm.add(newComponents)
-            }
-            
-            //            self.addedUnit = newUnits
-        }
     }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

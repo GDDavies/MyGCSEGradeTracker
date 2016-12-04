@@ -10,5 +10,5 @@ import UIKit
 
 class CustomQualificationCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var qualificationLabel: UILabel!
-    @IBOutlet weak var numberOfUnitsLabel: UILabel!
+    @IBOutlet weak var numberOfComponentsLabel: UILabel!
 }

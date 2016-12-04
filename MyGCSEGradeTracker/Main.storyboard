@@ -67,11 +67,11 @@
                                         <rect key="frame" x="0.0" y="100" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wHd-Xn-Lpm" id="8CM-fZ-2T1">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No. of Components" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHd-Xf-WOc">
-                                                    <rect key="frame" x="8" y="11" width="149" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Components" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHd-Xf-WOc">
+                                                    <rect key="frame" x="8" y="11" width="98" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -95,7 +95,8 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yps-VD-r13">
                                 <rect key="frame" x="0.0" y="600.5" width="375" height="66.5"/>
-                                <color key="backgroundColor" red="0.2401529390000352" green="0.28660627827641638" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.058823529411764705" green="0.50196078431372548" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
                                 <state key="normal" title="Save Qualification">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -116,7 +117,13 @@
                             <constraint firstAttribute="trailing" secondItem="Qkg-EY-BAy" secondAttribute="trailing" id="ncx-fr-cPw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="vnI-wb-8Cr"/>
+                    <navigationItem key="navigationItem" id="vnI-wb-8Cr">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="m0c-5a-Zw1">
+                            <connections>
+                                <action selector="cancelAddQualificationWithSender:" destination="feH-6R-aqw" id="tSm-oV-aOg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="buttonBtmConstraint" destination="awO-MQ-Khw" id="Rbj-V5-njK"/>
                         <outlet property="tableView" destination="Qkg-EY-BAy" id="vbl-8A-6Si"/>
@@ -139,7 +146,7 @@
                                 <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aI3-qW-7ax" id="X0V-xh-aZu">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Component Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Faw-O1-6uA">
@@ -207,9 +214,9 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Units: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsn-zt-Usf">
-                                            <rect key="frame" x="65" y="8" width="72" height="24"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Components: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsn-zt-Usf">
+                                            <rect key="frame" x="21" y="8" width="116" height="19.5"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -224,7 +231,7 @@
                                     <constraint firstAttribute="trailingMargin" secondItem="12Y-XF-hJU" secondAttribute="trailing" id="zsA-rj-b4M"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="numberOfUnitsLabel" destination="nsn-zt-Usf" id="kuE-qx-aEq"/>
+                                    <outlet property="numberOfComponentsLabel" destination="nsn-zt-Usf" id="5q2-Ut-gnU"/>
                                     <outlet property="qualificationLabel" destination="12Y-XF-hJU" id="YE3-oh-u7o"/>
                                     <segue destination="it7-A9-7qV" kind="show" identifier="ShowQualification" id="dFR-f3-gLI">
                                         <segue key="commit" inheritsFrom="parent" id="keB-ph-nkT"/>
@@ -503,7 +510,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="5" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ybH-8I-d8w">
-                            <rect key="frame" x="64" y="112" width="46" height="30"/>
+                            <rect key="frame" x="64" y="113" width="46" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="46" id="NfR-N8-niw"/>
                             </constraints>
@@ -520,7 +527,7 @@
                             </connections>
                         </button>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ylw-Pb-xvy">
-                            <rect key="frame" x="98" y="52" width="130" height="29"/>
+                            <rect key="frame" x="98" y="52" width="130" height="31"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="130" id="23h-9b-cNK"/>
                             </constraints>
@@ -553,13 +560,13 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weighting (%)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U6i-m7-Y6v">
-                            <rect key="frame" x="131" y="118" width="96" height="22"/>
+                            <rect key="frame" x="131" y="120" width="96" height="20"/>
                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="15"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0%" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fmI-K2-s1P">
-                            <rect key="frame" x="235" y="112" width="46" height="30"/>
+                            <rect key="frame" x="235" y="113" width="46" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="46" id="MmI-Qf-7Dz"/>
                             </constraints>
