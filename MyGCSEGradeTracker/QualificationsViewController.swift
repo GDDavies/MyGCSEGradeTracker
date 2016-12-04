@@ -84,20 +84,8 @@ class QualificationsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        
-//        if let navController = self.navigationController {
-//            navController.navigationBar.tintColor = UIColor.white
-//            navController.navigationBar.barTintColor = backgroundColor
-//            navController.navigationBar.isTranslucent = false
-//            navController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
-//        }
-//        bottomBarView.backgroundColor = backgroundColor
-    }
     
     func loadResults(_ notification: Foundation.Notification){
-        //load data here
         
         var xValues = [Double]()
         var i = 1
@@ -164,9 +152,9 @@ class QualificationsViewController: UIViewController {
             while x < components.count {
                 //                setResultsArray.append(setResults[x].result)
                 
-                let weightedResult = Double(setResults[x].result) * setResults[x].weighting
+ //               let weightedResult = Double(setResults[x].result) * setResults[x].weighting *****
                 
-                addResults += weightedResult
+//                addResults += weightedResult
                 x += 1
             }
             setResultsArray.append(addResults)

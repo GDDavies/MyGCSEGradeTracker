@@ -15,6 +15,5 @@ class Result: Object {
     dynamic var date = Date()
     dynamic var qualification = ""
     dynamic var component = ""
-    dynamic var weighting = 0.0
     dynamic var set = 0
 }

@@ -23,7 +23,6 @@
 		939EFEC81DEDC90B00368533 /* CustomQualificationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFEC31DEDC90B00368533 /* CustomQualificationCollectionViewCell.swift */; };
 		939EFEC91DEDC90B00368533 /* QualificationCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFEC41DEDC90B00368533 /* QualificationCollectionView.swift */; };
 		939EFECA1DEDC90B00368533 /* QualificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFEC51DEDC90B00368533 /* QualificationsViewController.swift */; };
-		939EFECB1DEDC90B00368533 /* ResultsSetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFEC61DEDC90B00368533 /* ResultsSetTableViewCell.swift */; };
 		939EFECC1DEDC90B00368533 /* ResultsSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFEC71DEDC90B00368533 /* ResultsSetViewController.swift */; };
 		939EFECE1DEDC93A00368533 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 939EFECD1DEDC93A00368533 /* Main.storyboard */; };
 		939EFED31DEDCAD500368533 /* CollectionPushAndPoppable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFECF1DEDCAD500368533 /* CollectionPushAndPoppable.swift */; };
@@ -78,7 +77,6 @@
 		939EFEC31DEDC90B00368533 /* CustomQualificationCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomQualificationCollectionViewCell.swift; sourceTree = "<group>"; };
 		939EFEC41DEDC90B00368533 /* QualificationCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualificationCollectionView.swift; sourceTree = "<group>"; };
 		939EFEC51DEDC90B00368533 /* QualificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualificationsViewController.swift; sourceTree = "<group>"; };
-		939EFEC61DEDC90B00368533 /* ResultsSetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsSetTableViewCell.swift; sourceTree = "<group>"; };
 		939EFEC71DEDC90B00368533 /* ResultsSetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsSetViewController.swift; sourceTree = "<group>"; };
 		939EFECD1DEDC93A00368533 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		939EFECF1DEDCAD500368533 /* CollectionPushAndPoppable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionPushAndPoppable.swift; sourceTree = "<group>"; };
@@ -174,7 +172,6 @@
 				93E96CAF1DF0A6DE0063EA62 /* AddQualificationViewController.swift */,
 				932DAB921DF1DC4400EEDF3D /* ComponentTableView.swift */,
 				939EFEC51DEDC90B00368533 /* QualificationsViewController.swift */,
-				939EFEC61DEDC90B00368533 /* ResultsSetTableViewCell.swift */,
 				939EFEC71DEDC90B00368533 /* ResultsSetViewController.swift */,
 				939EFECD1DEDC93A00368533 /* Main.storyboard */,
 				935CC77B1DEDC7C200A6DEFA /* Assets.xcassets */,
@@ -513,7 +510,6 @@
 				932DAB931DF1DC4400EEDF3D /* ComponentTableView.swift in Sources */,
 				932DAB911DF1DA1300EEDF3D /* CustomTableViewCell.swift in Sources */,
 				939EFEC11DEDC8D700368533 /* Result.swift in Sources */,
-				939EFECB1DEDC90B00368533 /* ResultsSetTableViewCell.swift in Sources */,
 				939EFEC81DEDC90B00368533 /* CustomQualificationCollectionViewCell.swift in Sources */,
 				939EFED41DEDCAD500368533 /* PopInAndOutAnimator.swift in Sources */,
 				939EFECA1DEDC90B00368533 /* QualificationsViewController.swift in Sources */,

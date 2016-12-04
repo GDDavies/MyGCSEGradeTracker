@@ -16,7 +16,6 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
     var selectedQualification: Qualification!
     var selectedComponent: Component!
     
-    @IBOutlet weak var weightingTextField: UITextField!
     var selectedGrade: String?
     var selectedDate: Date?
     
@@ -26,19 +25,14 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
     
     var grades: Grade?
     
+    var resultsArray = [Int]()
+    
     var resultSet = [Result]()
     
-    @IBOutlet weak var componentAddResultTextOutlet: UILabel!
-    @IBOutlet weak var resultTextField: UITextField!
-    
-    @IBOutlet var inputResultsViewContoller: UIView!
-    
-    @IBOutlet weak var saveResultButton: UIButton!
     @IBOutlet weak var saveSetButton: UIButton!
     @IBOutlet weak var disabledSaveSetButton: UIButton!
     var backgroundColor: UIColor?
     
-    @IBOutlet weak var datePicker: UIDatePicker!
     var blurEffectView: UIVisualEffectView?
     @IBOutlet weak var componentsTableView: UITableView!
     
@@ -67,11 +61,16 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
         
         // Do any additional setup after loading the view.
         
-        disableButton()
+        //disableButton() *****
+        enableButton()
         
-        inputResultsViewContoller.backgroundColor = backgroundColor
-        saveResultButton.setTitleColor(backgroundColor, for: .normal)
-        datePicker.setValue(UIColor.white, forKey: "textColor")
+        //saveResultButton.setTitleColor(backgroundColor, for: .normal)
+        //datePicker.setValue(UIColor.white, forKey: "textColor")
+        
+        resultType.backgroundColor = self.backgroundColor
+        
+        populateResultsArray()
+        print("Results array = \(resultsArray)")
     }
     
     func disableButton() {
@@ -90,54 +89,49 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
 
     }
     
-    @IBAction func saveResult(_ sender: UIButton) {
+    func saveResults() {
         
-        var resultTypeString: String?
-        let resultInt = Int(resultTextField.text!)!
-        var convertedResult: Int?
-        
-        // Remove previously entered result for unit
-        if let indexOfComponent = resultSet.index(where:{$0.component == selectedComponent.name}) {
-        
-            resultSet.remove(at: indexOfComponent)
-        }
-        
-        let newResult = Result()
-        
-        if let segmentResultType: String = resultType.titleForSegment(at: resultType.selectedSegmentIndex) {
-            newResult.type = segmentResultType
-            resultTypeString = segmentResultType
-        }
-        
-        newResult.qualification = selectedQualification.name
-        newResult.component = selectedComponent.name
-        
-        if resultTypeString == "Grade" {
-            convertedResult = resultInt * 10
-        } else {
-            convertedResult = resultInt
-        }
+        for i in 1...components.count {
             
-        newResult.result = convertedResult!
-        
-        newResult.date = datePicker.date
-        newResult.weighting = (Double(weightingTextField.text!)!) / 100
-        newResult.set = (results.count / components.count) + 1
-        
-        resultSet.append(newResult)
-        
-        if resultSet.count == components.count {
-            enableButton()
+            var resultTypeString: String?
+            var convertedResult: Int?
+            
+            let newResult = Result()
+            
+            if let segmentResultType: String = resultType.titleForSegment(at: resultType.selectedSegmentIndex) {
+                newResult.type = segmentResultType
+                resultTypeString = segmentResultType
+            }
+            
+            newResult.qualification = selectedQualification.name
+            newResult.component = "Component \(i)"
+            
+            if resultTypeString == "Grade" {
+                convertedResult = resultsArray[i - 1] * 10
+            } else {
+                convertedResult = resultsArray[i - 1]
+            }
+            
+            newResult.result = convertedResult!
+            
+            //     newResult.date = datePicker.date
+            newResult.set = (results.count / components.count) + 1
+            
+            resultSet.append(newResult)
+            
+            if resultsArray.count == components.count {
+                enableButton()
+            }
+            componentsTableView.reloadData()
         }
-        componentsTableView.reloadData()
-        animateOut()
     }
     
     @IBAction func exitView(_ sender: UIButton) {
-        animateOut()
     }
     
     @IBAction func saveResultSet(_ sender: UIButton) {
+        
+        saveResults()
         
         let realm = try! Realm()
         
@@ -155,73 +149,56 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
+    func textViewValueChange(sender: UITextField) {
+        
+        let currentValue = Int(sender.text!)
+        let textRow = sender.tag
+        
+        resultsArray.remove(at: textRow)
+        resultsArray.insert(currentValue!, at: textRow)
+        
+        print(textRow)
+        print(resultsArray)
+        
+    }
+    
+    func populateResultsArray() {
+        for _ in 1...components.count {
+            resultsArray.append(0)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return components.count
 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "QualificationComponents", for: indexPath) as! ResultsSetTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell4", for: indexPath) as! CustomTableViewCell
         
         let component = components[(indexPath as NSIndexPath).row]
         
         if indexPath.row == completedComponents {
-        cell.cellImageView?.image = UIImage(named: "success")
+        //cell.accessoryType = .checkmark
         }
         
-        cell.cellLabel?.text = component.name
+        cell.labelOutlet?.text = component.name
+        cell.placeholderTextOutlet.tag = indexPath.row
+        cell.placeholderTextOutlet.addTarget(self, action: #selector(textViewValueChange), for: .editingChanged)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        resultTextField.text = ""
-        weightingTextField.text = ""
-        completedComponents = indexPath.row
+//        resultTextField.text = ""
+//        weightingTextField.text = ""
+//        completedComponents = indexPath.row
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        animateIn()
         selectedComponent = components[indexPath.row]
         return indexPath
     }
     
-    func animateIn() {
-        blur()
-        
-        self.view.addSubview(inputResultsViewContoller)
-        
-        inputResultsViewContoller.center = CGPoint(x: view.frame.size.width / 2, y: (view.frame.size.height / 2) - 50.0) //self.view.center
-        
-        inputResultsViewContoller.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
-        inputResultsViewContoller.alpha = 0
-        
-        UIView.animate(withDuration: 0.4) {
-            // visual effect view here
-            
-            self.inputResultsViewContoller.alpha = 1
-            self.inputResultsViewContoller.transform = CGAffineTransform.identity
-        }
-    }
-    
-    func animateOut() {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.inputResultsViewContoller.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
-            self.inputResultsViewContoller.alpha = 0
-            
-        }) { (success:Bool) in
-            self.inputResultsViewContoller.removeFromSuperview()
-            self.blurEffectView?.removeFromSuperview()
-        }
-    }
-    
-    func blur() {
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
-        blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView?.frame = view.bounds
-        blurEffectView?.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
-        view.addSubview(blurEffectView!)
-    }
-
 }
 
