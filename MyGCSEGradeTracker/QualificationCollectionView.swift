@@ -61,6 +61,10 @@ class QualificationCollectionView: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
+//        UIView.animate(withDuration: 1, delay: 0.0, options:[.curveLinear], animations: {
+//            self.navigationController?.navigationBar.barTintColor = UIColor.white
+//        }, completion:nil)
+        
     }
     
     override func didReceiveMemoryWarning() {

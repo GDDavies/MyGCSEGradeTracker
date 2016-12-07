@@ -32,7 +32,13 @@ class QualificationsViewController: UIViewController {
     @IBOutlet weak var averageGradeTextLabel: UILabel!
     @IBOutlet weak var averagePercentageTextLabel: UILabel!
 
+    @IBOutlet weak var statsBox: UIView!
+    @IBOutlet weak var setsOfResultsLabel: UILabel!
+    @IBOutlet weak var averageGradeLabel: UILabel!
+    @IBOutlet weak var averagePercentageLabel: UILabel!
     
+    var averageGrade: String?
+    var averagePercentage: String?
     
     let realm = try! Realm()
     
@@ -70,19 +76,54 @@ class QualificationsViewController: UIViewController {
 
         }
         
+        createSets()
+        addChart()
+        
 //        selectedQualView.backgroundColor = backgroundColor
 //        selectedQualificationLabel.text = selectedQualification.name
         
         createSetButton.backgroundColor = backgroundColor
+        statsBox.backgroundColor = backgroundColor
+        
+        
+        
+        setsOfResultsLabel.text = String(results.count / components.count)
+        averageGradeCalc()
+        averagePercentageCalc()
+        averageGradeLabel.text = averageGrade!
+        averagePercentageLabel.text = averagePercentage!
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadResults(_:)), name: NSNotification.Name(rawValue: "loadResults"), object: nil)
-        createSets()
-        addChart()
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func averageGradeCalc() {
+        var sum = 0.0
+        for i in 0..<setResultsArray.count {
+            sum += round(setResultsArray[i] / 10)
+            print(sum)
+        }
+        let fmt = NumberFormatter()
+        fmt.maximumIntegerDigits = 1
+        let output = sum / (Double(results.count) / Double(components.count))
+        averageGrade = fmt.string(from: NSNumber(value: output))
+    }
+    
+    func averagePercentageCalc() {
+        var sum = 0.0
+        for i in 0..<setResultsArray.count {
+            sum += setResultsArray[i]
+            print(sum)
+        }
+        let fmt = NumberFormatter()
+        fmt.maximumIntegerDigits = 2
+        let output = round(sum / (Double(results.count) / Double(components.count)))
+        averagePercentage = fmt.string(from: NSNumber(value: output))
     }
     
     func loadResults(_ notification: Foundation.Notification){
@@ -97,7 +138,7 @@ class QualificationsViewController: UIViewController {
                 
         lineChart.add(ChartSeries(data: zipped))
         
-        print("Loaded")
+        print("Results loaded")
     }
 
     func addChart() {
@@ -105,20 +146,20 @@ class QualificationsViewController: UIViewController {
         if setResultsArray.isEmpty {
             print("Array is empty")
         }else{
-        var xValues = [Double]()
-        var i = 1
-        while i - 1 < setResultsArray.count {
-            xValues.append(Double(i))
-            i += 1
-        }
-        let zipped = Array(zip(xValues, setResultsArray))
-        
-        print(zipped)
-        
-        let data = zipped
-        let series = ChartSeries(data: data)
-        series.color = backgroundColor!
-        lineChart.add(series)
+            var xValues = [Double]()
+            var i = 1
+            while i - 1 < setResultsArray.count {
+                xValues.append(Double(i))
+                i += 1
+            }
+            let zipped = Array(zip(xValues, setResultsArray))
+            
+            print("Zipped = \(zipped)")
+            
+            let data = zipped
+            let series = ChartSeries(data: data)
+            series.color = backgroundColor!
+            lineChart.add(series)
         }
         
     }
@@ -148,13 +189,14 @@ class QualificationsViewController: UIViewController {
                     return try! Realm().objects(Result.self).filter("qualification == '\(selectedQual!)' AND set == \(i)")
                 }
             }
+            
             var x = 0
             while x < components.count {
-                //                setResultsArray.append(setResults[x].result)
+                //setResultsArray.append(Double(setResults[x].result))
                 
- //               let weightedResult = Double(setResults[x].result) * setResults[x].weighting *****
+                let weightedResult = Double(setResults[x].result) * components[x].weighting
                 
-//                addResults += weightedResult
+                addResults += weightedResult
                 x += 1
             }
             setResultsArray.append(addResults)
@@ -162,7 +204,7 @@ class QualificationsViewController: UIViewController {
             //            setResultsArray.removeAll()
             addResults = 0
         }
-        print(setResultsArray)
+        print("Results set array \(setResultsArray)")
     }
 
     /*

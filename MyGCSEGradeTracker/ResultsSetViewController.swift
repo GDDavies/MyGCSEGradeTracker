@@ -31,6 +31,9 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet weak var saveSetButton: UIButton!
     @IBOutlet weak var disabledSaveSetButton: UIButton!
+    @IBOutlet weak var disabledSaveButtonBtmConstraint: NSLayoutConstraint!
+    @IBOutlet weak var enabledSaveButtonBtmConstraint: NSLayoutConstraint!
+    
     var backgroundColor: UIColor?
     
     var blurEffectView: UIVisualEffectView?
@@ -67,10 +70,35 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
         //saveResultButton.setTitleColor(backgroundColor, for: .normal)
         //datePicker.setValue(UIColor.white, forKey: "textColor")
         
-        resultType.backgroundColor = self.backgroundColor
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        resultType.addTarget(self, action: #selector(resultTypeChanged), for: .touchUpInside)
+        resultType.tintColor = self.backgroundColor
+        
+        self.title = "Input Results"
         
         populateResultsArray()
-        print("Results array = \(resultsArray)")
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        let userInfo = notification.userInfo!
+        let keyboardHeight = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
+        
+        UIView.animate(withDuration: 0.3) {
+            self.disabledSaveButtonBtmConstraint.constant = keyboardHeight
+            self.enabledSaveButtonBtmConstraint.constant = keyboardHeight
+        }
+        self.view.layoutIfNeeded();
+        print(keyboardHeight);
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        UIView.animate(withDuration: 0.3) {
+            self.disabledSaveButtonBtmConstraint.constant = 0
+            self.enabledSaveButtonBtmConstraint.constant = 0
+        }
+        self.view.layoutIfNeeded();
     }
     
     func disableButton() {
@@ -83,6 +111,10 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
         saveSetButton.backgroundColor = self.backgroundColor
         disabledSaveSetButton.isHidden = true
         saveSetButton.isHidden = false
+    }
+    
+    func resultTypeChanged() {
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -185,6 +217,8 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.labelOutlet?.text = component.name
         cell.placeholderTextOutlet.tag = indexPath.row
         cell.placeholderTextOutlet.addTarget(self, action: #selector(textViewValueChange), for: .editingChanged)
+        cell.placeholderTextOutlet.keyboardType = UIKeyboardType.numberPad
+        cell.selectionStyle = .none
         
         return cell
     }
