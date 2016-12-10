@@ -95,10 +95,4 @@ class ComponentTableViewController: UITableViewController, UINavigationControlle
             break
         }
     }
-    
-    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        if let controller = viewController as? AddQualificationViewController {
-            controller.componentPercentages = textViewOutput as! [String]
-        }
-    }
 }

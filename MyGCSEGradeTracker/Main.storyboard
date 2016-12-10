@@ -83,7 +83,6 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="labelOutlet" destination="LHd-Xf-WOc" id="3Ej-i0-aSq"/>
-                                            <segue destination="0wz-bO-wdG" kind="show" identifier="ShowComponents" id="hNk-ns-V5b"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -131,59 +130,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zgC-gq-ae4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1908" y="527.58620689655174"/>
-        </scene>
-        <!--Component Table View Controller-->
-        <scene sceneID="eIP-SJ-RPC">
-            <objects>
-                <tableViewController id="0wz-bO-wdG" customClass="ComponentTableViewController" customModule="MyGCSEGradeTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="b6H-HL-N6s">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell3" id="aI3-qW-7ax" customClass="CustomTableViewCell" customModule="MyGCSEGradeTracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aI3-qW-7ax" id="X0V-xh-aZu">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Component Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Faw-O1-6uA">
-                                            <rect key="frame" x="8" y="11" width="156" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Weighting e.g. 25%" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7uK-RO-KNI">
-                                            <rect key="frame" x="172" y="12.5" width="195" height="17"/>
-                                            <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="7uK-RO-KNI" firstAttribute="centerY" secondItem="X0V-xh-aZu" secondAttribute="centerY" id="GfF-Wb-pqD"/>
-                                        <constraint firstItem="7uK-RO-KNI" firstAttribute="leading" secondItem="Faw-O1-6uA" secondAttribute="trailing" constant="8" id="PUm-iU-1f0"/>
-                                        <constraint firstAttribute="leadingMargin" secondItem="Faw-O1-6uA" secondAttribute="leading" id="ZPn-mz-w5P"/>
-                                        <constraint firstItem="Faw-O1-6uA" firstAttribute="centerY" secondItem="X0V-xh-aZu" secondAttribute="centerY" id="dOR-MA-PCm"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="7uK-RO-KNI" secondAttribute="trailing" id="hC6-Al-gY4"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="labelOutlet" destination="Faw-O1-6uA" id="fpV-1G-3tj"/>
-                                    <outlet property="placeholderTextOutlet" destination="7uK-RO-KNI" id="Gb8-Wk-kY6"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="0wz-bO-wdG" id="9Sl-1o-UJz"/>
-                            <outlet property="delegate" destination="0wz-bO-wdG" id="xKc-ua-4Qj"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="G3g-YH-UNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2804" y="527.58620689655174"/>
         </scene>
         <!--Qualification Collection View-->
         <scene sceneID="Y5A-Zw-h9v">

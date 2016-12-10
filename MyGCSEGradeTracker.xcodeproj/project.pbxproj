@@ -24,10 +24,10 @@
 		939EFEC91DEDC90B00368533 /* QualificationCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFEC41DEDC90B00368533 /* QualificationCollectionView.swift */; };
 		939EFECA1DEDC90B00368533 /* QualificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFEC51DEDC90B00368533 /* QualificationsViewController.swift */; };
 		939EFECC1DEDC90B00368533 /* ResultsSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFEC71DEDC90B00368533 /* ResultsSetViewController.swift */; };
-		939EFECE1DEDC93A00368533 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 939EFECD1DEDC93A00368533 /* Main.storyboard */; };
 		939EFED31DEDCAD500368533 /* CollectionPushAndPoppable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFECF1DEDCAD500368533 /* CollectionPushAndPoppable.swift */; };
 		939EFED41DEDCAD500368533 /* PopInAndOutAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFED01DEDCAD500368533 /* PopInAndOutAnimator.swift */; };
 		939EFED51DEDCAD500368533 /* UIView+Screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFED21DEDCAD500368533 /* UIView+Screenshot.swift */; };
+		93E000101DFBA608000919A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93E0000F1DFBA608000919A2 /* Main.storyboard */; };
 		93E96CB01DF0A6DE0063EA62 /* AddQualificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E96CAF1DF0A6DE0063EA62 /* AddQualificationViewController.swift */; };
 		9A357874855CC6B09A538A5E /* Pods_MyGCSEGradeTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D4BA1D6706A089ABB62A15 /* Pods_MyGCSEGradeTrackerUITests.framework */; };
 /* End PBXBuildFile section */
@@ -78,11 +78,11 @@
 		939EFEC41DEDC90B00368533 /* QualificationCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualificationCollectionView.swift; sourceTree = "<group>"; };
 		939EFEC51DEDC90B00368533 /* QualificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualificationsViewController.swift; sourceTree = "<group>"; };
 		939EFEC71DEDC90B00368533 /* ResultsSetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsSetViewController.swift; sourceTree = "<group>"; };
-		939EFECD1DEDC93A00368533 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		939EFECF1DEDCAD500368533 /* CollectionPushAndPoppable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionPushAndPoppable.swift; sourceTree = "<group>"; };
 		939EFED01DEDCAD500368533 /* PopInAndOutAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopInAndOutAnimator.swift; sourceTree = "<group>"; };
 		939EFED11DEDCAD500368533 /* PopInAndOutCollectionViewTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopInAndOutCollectionViewTransition.h; sourceTree = "<group>"; };
 		939EFED21DEDCAD500368533 /* UIView+Screenshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Screenshot.swift"; sourceTree = "<group>"; };
+		93E0000F1DFBA608000919A2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		93E96CAF1DF0A6DE0063EA62 /* AddQualificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddQualificationViewController.swift; sourceTree = "<group>"; };
 		A6D4BA1D6706A089ABB62A15 /* Pods_MyGCSEGradeTrackerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyGCSEGradeTrackerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B06B3AB223521583E7FD5615 /* Pods-MyGCSEGradeTrackerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGCSEGradeTrackerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyGCSEGradeTrackerUITests/Pods-MyGCSEGradeTrackerUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -173,7 +173,7 @@
 				932DAB921DF1DC4400EEDF3D /* ComponentTableView.swift */,
 				939EFEC51DEDC90B00368533 /* QualificationsViewController.swift */,
 				939EFEC71DEDC90B00368533 /* ResultsSetViewController.swift */,
-				939EFECD1DEDC93A00368533 /* Main.storyboard */,
+				93E0000F1DFBA608000919A2 /* Main.storyboard */,
 				935CC77B1DEDC7C200A6DEFA /* Assets.xcassets */,
 				935CC77D1DEDC7C200A6DEFA /* LaunchScreen.storyboard */,
 				935CC7801DEDC7C200A6DEFA /* Info.plist */,
@@ -341,7 +341,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				939EFECE1DEDC93A00368533 /* Main.storyboard in Resources */,
+				93E000101DFBA608000919A2 /* Main.storyboard in Resources */,
 				935CC77F1DEDC7C200A6DEFA /* LaunchScreen.storyboard in Resources */,
 				935CC77C1DEDC7C200A6DEFA /* Assets.xcassets in Resources */,
 			);
