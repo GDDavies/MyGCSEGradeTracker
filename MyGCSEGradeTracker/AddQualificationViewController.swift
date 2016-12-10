@@ -35,14 +35,9 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     @IBAction func saveQualification(_ sender: Any) {
-        print(textViewOutput)
-        print(componentPercentages)
-        
         addNewQualification()
         addNewComponents()
-        
         dismiss(animated: true, completion: nil)
-        
     }
     
     func keyboardWillShow(notification: NSNotification) {
@@ -53,7 +48,6 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
             self.buttonBtmConstraint.constant = keyboardHeight;
         }
         self.view.layoutIfNeeded();
-        print(keyboardHeight);
     }
     
     func keyboardWillHide(notification: NSNotification) {
@@ -199,4 +193,5 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
             destinationVC?.numberOfComponents = Int(textViewOutput[1])
         }
     }
+    
 }

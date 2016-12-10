@@ -70,9 +70,9 @@ class QualificationsViewController: UIViewController {
         self.title = selectedQual
         
         if let navController = self.navigationController {
-            navController.navigationBar.tintColor = UIColor.white
-            navController.navigationBar.barTintColor = backgroundColor
-            navController.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 24)!, NSForegroundColorAttributeName: UIColor.white]
+           // navController.navigationBar.tintColor = UIColor.white
+           // navController.navigationBar.barTintColor = backgroundColor
+           // navController.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 24)!, NSForegroundColorAttributeName: UIColor.white]
 
         }
         
