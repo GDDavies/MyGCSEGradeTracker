@@ -37,7 +37,6 @@ class ManageQualificationsTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
-        print(qualifications)
     }
 
     // MARK: - Table view data source
@@ -74,35 +73,51 @@ class ManageQualificationsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            //realm.refresh()
-            
             let qualToDelete = qualifications[indexPath.row].name
             
-            var deletedQualification: Results<Qualification> {
-                get {
-                    return try! Realm().objects(Qualification.self).filter("name == '\(qualToDelete)'")
+            let alertController = UIAlertController(title: "Warning!", message: "This action will delete all results and components associated with this qualification.", preferredStyle: .alert)
+            let delete = UIAlertAction(title: "Delete", style: .destructive, handler: { action in
+                
+                tableView.beginUpdates()
+                //delete from your datasource!
+                
+                var deletedQualification: Results<Qualification> {
+                    get {
+                        return try! Realm().objects(Qualification.self).filter("name == '\(qualToDelete)'")
+                    }
                 }
-            }
-            
-            var deletedResults: Results<Result> {
-                get {
-                    return try! Realm().objects(Result.self).filter("qualification == '\(qualToDelete)'")
+                
+                var deletedResults: Results<Result> {
+                    get {
+                        return try! Realm().objects(Result.self).filter("qualification == '\(qualToDelete)'")
+                    }
                 }
-            }
-            
-            var deletedComponents: Results<Component> {
-                get {
-                    return try! Realm().objects(Component.self).filter("qualification == '\(qualToDelete)'")
+                
+                var deletedComponents: Results<Component> {
+                    get {
+                        return try! Realm().objects(Component.self).filter("qualification == '\(qualToDelete)'")
+                    }
                 }
-            }
+                
+                try! self.realm.write {
+                    self.realm.delete(deletedQualification)
+                    self.realm.delete(deletedResults)
+                    self.realm.delete(deletedComponents)
+                }
+                
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                tableView.endUpdates()
+            })
             
-            try! realm.write {
-                realm.delete(deletedQualification)
-                realm.delete(deletedResults)
-                realm.delete(deletedComponents)
-            }
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+                
+                //this is optional, it makes the delete button go away on the cell
+                tableView.reloadRows(at: [indexPath], with: .automatic)
+            })
             
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            alertController.addAction(delete)
+            alertController.addAction(cancel)
+            present(alertController, animated: true, completion: nil)
         }
     }
 
