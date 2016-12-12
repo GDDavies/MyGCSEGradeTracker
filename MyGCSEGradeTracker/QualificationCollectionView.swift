@@ -54,7 +54,6 @@ class QualificationCollectionView: UICollectionViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadQualifications(_:)),name:NSNotification.Name(rawValue: "load"), object: nil)
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
         
         print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
@@ -64,7 +63,7 @@ class QualificationCollectionView: UICollectionViewController {
 //        UIView.animate(withDuration: 1, delay: 0.0, options:[.curveLinear], animations: {
 //            self.navigationController?.navigationBar.barTintColor = UIColor.white
 //        }, completion:nil)
-        
+        collectionView?.reloadData()
     }
     
     override func didReceiveMemoryWarning() {

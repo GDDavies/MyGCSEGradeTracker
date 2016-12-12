@@ -27,6 +27,8 @@
 		939EFED31DEDCAD500368533 /* CollectionPushAndPoppable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFECF1DEDCAD500368533 /* CollectionPushAndPoppable.swift */; };
 		939EFED41DEDCAD500368533 /* PopInAndOutAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFED01DEDCAD500368533 /* PopInAndOutAnimator.swift */; };
 		939EFED51DEDCAD500368533 /* UIView+Screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFED21DEDCAD500368533 /* UIView+Screenshot.swift */; };
+		93CD28651DFF08C5008AB12A /* ManageQualificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD28641DFF08C5008AB12A /* ManageQualificationsTableViewController.swift */; };
+		93CD28671DFF0C60008AB12A /* ManageResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD28661DFF0C60008AB12A /* ManageResultsTableViewController.swift */; };
 		93E000101DFBA608000919A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93E0000F1DFBA608000919A2 /* Main.storyboard */; };
 		93E96CB01DF0A6DE0063EA62 /* AddQualificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E96CAF1DF0A6DE0063EA62 /* AddQualificationViewController.swift */; };
 		9A357874855CC6B09A538A5E /* Pods_MyGCSEGradeTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D4BA1D6706A089ABB62A15 /* Pods_MyGCSEGradeTrackerUITests.framework */; };
@@ -82,6 +84,8 @@
 		939EFED01DEDCAD500368533 /* PopInAndOutAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopInAndOutAnimator.swift; sourceTree = "<group>"; };
 		939EFED11DEDCAD500368533 /* PopInAndOutCollectionViewTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopInAndOutCollectionViewTransition.h; sourceTree = "<group>"; };
 		939EFED21DEDCAD500368533 /* UIView+Screenshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Screenshot.swift"; sourceTree = "<group>"; };
+		93CD28641DFF08C5008AB12A /* ManageQualificationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageQualificationsTableViewController.swift; sourceTree = "<group>"; };
+		93CD28661DFF0C60008AB12A /* ManageResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageResultsTableViewController.swift; sourceTree = "<group>"; };
 		93E0000F1DFBA608000919A2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		93E96CAF1DF0A6DE0063EA62 /* AddQualificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddQualificationViewController.swift; sourceTree = "<group>"; };
 		A6D4BA1D6706A089ABB62A15 /* Pods_MyGCSEGradeTrackerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyGCSEGradeTrackerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +177,8 @@
 				932DAB921DF1DC4400EEDF3D /* ComponentTableView.swift */,
 				939EFEC51DEDC90B00368533 /* QualificationsViewController.swift */,
 				939EFEC71DEDC90B00368533 /* ResultsSetViewController.swift */,
+				93CD28641DFF08C5008AB12A /* ManageQualificationsTableViewController.swift */,
+				93CD28661DFF0C60008AB12A /* ManageResultsTableViewController.swift */,
 				93E0000F1DFBA608000919A2 /* Main.storyboard */,
 				935CC77B1DEDC7C200A6DEFA /* Assets.xcassets */,
 				935CC77D1DEDC7C200A6DEFA /* LaunchScreen.storyboard */,
@@ -509,7 +515,9 @@
 				939EFECC1DEDC90B00368533 /* ResultsSetViewController.swift in Sources */,
 				932DAB931DF1DC4400EEDF3D /* ComponentTableView.swift in Sources */,
 				932DAB911DF1DA1300EEDF3D /* CustomTableViewCell.swift in Sources */,
+				93CD28671DFF0C60008AB12A /* ManageResultsTableViewController.swift in Sources */,
 				939EFEC11DEDC8D700368533 /* Result.swift in Sources */,
+				93CD28651DFF08C5008AB12A /* ManageQualificationsTableViewController.swift in Sources */,
 				939EFEC81DEDC90B00368533 /* CustomQualificationCollectionViewCell.swift in Sources */,
 				939EFED41DEDCAD500368533 /* PopInAndOutAnimator.swift in Sources */,
 				939EFECA1DEDC90B00368533 /* QualificationsViewController.swift in Sources */,
