@@ -8,7 +8,7 @@
 
 import UIKit
 import RealmSwift
-import SwiftChart
+import Charts
 
 class QualificationsViewController: UIViewController {
     
@@ -24,7 +24,7 @@ class QualificationsViewController: UIViewController {
     
     var backgrounColor: UIColor?
     
-    @IBOutlet weak var lineChart: Chart!
+    @IBOutlet weak var lineChartView: LineChartView!
     
     @IBOutlet weak var createSetButton: UIButton!
     
@@ -77,7 +77,8 @@ class QualificationsViewController: UIViewController {
         //}
         
         createSets()
-        addChart()
+        setChart(values: setResultsArray)
+//        addChart()
         
 //        selectedQualView.backgroundColor = backgroundColor
 //        selectedQualificationLabel.text = selectedQualification.name
@@ -95,6 +96,79 @@ class QualificationsViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadResults(_:)), name: NSNotification.Name(rawValue: "loadResults"), object: nil)
         
+    }
+    
+    func setChart(values: [Double]) {
+        
+        let mappedResults = values.enumerated().map { x, y in return ChartDataEntry(x: Double(x+1), y: y) }
+        
+        let data = LineChartData()
+        let resultsData = LineChartDataSet(values: mappedResults, label: "")
+        
+        print(mappedResults)
+        print(resultsData)
+        
+        // Format lines and circles
+        resultsData.colors = [UIColor.black]
+        resultsData.lineWidth = 2
+        resultsData.circleColors = [UIColor.black]
+        resultsData.circleHoleColor = UIColor.black
+        resultsData.circleRadius = 5
+        
+        // format numbers on line
+        let lineValueFormatter = NumberFormatter()
+        lineValueFormatter.generatesDecimalNumbers = false
+        lineValueFormatter.positiveSuffix = "%"
+        resultsData.valueFormatter = DefaultValueFormatter(formatter: lineValueFormatter)
+        
+        // format left axis numbers
+        let leftAxisValueFormatter = NumberFormatter()
+        leftAxisValueFormatter.generatesDecimalNumbers = false
+        leftAxisValueFormatter.positiveSuffix = "%"
+        lineChartView.leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisValueFormatter)
+        
+        // format x axis numbers
+        let xAxisValueFormatter = NumberFormatter()
+        xAxisValueFormatter.generatesDecimalNumbers = false
+        xAxisValueFormatter.positivePrefix = "Set "
+        lineChartView.xAxis.valueFormatter = DefaultAxisValueFormatter(formatter: xAxisValueFormatter)
+        
+        if values.count >= 2 {
+            // Add data to chart
+            data.addDataSet(resultsData)
+            lineChartView.data = data
+        } else {
+            // Don't add data
+            lineChartView.noDataText = "Please provide at least two results sets for the chart."
+        }
+        
+        // Target line
+        let trgt = ChartLimitLine(limit: 50.0, label: "Target: 50%")
+        lineChartView.leftAxis.addLimitLine(trgt)
+        
+        //        var i = 0
+        //
+        //        while i <= 100 {
+        //            let boundaries = ChartLimitLine(limit: (Double(i) * 10), label: "\(i)")
+        //            lineChartView.leftAxis.addLimitLine(boundaries)
+        //            i += 10
+        //        }
+        
+        lineChartView.rightAxis.drawGridLinesEnabled = false
+        lineChartView.rightAxis.drawLabelsEnabled = false
+        
+        lineChartView.leftAxis.drawGridLinesEnabled = false
+        lineChartView.leftAxis.axisMinimum = 0
+        lineChartView.leftAxis.axisMaximum = 100
+        
+        lineChartView.xAxis.axisMinimum = 1
+        lineChartView.xAxis.granularityEnabled = true
+        lineChartView.xAxis.granularity = 1
+        lineChartView.xAxis.labelPosition = .bottom
+        lineChartView.xAxis.gridColor = UIColor.white
+        
+        lineChartView.legend.enabled = false
+        lineChartView.chartDescription?.enabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -128,41 +202,43 @@ class QualificationsViewController: UIViewController {
     
     func loadResults(_ notification: Foundation.Notification){
         
-        var xValues = [Double]()
-        var i = 1
-        while i - 1 < setResultsArray.count {
-            xValues.append(Double(i))
-            i += 1
-        }
-        let zipped = Array(zip(xValues, setResultsArray))
-                
-        lineChart.add(ChartSeries(data: zipped))
+//        var xValues = [Double]()
+//        var i = 1
+//        while i - 1 < setResultsArray.count {
+//            xValues.append(Double(i))
+//            i += 1
+//        }
+//        let zipped = Array(zip(xValues, setResultsArray))
+//                
+//        lineChart.add(ChartSeries(data: zipped))
+        
+
         
         print("Results loaded")
     }
 
-    func addChart() {
-        
-        if setResultsArray.isEmpty {
-            print("Array is empty")
-        }else{
-            var xValues = [Double]()
-            var i = 1
-            while i - 1 < setResultsArray.count {
-                xValues.append(Double(i))
-                i += 1
-            }
-            let zipped = Array(zip(xValues, setResultsArray))
-            
-            print("Zipped = \(zipped)")
-            
-            let data = zipped
-            let series = ChartSeries(data: data)
-            series.color = backgroundColor!
-            lineChart.add(series)
-        }
-        
-    }
+//    func addChart() {
+//        
+//        if setResultsArray.isEmpty {
+//            print("Array is empty")
+//        }else{
+//            var xValues = [Double]()
+//            var i = 1
+//            while i - 1 < setResultsArray.count {
+//                xValues.append(Double(i))
+//                i += 1
+//            }
+//            let zipped = Array(zip(xValues, setResultsArray))
+//            
+//            print("Zipped = \(zipped)")
+//            
+//            let data = zipped
+//            let series = ChartSeries(data: data)
+//            series.color = backgroundColor!
+//            lineChart.add(series)
+//        }
+//        
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CreateSet" {
