@@ -142,8 +142,10 @@ class QualificationsViewController: UIViewController {
             lineChartView.noDataText = "Please provide at least two results sets for the chart."
         }
         
+        let target = 70.0
+        
         // Target line
-        let trgt = ChartLimitLine(limit: 50.0, label: "Target: 50%")
+        let trgt = ChartLimitLine(limit: target, label: "Target: \(target)%")
         lineChartView.leftAxis.addLimitLine(trgt)
         
         //        var i = 0

@@ -31,6 +31,9 @@
 		93CD28671DFF0C60008AB12A /* ManageResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD28661DFF0C60008AB12A /* ManageResultsTableViewController.swift */; };
 		93E000101DFBA608000919A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93E0000F1DFBA608000919A2 /* Main.storyboard */; };
 		93E96CB01DF0A6DE0063EA62 /* AddQualificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E96CAF1DF0A6DE0063EA62 /* AddQualificationViewController.swift */; };
+		93EF7D751E0850BB00D452CA /* UpgradeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EF7D731E0850BB00D452CA /* UpgradeManager.swift */; };
+		93EF7D761E0850BB00D452CA /* UpgradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EF7D741E0850BB00D452CA /* UpgradeViewController.swift */; };
+		93EF7D781E085FAA00D452CA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93EF7D771E085FAA00D452CA /* StoreKit.framework */; };
 		9A357874855CC6B09A538A5E /* Pods_MyGCSEGradeTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D4BA1D6706A089ABB62A15 /* Pods_MyGCSEGradeTrackerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +91,9 @@
 		93CD28661DFF0C60008AB12A /* ManageResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageResultsTableViewController.swift; sourceTree = "<group>"; };
 		93E0000F1DFBA608000919A2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		93E96CAF1DF0A6DE0063EA62 /* AddQualificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddQualificationViewController.swift; sourceTree = "<group>"; };
+		93EF7D731E0850BB00D452CA /* UpgradeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeManager.swift; sourceTree = "<group>"; };
+		93EF7D741E0850BB00D452CA /* UpgradeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeViewController.swift; sourceTree = "<group>"; };
+		93EF7D771E085FAA00D452CA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A6D4BA1D6706A089ABB62A15 /* Pods_MyGCSEGradeTrackerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyGCSEGradeTrackerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B06B3AB223521583E7FD5615 /* Pods-MyGCSEGradeTrackerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGCSEGradeTrackerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyGCSEGradeTrackerUITests/Pods-MyGCSEGradeTrackerUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,6 +104,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69E5579E63DD6C6E3A8EF743 /* Pods_MyGCSEGradeTracker.framework in Frameworks */,
+				93EF7D781E085FAA00D452CA /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +130,7 @@
 		2CAB77B6CA84CDD4E46C54E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				93EF7D771E085FAA00D452CA /* StoreKit.framework */,
 				5256637F53163EDADECE8AFB /* Pods_MyGCSEGradeTracker.framework */,
 				2A6E06AD9473B4A62C65C701 /* Pods_MyGCSEGradeTrackerTests.framework */,
 				A6D4BA1D6706A089ABB62A15 /* Pods_MyGCSEGradeTrackerUITests.framework */,
@@ -179,6 +187,8 @@
 				939EFEC71DEDC90B00368533 /* ResultsSetViewController.swift */,
 				93CD28641DFF08C5008AB12A /* ManageQualificationsTableViewController.swift */,
 				93CD28661DFF0C60008AB12A /* ManageResultsTableViewController.swift */,
+				93EF7D731E0850BB00D452CA /* UpgradeManager.swift */,
+				93EF7D741E0850BB00D452CA /* UpgradeViewController.swift */,
 				93E0000F1DFBA608000919A2 /* Main.storyboard */,
 				935CC77B1DEDC7C200A6DEFA /* Assets.xcassets */,
 				935CC77D1DEDC7C200A6DEFA /* LaunchScreen.storyboard */,
@@ -307,6 +317,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = CALM89H945;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					935CC7841DEDC7C200A6DEFA = {
 						CreatedOnToolsVersion = 8.1;
@@ -518,9 +533,11 @@
 				93CD28671DFF0C60008AB12A /* ManageResultsTableViewController.swift in Sources */,
 				939EFEC11DEDC8D700368533 /* Result.swift in Sources */,
 				93CD28651DFF08C5008AB12A /* ManageQualificationsTableViewController.swift in Sources */,
+				93EF7D751E0850BB00D452CA /* UpgradeManager.swift in Sources */,
 				939EFEC81DEDC90B00368533 /* CustomQualificationCollectionViewCell.swift in Sources */,
 				939EFED41DEDCAD500368533 /* PopInAndOutAnimator.swift in Sources */,
 				939EFECA1DEDC90B00368533 /* QualificationsViewController.swift in Sources */,
+				93EF7D761E0850BB00D452CA /* UpgradeViewController.swift in Sources */,
 				939EFED51DEDCAD500368533 /* UIView+Screenshot.swift in Sources */,
 				939EFEBF1DEDC8D700368533 /* Grade.swift in Sources */,
 				93E96CB01DF0A6DE0063EA62 /* AddQualificationViewController.swift in Sources */,
@@ -679,7 +696,7 @@
 				DEVELOPMENT_TEAM = CALM89H945;
 				INFOPLIST_FILE = MyGCSEGradeTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = GDaviesDev.MyGCSEGradeTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GDaviesDev.MyGCSEGradeTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -694,7 +711,7 @@
 				DEVELOPMENT_TEAM = CALM89H945;
 				INFOPLIST_FILE = MyGCSEGradeTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = GDaviesDev.MyGCSEGradeTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GDaviesDev.MyGCSEGradeTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

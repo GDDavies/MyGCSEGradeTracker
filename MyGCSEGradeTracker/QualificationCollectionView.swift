@@ -111,6 +111,35 @@ class QualificationCollectionView: UICollectionViewController {
         }
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "AddQual" {
+            if qualifications.count == 1 {
+                
+                let alertController = UIAlertController(title: "Please Upgrade", message: "In order to add more than one qualification please upgrade.", preferredStyle: .alert)
+                
+                let cancelAction = UIAlertAction(title: "Later", style: .cancel) { action in
+                    // ...
+                }
+                alertController.addAction(cancelAction)
+                
+                let upgradeAction = UIAlertAction(title: "Upgrade", style: .default) { action in
+                    self.performSegue(withIdentifier: "ShowUpgradeViewController", sender: nil)
+                }
+                
+                alertController.addAction(upgradeAction)
+                
+                self.present(alertController, animated: true) {
+                    // ...
+                }
+                
+                return false
+            } else {
+                return true
+            }
+        }
+        return true
+    }
+    
 //    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        selectedQualificationIndex = indexPath
 //    }
