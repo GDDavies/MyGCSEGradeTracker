@@ -16,7 +16,7 @@ class UpgradeManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionO
     var upgradeCompletionHandler: SuccessHandler?
     var restoreCompletionHandler: SuccessHandler?
     var priceCompletionHandler: ((_ price: Float) -> Void)?
-    var famousQuotesProduct: SKProduct?
+    var myGCSEGradeTrackerProduct: SKProduct?
     let userDefaultsKey = "HasUpgradedUserDefaultsKey"
     
     func hasUpgraded() -> Bool {
@@ -26,15 +26,17 @@ class UpgradeManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionO
     func upgrade(_ success: @escaping SuccessHandler) {
         upgradeCompletionHandler = success
         
-        if let product = famousQuotesProduct {
+        if let product = myGCSEGradeTrackerProduct {
             let payment = SKPayment(product: product)
             SKPaymentQueue.default().add(payment)
+            print("Upgraded")
         }
     }
     
     func restorePurchases(_ success: @escaping SuccessHandler) {
         restoreCompletionHandler = success
         SKPaymentQueue.default().restoreCompletedTransactions()
+        print("Restored")
     }
     
     func priceForUpgrade(_ success: @escaping (_ price: Float) -> Void) {
@@ -49,16 +51,20 @@ class UpgradeManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionO
     // MARK: SKPaymentTransactionObserver
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        print("queue opened")
         for transaction in transactions {
             switch transaction.transactionState {
             case .purchased:
                 UserDefaults.standard.set(true, forKey: userDefaultsKey)
                 upgradeCompletionHandler?(true)
+                print(1)
             case .restored:
                 UserDefaults.standard.set(true, forKey: userDefaultsKey)
                 restoreCompletionHandler?(true)
+                print(3)
             case .failed:
                 upgradeCompletionHandler?(false)
+                print(4)
             default:
                 return
             }
@@ -70,9 +76,9 @@ class UpgradeManager: NSObject, SKProductsRequestDelegate, SKPaymentTransactionO
     // MARK: SKProductsRequestDelegate
     
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        famousQuotesProduct = response.products.first
+        myGCSEGradeTrackerProduct = response.products.first
         
-        if let price = famousQuotesProduct?.price {
+        if let price = myGCSEGradeTrackerProduct?.price {
             priceCompletionHandler?(Float(price))
         }
     }

@@ -15,7 +15,7 @@ class QualificationCollectionView: UICollectionViewController {
     
     var screenWidth: CGFloat!
     var screenSize: CGRect!
-    
+        
     let colorsArray = [
         UIColor(red: 46/255.0, green: 204/255.0, blue: 113/255.0, alpha: 1.0),
         UIColor(red: 52/255.0, green: 152/255.0, blue: 219/255.0, alpha: 1.0),
@@ -113,7 +113,7 @@ class QualificationCollectionView: UICollectionViewController {
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "AddQual" {
-            if qualifications.count == 1 {
+            if qualifications.count == 1 && !UpgradeManager.sharedInstance.hasUpgraded() {
                 
                 let alertController = UIAlertController(title: "Please Upgrade", message: "In order to add more than one qualification please upgrade.", preferredStyle: .alert)
                 
@@ -131,7 +131,6 @@ class QualificationCollectionView: UICollectionViewController {
                 self.present(alertController, animated: true) {
                     // ...
                 }
-                
                 return false
             } else {
                 return true

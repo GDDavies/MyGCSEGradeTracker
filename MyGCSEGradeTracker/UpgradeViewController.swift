@@ -46,17 +46,29 @@ class UpgradeViewController: UIViewController {
     }
     
     @IBAction func restorePurchasesButtonTapped(_ sender: AnyObject) {
+        print("2")
+        
         UpgradeManager.sharedInstance.restorePurchases { (succeeded) -> (Void) in
+            print("success")
             if succeeded {
-                let alertController = UIAlertController(title: "Restored!", message: "Your purchases have been restored. You can now add more than one qualification.", preferredStyle: .alert)
-                let doneAction = UIAlertAction(title: "Done", style: .default, handler: { (action) in
-                    self.dismiss(animated: true, completion: nil)
-                })
-                
-                alertController.addAction(doneAction)
-                self.present(alertController, animated: true, completion: nil)
+                print("worked")
+            }else{
+                print("failed")
             }
         }
+//        
+//        UpgradeManager.sharedInstance.restorePurchases { (succeeded) -> (Void) in
+//            if succeeded {
+//                print("succeeded")
+//                let alertController = UIAlertController(title: "Restored!", message: "Your purchases have been restored. You can now add more than one qualification.", preferredStyle: .alert)
+//                let doneAction = UIAlertAction(title: "Done", style: .default, handler: { (action) in
+//                    self.dismiss(animated: true, completion: nil)
+//                })
+//                
+//                alertController.addAction(doneAction)
+//                self.present(alertController, animated: true, completion: nil)
+//            }
+//        }
     }
     
 }
