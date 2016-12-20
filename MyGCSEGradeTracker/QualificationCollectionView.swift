@@ -15,6 +15,9 @@ class QualificationCollectionView: UICollectionViewController {
     
     var screenWidth: CGFloat!
     var screenSize: CGRect!
+    
+    let userDefaultsKey = "HasUpgradedUserDefaultsKey"
+    var hasUpgraded: Bool?
         
     let colorsArray = [
         UIColor(red: 46/255.0, green: 204/255.0, blue: 113/255.0, alpha: 1.0),
@@ -64,6 +67,8 @@ class QualificationCollectionView: UICollectionViewController {
 //            self.navigationController?.navigationBar.barTintColor = UIColor.white
 //        }, completion:nil)
         collectionView?.reloadData()
+        
+        hasUpgraded = UserDefaults.standard.bool(forKey: userDefaultsKey)
     }
     
     override func didReceiveMemoryWarning() {
@@ -113,7 +118,7 @@ class QualificationCollectionView: UICollectionViewController {
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "AddQual" {
-            if qualifications.count == 1 && !UpgradeManager.sharedInstance.hasUpgraded() {
+            if qualifications.count == 1 && hasUpgraded == false {
                 
                 let alertController = UIAlertController(title: "Please Upgrade", message: "In order to add more than one qualification please upgrade.", preferredStyle: .alert)
                 
