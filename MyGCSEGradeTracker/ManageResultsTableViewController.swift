@@ -12,39 +12,20 @@ import RealmSwift
 class ManageResultsTableViewController: UITableViewController {
     
     var selectedQualification: Qualification!
+    var selectedSet: Int?
     var selectedQual: String?
     
     let realm = try! Realm()
     
     var results: Results<Result> {
         get {
-            return try! Realm().objects(Result.self).filter("qualification == '\(selectedQualification.name)'")
-        }
-    }
-    
-    var components: Results<Component> {
-        get {
-            return try! Realm().objects(Component.self).filter("qualification == '\(selectedQualification.name)'")
-        }
-    }
-    
-    var qualifications: Results<Qualification> {
-        get {
-            return try! Realm().objects(Qualification.self).filter("name == '\(selectedQualification.name)'")
+            return try! Realm().objects(Result.self).filter("qualification == '\(selectedQualification.name)' AND set == \(selectedSet!)")
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        //navigationController?.navigationBar.topItem?.title = "Manage \(selectedQualification.name) Results"
-        navigationItem.rightBarButtonItem = self.editButtonItem
+        self.title = "Set \(selectedSet!)"
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,64 +49,10 @@ class ManageResultsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath)
 
         let result = results[indexPath.row]
-
-        // Configure the cell...
         
         cell.textLabel?.text = result.component
-        cell.detailTextLabel?.text = "Set: \(result.set) - Result: \(result.result)%"
+        cell.detailTextLabel?.text = "Result: \(result.result)%"
 
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-
-            var editedResults: Results<Result> {
-                get {
-                    return try! Realm().objects(Result.self).filter("qualification == '\(results[indexPath.row].qualification)' AND component == '\(results[indexPath.row].component)' AND set == \(results[indexPath.row].set)")
-                }
-            }
-            
-            try! realm.write {
-                realm.delete(editedResults)
-            }
-            
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
