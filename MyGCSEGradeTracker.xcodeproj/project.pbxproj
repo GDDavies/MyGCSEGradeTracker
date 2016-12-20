@@ -29,6 +29,7 @@
 		939EFED51DEDCAD500368533 /* UIView+Screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFED21DEDCAD500368533 /* UIView+Screenshot.swift */; };
 		93CD28651DFF08C5008AB12A /* ManageQualificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD28641DFF08C5008AB12A /* ManageQualificationsTableViewController.swift */; };
 		93CD28671DFF0C60008AB12A /* ManageResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD28661DFF0C60008AB12A /* ManageResultsTableViewController.swift */; };
+		93CFBCEF1E09697100538555 /* ManageSetsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CFBCEE1E09697100538555 /* ManageSetsTableViewController.swift */; };
 		93E000101DFBA608000919A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93E0000F1DFBA608000919A2 /* Main.storyboard */; };
 		93E96CB01DF0A6DE0063EA62 /* AddQualificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E96CAF1DF0A6DE0063EA62 /* AddQualificationViewController.swift */; };
 		93EF7D761E0850BB00D452CA /* UpgradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EF7D741E0850BB00D452CA /* UpgradeViewController.swift */; };
@@ -88,6 +89,7 @@
 		939EFED21DEDCAD500368533 /* UIView+Screenshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Screenshot.swift"; sourceTree = "<group>"; };
 		93CD28641DFF08C5008AB12A /* ManageQualificationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageQualificationsTableViewController.swift; sourceTree = "<group>"; };
 		93CD28661DFF0C60008AB12A /* ManageResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageResultsTableViewController.swift; sourceTree = "<group>"; };
+		93CFBCEE1E09697100538555 /* ManageSetsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageSetsTableViewController.swift; sourceTree = "<group>"; };
 		93E0000F1DFBA608000919A2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		93E96CAF1DF0A6DE0063EA62 /* AddQualificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddQualificationViewController.swift; sourceTree = "<group>"; };
 		93EF7D741E0850BB00D452CA /* UpgradeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeViewController.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				939EFEC51DEDC90B00368533 /* QualificationsViewController.swift */,
 				939EFEC71DEDC90B00368533 /* ResultsSetViewController.swift */,
 				93CD28641DFF08C5008AB12A /* ManageQualificationsTableViewController.swift */,
+				93CFBCEE1E09697100538555 /* ManageSetsTableViewController.swift */,
 				93CD28661DFF0C60008AB12A /* ManageResultsTableViewController.swift */,
 				93EF7D741E0850BB00D452CA /* UpgradeViewController.swift */,
 				93E0000F1DFBA608000919A2 /* Main.storyboard */,
@@ -535,6 +538,7 @@
 				939EFECA1DEDC90B00368533 /* QualificationsViewController.swift in Sources */,
 				93EF7D761E0850BB00D452CA /* UpgradeViewController.swift in Sources */,
 				939EFED51DEDCAD500368533 /* UIView+Screenshot.swift in Sources */,
+				93CFBCEF1E09697100538555 /* ManageSetsTableViewController.swift in Sources */,
 				939EFEBF1DEDC8D700368533 /* Grade.swift in Sources */,
 				93E96CB01DF0A6DE0063EA62 /* AddQualificationViewController.swift in Sources */,
 				939EFEC91DEDC90B00368533 /* QualificationCollectionView.swift in Sources */,

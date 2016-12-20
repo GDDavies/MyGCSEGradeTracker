@@ -51,14 +51,14 @@ class QualificationCollectionView: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.delegate = self
+//        self.navigationController?.delegate = self
         
         navigationController?.navigationBar.topItem?.title = "Qualifications"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadQualifications(_:)),name:NSNotification.Name(rawValue: "load"), object: nil)
         
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        print("File location: \(Realm.Configuration.defaultConfiguration.fileURL!)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -190,39 +190,39 @@ class QualificationCollectionView: UICollectionViewController {
 
 }
 
-//MARK: UICollectionViewDelegateFlowLayout
-extension QualificationCollectionView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        screenSize = UIScreen.main.bounds
-        screenWidth = screenSize.width
-        
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
-        layout.minimumInteritemSpacing = 5
-        layout.minimumLineSpacing = 10
-        
-        return CGSize(width: (screenWidth/2) - 5, height: (screenWidth/2) - 5)
-    }
-}
-
-//MARK: UINavigationControllerDelegate
-extension QualificationCollectionView: UINavigationControllerDelegate {
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        // In this method belonging to the protocol UINavigationControllerDelegate you must
-        // return an animator conforming to the protocol UIViewControllerAnimatedTransitioning.
-        // To perform the Pop in and Out animation PopInAndOutAnimator should be returned
-        return PopInAndOutAnimator(operation: operation)
-    }
-}
-
-//MARK: CollectionPushAndPoppable
-extension QualificationCollectionView: CollectionPushAndPoppable {}
-
-extension Double {
-    /// Rounds the double to decimal places value
-    func roundTo(places:Int) -> Double {
-        let divisor = pow(10.0, Double(places))
-        return (self * divisor).rounded() / divisor
-    }
-}
+////MARK: UICollectionViewDelegateFlowLayout
+//extension QualificationCollectionView: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        
+//        screenSize = UIScreen.main.bounds
+//        screenWidth = screenSize.width
+//        
+//        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+//        layout.sectionInset = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
+//        layout.minimumInteritemSpacing = 5
+//        layout.minimumLineSpacing = 10
+//        
+//        return CGSize(width: (screenWidth/2) - 5, height: (screenWidth/2) - 5)
+//    }
+//}
+//
+////MARK: UINavigationControllerDelegate
+//extension QualificationCollectionView: UINavigationControllerDelegate {
+//    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        // In this method belonging to the protocol UINavigationControllerDelegate you must
+//        // return an animator conforming to the protocol UIViewControllerAnimatedTransitioning.
+//        // To perform the Pop in and Out animation PopInAndOutAnimator should be returned
+//        return PopInAndOutAnimator(operation: operation)
+//    }
+//}
+//
+////MARK: CollectionPushAndPoppable
+//extension QualificationCollectionView: CollectionPushAndPoppable {}
+//
+//extension Double {
+//    /// Rounds the double to decimal places value
+//    func roundTo(places:Int) -> Double {
+//        let divisor = pow(10.0, Double(places))
+//        return (self * divisor).rounded() / divisor
+//    }
+//}

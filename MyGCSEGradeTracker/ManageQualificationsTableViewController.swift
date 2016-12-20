@@ -121,33 +121,18 @@ class ManageQualificationsTableViewController: UITableViewController {
         }
     }
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     // MARK: - Navigation
 
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      
-         if segue.identifier == "ShowResults" {
+         if segue.identifier == "ShowSets" {
             
 //            let path = self.tableView.indexPathForSelectedRow
 //            let vc = segue.destination as! ManageResultsTableViewController
 //             
 //            vc.selectedQualification = qualifications[(path?.row)!]
             
-            let controller = segue.destination as! ManageResultsTableViewController
+            let controller = segue.destination as! ManageSetsTableViewController
             let row = self.tableView.indexPathForSelectedRow?.row
             controller.selectedQualification = qualifications[row!]
         }
