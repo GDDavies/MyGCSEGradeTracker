@@ -38,6 +38,10 @@ class ManageSetsTableViewController: UITableViewController {
         reorderSets()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -90,26 +94,31 @@ class ManageSetsTableViewController: UITableViewController {
             
             var editedResults: Results<Result> {
                 get {
-                    return try! Realm().objects(Result.self).filter("qualification == '\(selectedQualification.name)' AND set == \(results[indexPath.row].set)")
+                    return try! Realm().objects(Result.self).filter("qualification == '\(selectedQualification.name)' AND set == \(indexPath.row + 1)")
                 }
             }
+            var i = 0
+            while i == 0 {
+                
+                print(results[i])
+                i += 1
+            }
+            print(results[indexPath.row].set)
+            print(indexPath.row)
             
             try! realm.write {
                 realm.delete(editedResults)
+                for result in results {
+                    if result.set > chosenSet {
+                        result.set -= 1
+                    }
+                }
             }
             numberOfSets = results.count / components.count
             
             
-            for result in results {
-                if result.set > chosenSet {
-                    result.set -= 1
-                }
-            }
-            
-            
-            
-            
             tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.reloadData()
         }
     }
     
