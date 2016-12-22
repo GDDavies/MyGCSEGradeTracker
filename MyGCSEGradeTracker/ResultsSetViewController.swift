@@ -36,7 +36,6 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
     
     var backgroundColor: UIColor?
     
-    var blurEffectView: UIVisualEffectView?
     @IBOutlet weak var componentsTableView: UITableView!
     
     let realm = try! Realm()

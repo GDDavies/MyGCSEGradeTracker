@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class QualificationCollectionView: UICollectionViewController, CollectionPushAndPoppable {
+class QualificationCollectionView: UICollectionViewController {
     
     var sourceCell: UICollectionViewCell?
     
@@ -51,7 +51,7 @@ class QualificationCollectionView: UICollectionViewController, CollectionPushAnd
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.delegate = self
+        //self.navigationController?.delegate = self
         
         navigationController?.navigationBar.topItem?.title = "Qualifications"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -63,11 +63,7 @@ class QualificationCollectionView: UICollectionViewController, CollectionPushAnd
     
     override func viewWillAppear(_ animated: Bool) {
         
-//        UIView.animate(withDuration: 1, delay: 0.0, options:[.curveLinear], animations: {
-//            self.navigationController?.navigationBar.barTintColor = UIColor.white
-//        }, completion:nil)
         collectionView?.reloadData()
-        
         hasUpgraded = UserDefaults.standard.bool(forKey: userDefaultsKey)
     }
     
@@ -148,14 +144,7 @@ class QualificationCollectionView: UICollectionViewController, CollectionPushAnd
         //load data here
         self.collectionView?.reloadData()
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "ShowQualification" {
-//            if let destinationVC = segue.destination as? QualResultViewController {
-//                destinationVC.selectedQual = selectedQualification.name
-//            }
-//        }
-//    }
+
 
 }
 
@@ -175,23 +164,15 @@ extension QualificationCollectionView: UICollectionViewDelegateFlowLayout {
     }
 }
 
-//MARK: UINavigationControllerDelegate
-extension QualificationCollectionView: UINavigationControllerDelegate {
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        // In this method belonging to the protocol UINavigationControllerDelegate you must
-        // return an animator conforming to the protocol UIViewControllerAnimatedTransitioning.
-        // To perform the Pop in and Out animation PopInAndOutAnimator should be returned
-        return PopInAndOutAnimator(operation: operation)
-    }
-}
-
+////MARK: UINavigationControllerDelegate
+//extension QualificationCollectionView: UINavigationControllerDelegate {
+//    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        // In this method belonging to the protocol UINavigationControllerDelegate you must
+//        // return an animator conforming to the protocol UIViewControllerAnimatedTransitioning.
+//        // To perform the Pop in and Out animation PopInAndOutAnimator should be returned
+//        return PopInAndOutAnimator(operation: operation)
+//    }
+//}
+//
 ////MARK: CollectionPushAndPoppable
 //extension QualificationCollectionView: CollectionPushAndPoppable {}
-
-extension Double {
-    /// Rounds the double to decimal places value
-    func roundTo(places:Int) -> Double {
-        let divisor = pow(10.0, Double(places))
-        return (self * divisor).rounded() / divisor
-    }
-}

@@ -24,9 +24,6 @@
 		939EFEC91DEDC90B00368533 /* QualificationCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFEC41DEDC90B00368533 /* QualificationCollectionView.swift */; };
 		939EFECA1DEDC90B00368533 /* QualificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFEC51DEDC90B00368533 /* QualificationsViewController.swift */; };
 		939EFECC1DEDC90B00368533 /* ResultsSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFEC71DEDC90B00368533 /* ResultsSetViewController.swift */; };
-		939EFED31DEDCAD500368533 /* CollectionPushAndPoppable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFECF1DEDCAD500368533 /* CollectionPushAndPoppable.swift */; };
-		939EFED41DEDCAD500368533 /* PopInAndOutAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFED01DEDCAD500368533 /* PopInAndOutAnimator.swift */; };
-		939EFED51DEDCAD500368533 /* UIView+Screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFED21DEDCAD500368533 /* UIView+Screenshot.swift */; };
 		93CD28651DFF08C5008AB12A /* ManageQualificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD28641DFF08C5008AB12A /* ManageQualificationsTableViewController.swift */; };
 		93CD28671DFF0C60008AB12A /* ManageResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD28661DFF0C60008AB12A /* ManageResultsTableViewController.swift */; };
 		93CFBCEF1E09697100538555 /* ManageSetsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CFBCEE1E09697100538555 /* ManageSetsTableViewController.swift */; };
@@ -83,9 +80,6 @@
 		939EFEC41DEDC90B00368533 /* QualificationCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualificationCollectionView.swift; sourceTree = "<group>"; };
 		939EFEC51DEDC90B00368533 /* QualificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualificationsViewController.swift; sourceTree = "<group>"; };
 		939EFEC71DEDC90B00368533 /* ResultsSetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsSetViewController.swift; sourceTree = "<group>"; };
-		939EFECF1DEDCAD500368533 /* CollectionPushAndPoppable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionPushAndPoppable.swift; path = MyGCSEGradeTracker/CollectionPushAndPoppable.swift; sourceTree = "<group>"; };
-		939EFED01DEDCAD500368533 /* PopInAndOutAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopInAndOutAnimator.swift; path = MyGCSEGradeTracker/PopInAndOutAnimator.swift; sourceTree = "<group>"; };
-		939EFED21DEDCAD500368533 /* UIView+Screenshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Screenshot.swift"; path = "MyGCSEGradeTracker/UIView+Screenshot.swift"; sourceTree = "<group>"; };
 		93CD28641DFF08C5008AB12A /* ManageQualificationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageQualificationsTableViewController.swift; sourceTree = "<group>"; };
 		93CD28661DFF0C60008AB12A /* ManageResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageResultsTableViewController.swift; sourceTree = "<group>"; };
 		93CFBCEE1E09697100538555 /* ManageSetsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageSetsTableViewController.swift; sourceTree = "<group>"; };
@@ -187,7 +181,6 @@
 				93CFBCEE1E09697100538555 /* ManageSetsTableViewController.swift */,
 				93CD28661DFF0C60008AB12A /* ManageResultsTableViewController.swift */,
 				93EF7D741E0850BB00D452CA /* UpgradeViewController.swift */,
-				939EFED61DEDCADB00368533 /* PushAndPop */,
 				93DF38721E0C07CA004A336A /* Supporting Files */,
 				939EFEC21DEDC8DF00368533 /* Model */,
 			);
@@ -221,17 +214,6 @@
 				939EFEBD1DEDC8D700368533 /* Result.swift */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		939EFED61DEDCADB00368533 /* PushAndPop */ = {
-			isa = PBXGroup;
-			children = (
-				939EFECF1DEDCAD500368533 /* CollectionPushAndPoppable.swift */,
-				939EFED01DEDCAD500368533 /* PopInAndOutAnimator.swift */,
-				939EFED21DEDCAD500368533 /* UIView+Screenshot.swift */,
-			);
-			name = PushAndPop;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		93DF38721E0C07CA004A336A /* Supporting Files */ = {
@@ -541,17 +523,14 @@
 				939EFEC11DEDC8D700368533 /* Result.swift in Sources */,
 				93CD28651DFF08C5008AB12A /* ManageQualificationsTableViewController.swift in Sources */,
 				939EFEC81DEDC90B00368533 /* CustomQualificationCollectionViewCell.swift in Sources */,
-				939EFED41DEDCAD500368533 /* PopInAndOutAnimator.swift in Sources */,
 				939EFECA1DEDC90B00368533 /* QualificationsViewController.swift in Sources */,
 				93EF7D761E0850BB00D452CA /* UpgradeViewController.swift in Sources */,
-				939EFED51DEDCAD500368533 /* UIView+Screenshot.swift in Sources */,
 				93CFBCEF1E09697100538555 /* ManageSetsTableViewController.swift in Sources */,
 				939EFEBF1DEDC8D700368533 /* Grade.swift in Sources */,
 				93E96CB01DF0A6DE0063EA62 /* AddQualificationViewController.swift in Sources */,
 				939EFEC91DEDC90B00368533 /* QualificationCollectionView.swift in Sources */,
 				939EFEC01DEDC8D700368533 /* Qualification.swift in Sources */,
 				939EFEBE1DEDC8D700368533 /* Component.swift in Sources */,
-				939EFED31DEDCAD500368533 /* CollectionPushAndPoppable.swift in Sources */,
 				935CC7751DEDC7C200A6DEFA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

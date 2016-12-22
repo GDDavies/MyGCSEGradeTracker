@@ -78,13 +78,14 @@ class QualificationsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        createSets()
         setsOfResultsLabel.text = String(results.count / components.count)
         averageGradeCalc()
         averagePercentageCalc()
         averageGradeLabel.text = averageGrade!
         averagePercentageLabel.text = averagePercentage!
-        createSets()
         setChart(values: setResultsArray)
+        self.lineChartView.animate(xAxisDuration: 0.5, yAxisDuration: 1.5)
     }
     
     func setChart(values: [Double]) {
@@ -172,10 +173,12 @@ class QualificationsViewController: UIViewController {
             sum += setResultsArray[i]
             print(sum)
         }
+        print(setResultsArray)
         let fmt = NumberFormatter()
         fmt.maximumIntegerDigits = 2
         let output = round(sum / (Double(results.count) / Double(components.count)))
         averagePercentage = fmt.string(from: NSNumber(value: output))
+        print("av % \(averagePercentage)")
     }
     
     func loadResults(_ notification: Foundation.Notification){
