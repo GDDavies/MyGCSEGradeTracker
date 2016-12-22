@@ -71,7 +71,7 @@ class QualificationsViewController: UIViewController {
         self.title = selectedQual
         
         createSetButton.backgroundColor = backgroundColor
-        statsBox.backgroundColor = backgroundColor
+        //statsBox.backgroundColor = backgroundColor
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadResults(_:)), name: NSNotification.Name(rawValue: "loadResults"), object: nil)
         
@@ -79,11 +79,11 @@ class QualificationsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         createSets()
-        setsOfResultsLabel.text = String(results.count / components.count)
+        //setsOfResultsLabel.text = String(results.count / components.count)
         averageGradeCalc()
         averagePercentageCalc()
-        averageGradeLabel.text = averageGrade!
-        averagePercentageLabel.text = averagePercentage!
+        //averageGradeLabel.text = averageGrade!
+       // averagePercentageLabel.text = averagePercentage!
         setChart(values: setResultsArray)
         self.lineChartView.animate(xAxisDuration: 0.5, yAxisDuration: 1.5)
     }

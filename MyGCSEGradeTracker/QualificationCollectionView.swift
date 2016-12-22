@@ -51,7 +51,7 @@ class QualificationCollectionView: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.navigationController?.delegate = self
+//        self.navigationController?.delegate = self
         
         navigationController?.navigationBar.topItem?.title = "Qualifications"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -163,7 +163,7 @@ extension QualificationCollectionView: UICollectionViewDelegateFlowLayout {
         return CGSize(width: (screenWidth/2) - 5, height: (screenWidth/2) - 5)
     }
 }
-
+//
 ////MARK: UINavigationControllerDelegate
 //extension QualificationCollectionView: UINavigationControllerDelegate {
 //    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
