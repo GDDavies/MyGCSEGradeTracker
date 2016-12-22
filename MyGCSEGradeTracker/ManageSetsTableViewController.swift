@@ -90,7 +90,7 @@ class ManageSetsTableViewController: UITableViewController {
         
         if editingStyle == .delete {
             
-            let chosenSet = results[indexPath.row].set
+            let chosenSet = indexPath.row + 1
             
             var editedResults: Results<Result> {
                 get {
@@ -103,19 +103,18 @@ class ManageSetsTableViewController: UITableViewController {
                 print(results[i])
                 i += 1
             }
-            print(results[indexPath.row].set)
-            print(indexPath.row)
             
             try! realm.write {
                 realm.delete(editedResults)
                 for result in results {
                     if result.set > chosenSet {
+                        print("Result Set = \(result.set)")
+                        print("Chosen set = \(chosenSet)")
                         result.set -= 1
                     }
                 }
             }
             numberOfSets = results.count / components.count
-            
             
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.reloadData()

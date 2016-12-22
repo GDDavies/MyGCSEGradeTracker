@@ -59,6 +59,10 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    @IBAction func cancelAddResults(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -156,6 +160,10 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
             }
             componentsTableView.reloadData()
         }
+        
+        navigationController?.popViewController(animated: true)
+        
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func exitView(_ sender: UIButton) {
@@ -187,7 +195,7 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
         let textRow = sender.tag
         
         resultsArray.remove(at: textRow)
-        resultsArray.insert(currentValue!, at: textRow)
+        resultsArray.insert(currentValue!, at: textRow) // BUG
         
         print(textRow)
         print(resultsArray)

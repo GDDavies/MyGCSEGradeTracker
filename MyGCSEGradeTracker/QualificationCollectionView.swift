@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class QualificationCollectionView: UICollectionViewController {
+class QualificationCollectionView: UICollectionViewController, CollectionPushAndPoppable {
     
     var sourceCell: UICollectionViewCell?
     
@@ -51,7 +51,7 @@ class QualificationCollectionView: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.navigationController?.delegate = self
+        self.navigationController?.delegate = self
         
         navigationController?.navigationBar.topItem?.title = "Qualifications"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -118,7 +118,7 @@ class QualificationCollectionView: UICollectionViewController {
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "AddQual" {
-            if qualifications.count == 1 && hasUpgraded == false {
+            if qualifications.count == 4 && hasUpgraded == false {
                 
                 let alertController = UIAlertController(title: "Please Upgrade", message: "In order to add more than one qualification please upgrade.", preferredStyle: .alert)
                 
@@ -144,14 +144,6 @@ class QualificationCollectionView: UICollectionViewController {
         return true
     }
     
-//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        selectedQualificationIndex = indexPath
-//    }
-    
-//    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-//        print(indexPath)
-//    }
-    
     func loadQualifications(_ notification: Foundation.Notification){
         //load data here
         self.collectionView?.reloadData()
@@ -165,64 +157,41 @@ class QualificationCollectionView: UICollectionViewController {
 //        }
 //    }
 
-    
-///////////////////////////////////////////////////////////////////////////////
-    
-//    func deleteRowAtIndexPath(_ indexPath: IndexPath) {
-//        let realm = try! Realm()
-//        try! realm.write {
-//            realm.delete(qualifications[(indexPath as NSIndexPath).row])
-//        }
-//        tableView.deleteRows(at: [indexPath], with: .fade)
-//    }
-//    
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if isEditing == true {
-//            deleteRowAtIndexPath(indexPath)
-//        }
-//    }
-//    
-//    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath {
-//        selectedQualification = qualifications[(indexPath as NSIndexPath).row]
-//        return indexPath
-//    }
-//    
-
 }
 
-////MARK: UICollectionViewDelegateFlowLayout
-//extension QualificationCollectionView: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        
-//        screenSize = UIScreen.main.bounds
-//        screenWidth = screenSize.width
-//        
-//        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-//        layout.sectionInset = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
-//        layout.minimumInteritemSpacing = 5
-//        layout.minimumLineSpacing = 10
-//        
-//        return CGSize(width: (screenWidth/2) - 5, height: (screenWidth/2) - 5)
-//    }
-//}
-//
-////MARK: UINavigationControllerDelegate
-//extension QualificationCollectionView: UINavigationControllerDelegate {
-//    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        // In this method belonging to the protocol UINavigationControllerDelegate you must
-//        // return an animator conforming to the protocol UIViewControllerAnimatedTransitioning.
-//        // To perform the Pop in and Out animation PopInAndOutAnimator should be returned
-//        return PopInAndOutAnimator(operation: operation)
-//    }
-//}
-//
+//MARK: UICollectionViewDelegateFlowLayout
+extension QualificationCollectionView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        screenSize = UIScreen.main.bounds
+        screenWidth = screenSize.width
+        
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
+        layout.minimumInteritemSpacing = 5
+        layout.minimumLineSpacing = 10
+        
+        return CGSize(width: (screenWidth/2) - 5, height: (screenWidth/2) - 5)
+    }
+}
+
+//MARK: UINavigationControllerDelegate
+extension QualificationCollectionView: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        // In this method belonging to the protocol UINavigationControllerDelegate you must
+        // return an animator conforming to the protocol UIViewControllerAnimatedTransitioning.
+        // To perform the Pop in and Out animation PopInAndOutAnimator should be returned
+        return PopInAndOutAnimator(operation: operation)
+    }
+}
+
 ////MARK: CollectionPushAndPoppable
 //extension QualificationCollectionView: CollectionPushAndPoppable {}
-//
-//extension Double {
-//    /// Rounds the double to decimal places value
-//    func roundTo(places:Int) -> Double {
-//        let divisor = pow(10.0, Double(places))
-//        return (self * divisor).rounded() / divisor
-//    }
-//}
+
+extension Double {
+    /// Rounds the double to decimal places value
+    func roundTo(places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
+}

@@ -24,6 +24,8 @@ class QualificationsViewController: UIViewController {
     
     var backgrounColor: UIColor?
     
+    let target = 70.0
+    
     @IBOutlet weak var lineChartView: LineChartView!
     
     @IBOutlet weak var createSetButton: UIButton!
@@ -76,8 +78,8 @@ class QualificationsViewController: UIViewController {
 
         //}
         
-        createSets()
-        setChart(values: setResultsArray)
+//        createSets()
+//        setChart(values: setResultsArray)
 //        addChart()
         
 //        selectedQualView.backgroundColor = backgroundColor
@@ -96,6 +98,14 @@ class QualificationsViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadResults(_:)), name: NSNotification.Name(rawValue: "loadResults"), object: nil)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print(1)
+        print(setResultsArray)
+        //lineChartView.notifyDataSetChanged()
+        createSets()
+        setChart(values: setResultsArray)
     }
     
     func setChart(values: [Double]) {
@@ -141,8 +151,6 @@ class QualificationsViewController: UIViewController {
             // Don't add data
             lineChartView.noDataText = "Please provide at least two results sets for the chart."
         }
-        
-        let target = 70.0
         
         // Target line
         let trgt = ChartLimitLine(limit: target, label: "Target: \(target)%")
@@ -244,16 +252,25 @@ class QualificationsViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CreateSet" {
-            if let destinationVC = segue.destination as? ResultsSetViewController {
-                destinationVC.selectedQual = selectedQual
-                destinationVC.selectedQualification = selectedQualification
-                destinationVC.selectedComponent = selectedComponent
-                destinationVC.backgroundColor = backgroundColor
-            }
+            
+            let svc = segue.destination as? UINavigationController
+            
+            let controller = svc?.topViewController as! ResultsSetViewController
+            
+           // if let destinationVC = segue.destination as? ResultsSetViewController {
+                controller.selectedQual = selectedQual
+                controller.selectedQualification = selectedQualification
+                controller.selectedComponent = selectedComponent
+                controller.backgroundColor = backgroundColor
+          //  }
         }
     }
     
     func createSets() {
+        
+        if setResultsArray.count > 0 {
+            setResultsArray.removeAll()
+        }
         
         let numberOfSets = results.count / components.count
         var addResults = 0.0
@@ -270,7 +287,6 @@ class QualificationsViewController: UIViewController {
             
             var x = 0
             while x < components.count {
-                //setResultsArray.append(Double(setResults[x].result))
                 
                 let weightedResult = Double(setResults[x].result) * components[x].weighting
                 
@@ -279,7 +295,7 @@ class QualificationsViewController: UIViewController {
             }
             setResultsArray.append(addResults)
             i += 1
-            //            setResultsArray.removeAll()
+
             addResults = 0
         }
         print("Results set array \(setResultsArray)")

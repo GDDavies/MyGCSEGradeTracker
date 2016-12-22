@@ -83,10 +83,9 @@
 		939EFEC41DEDC90B00368533 /* QualificationCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualificationCollectionView.swift; sourceTree = "<group>"; };
 		939EFEC51DEDC90B00368533 /* QualificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QualificationsViewController.swift; sourceTree = "<group>"; };
 		939EFEC71DEDC90B00368533 /* ResultsSetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsSetViewController.swift; sourceTree = "<group>"; };
-		939EFECF1DEDCAD500368533 /* CollectionPushAndPoppable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionPushAndPoppable.swift; sourceTree = "<group>"; };
-		939EFED01DEDCAD500368533 /* PopInAndOutAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopInAndOutAnimator.swift; sourceTree = "<group>"; };
-		939EFED11DEDCAD500368533 /* PopInAndOutCollectionViewTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopInAndOutCollectionViewTransition.h; sourceTree = "<group>"; };
-		939EFED21DEDCAD500368533 /* UIView+Screenshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Screenshot.swift"; sourceTree = "<group>"; };
+		939EFECF1DEDCAD500368533 /* CollectionPushAndPoppable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionPushAndPoppable.swift; path = MyGCSEGradeTracker/CollectionPushAndPoppable.swift; sourceTree = "<group>"; };
+		939EFED01DEDCAD500368533 /* PopInAndOutAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PopInAndOutAnimator.swift; path = MyGCSEGradeTracker/PopInAndOutAnimator.swift; sourceTree = "<group>"; };
+		939EFED21DEDCAD500368533 /* UIView+Screenshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Screenshot.swift"; path = "MyGCSEGradeTracker/UIView+Screenshot.swift"; sourceTree = "<group>"; };
 		93CD28641DFF08C5008AB12A /* ManageQualificationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageQualificationsTableViewController.swift; sourceTree = "<group>"; };
 		93CD28661DFF0C60008AB12A /* ManageResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageResultsTableViewController.swift; sourceTree = "<group>"; };
 		93CFBCEE1E09697100538555 /* ManageSetsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageSetsTableViewController.swift; sourceTree = "<group>"; };
@@ -154,7 +153,6 @@
 		935CC7681DEDC7C200A6DEFA = {
 			isa = PBXGroup;
 			children = (
-				939EFED61DEDCADB00368533 /* PushAndPop */,
 				935CC7731DEDC7C200A6DEFA /* MyGCSEGradeTracker */,
 				935CC7881DEDC7C200A6DEFA /* MyGCSEGradeTrackerTests */,
 				935CC7931DEDC7C200A6DEFA /* MyGCSEGradeTrackerUITests */,
@@ -189,10 +187,8 @@
 				93CFBCEE1E09697100538555 /* ManageSetsTableViewController.swift */,
 				93CD28661DFF0C60008AB12A /* ManageResultsTableViewController.swift */,
 				93EF7D741E0850BB00D452CA /* UpgradeViewController.swift */,
-				93E0000F1DFBA608000919A2 /* Main.storyboard */,
-				935CC77B1DEDC7C200A6DEFA /* Assets.xcassets */,
-				935CC77D1DEDC7C200A6DEFA /* LaunchScreen.storyboard */,
-				935CC7801DEDC7C200A6DEFA /* Info.plist */,
+				939EFED61DEDCADB00368533 /* PushAndPop */,
+				93DF38721E0C07CA004A336A /* Supporting Files */,
 				939EFEC21DEDC8DF00368533 /* Model */,
 			);
 			path = MyGCSEGradeTracker;
@@ -232,10 +228,21 @@
 			children = (
 				939EFECF1DEDCAD500368533 /* CollectionPushAndPoppable.swift */,
 				939EFED01DEDCAD500368533 /* PopInAndOutAnimator.swift */,
-				939EFED11DEDCAD500368533 /* PopInAndOutCollectionViewTransition.h */,
 				939EFED21DEDCAD500368533 /* UIView+Screenshot.swift */,
 			);
 			name = PushAndPop;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		93DF38721E0C07CA004A336A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				93E0000F1DFBA608000919A2 /* Main.storyboard */,
+				935CC77B1DEDC7C200A6DEFA /* Assets.xcassets */,
+				935CC77D1DEDC7C200A6DEFA /* LaunchScreen.storyboard */,
+				935CC7801DEDC7C200A6DEFA /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
