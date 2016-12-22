@@ -66,44 +66,23 @@ class QualificationsViewController: UIViewController {
         super.viewDidLoad()
         
         selectedQual = selectedQualification.name
-        
         backgroundColor = sourceCell?.backgroundColor
-        
+    
         self.title = selectedQual
-        
-        //if let navController = self.navigationController {
-           // navController.navigationBar.tintColor = UIColor.white
-           // navController.navigationBar.barTintColor = backgroundColor
-           // navController.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 24)!, NSForegroundColorAttributeName: UIColor.white]
-
-        //}
-        
-//        createSets()
-//        setChart(values: setResultsArray)
-//        addChart()
-        
-//        selectedQualView.backgroundColor = backgroundColor
-//        selectedQualificationLabel.text = selectedQualification.name
         
         createSetButton.backgroundColor = backgroundColor
         statsBox.backgroundColor = backgroundColor
-        
-        
-        
-        setsOfResultsLabel.text = String(results.count / components.count)
-        averageGradeCalc()
-        averagePercentageCalc()
-        averageGradeLabel.text = averageGrade!
-        averagePercentageLabel.text = averagePercentage!
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadResults(_:)), name: NSNotification.Name(rawValue: "loadResults"), object: nil)
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print(1)
-        print(setResultsArray)
-        //lineChartView.notifyDataSetChanged()
+        setsOfResultsLabel.text = String(results.count / components.count)
+        averageGradeCalc()
+        averagePercentageCalc()
+        averageGradeLabel.text = averageGrade!
+        averagePercentageLabel.text = averagePercentage!
         createSets()
         setChart(values: setResultsArray)
     }
@@ -111,12 +90,9 @@ class QualificationsViewController: UIViewController {
     func setChart(values: [Double]) {
         
         let mappedResults = values.enumerated().map { x, y in return ChartDataEntry(x: Double(x+1), y: y) }
-        
+
         let data = LineChartData()
         let resultsData = LineChartDataSet(values: mappedResults, label: "")
-        
-        print(mappedResults)
-        print(resultsData)
         
         // Format lines and circles
         resultsData.colors = [UIColor.black]
@@ -155,14 +131,6 @@ class QualificationsViewController: UIViewController {
         // Target line
         let trgt = ChartLimitLine(limit: target, label: "Target: \(target)%")
         lineChartView.leftAxis.addLimitLine(trgt)
-        
-        //        var i = 0
-        //
-        //        while i <= 100 {
-        //            let boundaries = ChartLimitLine(limit: (Double(i) * 10), label: "\(i)")
-        //            lineChartView.leftAxis.addLimitLine(boundaries)
-        //            i += 10
-        //        }
         
         lineChartView.rightAxis.drawGridLinesEnabled = false
         lineChartView.rightAxis.drawLabelsEnabled = false
@@ -211,44 +179,9 @@ class QualificationsViewController: UIViewController {
     }
     
     func loadResults(_ notification: Foundation.Notification){
-        
-//        var xValues = [Double]()
-//        var i = 1
-//        while i - 1 < setResultsArray.count {
-//            xValues.append(Double(i))
-//            i += 1
-//        }
-//        let zipped = Array(zip(xValues, setResultsArray))
-//                
-//        lineChart.add(ChartSeries(data: zipped))
-        
 
-        
         print("Results loaded")
     }
-
-//    func addChart() {
-//        
-//        if setResultsArray.isEmpty {
-//            print("Array is empty")
-//        }else{
-//            var xValues = [Double]()
-//            var i = 1
-//            while i - 1 < setResultsArray.count {
-//                xValues.append(Double(i))
-//                i += 1
-//            }
-//            let zipped = Array(zip(xValues, setResultsArray))
-//            
-//            print("Zipped = \(zipped)")
-//            
-//            let data = zipped
-//            let series = ChartSeries(data: data)
-//            series.color = backgroundColor!
-//            lineChart.add(series)
-//        }
-//        
-//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CreateSet" {
@@ -257,12 +190,10 @@ class QualificationsViewController: UIViewController {
             
             let controller = svc?.topViewController as! ResultsSetViewController
             
-           // if let destinationVC = segue.destination as? ResultsSetViewController {
-                controller.selectedQual = selectedQual
-                controller.selectedQualification = selectedQualification
-                controller.selectedComponent = selectedComponent
-                controller.backgroundColor = backgroundColor
-          //  }
+            controller.selectedQual = selectedQual
+            controller.selectedQualification = selectedQualification
+            controller.selectedComponent = selectedComponent
+            controller.backgroundColor = backgroundColor
         }
     }
     
@@ -300,16 +231,5 @@ class QualificationsViewController: UIViewController {
         }
         print("Results set array \(setResultsArray)")
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 

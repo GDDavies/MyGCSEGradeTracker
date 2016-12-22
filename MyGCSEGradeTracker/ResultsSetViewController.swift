@@ -160,9 +160,7 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
             }
             componentsTableView.reloadData()
         }
-        
-        navigationController?.popViewController(animated: true)
-        
+                
         dismiss(animated: true, completion: nil)
     }
     
