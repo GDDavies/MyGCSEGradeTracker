@@ -39,8 +39,24 @@ class QualificationsViewController: UIViewController {
     @IBOutlet weak var averageGradeLabel: UILabel!
     @IBOutlet weak var averagePercentageLabel: UILabel!
     
+    @IBOutlet weak var statsBox1: UIImageView!
+    
+    let percentVar3 = 1.0
+    let animationDuration = 1.5
+    let controlColour = UIColor.darkGray
+    
+    @IBOutlet weak var progressView: KDCircularProgress!
+    @IBOutlet weak var progressView2: KDCircularProgress!
+    @IBOutlet weak var progressView3: KDCircularProgress!
+    
+    @IBOutlet weak var percentLabel: UILabel!
+    @IBOutlet weak var percentLabel2: UILabel!
+    @IBOutlet weak var percentLabel3: UILabel!
+    
     var averageGrade: String?
+    var doubleAverageGrade: Double?
     var averagePercentage: String?
+    var doubleAveragePercentage: Double?
     
     let realm = try! Realm()
     
@@ -75,13 +91,21 @@ class QualificationsViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadResults(_:)), name: NSNotification.Name(rawValue: "loadResults"), object: nil)
         
+//        self.statsBox1.layer.cornerRadius = self.statsBox1.bounds.size.width / 2.0
+//        self.statsBox1.clipsToBounds = true
+        
+        averageGradeCalc()
+        averagePercentageCalc()
+        
+        setupProgressViews()
+        
+        percentLabel.textColor = controlColour
     }
     
     override func viewWillAppear(_ animated: Bool) {
         createSets()
         //setsOfResultsLabel.text = String(results.count / components.count)
-        averageGradeCalc()
-        averagePercentageCalc()
+
         //averageGradeLabel.text = averageGrade!
        // averagePercentageLabel.text = averagePercentage!
         setChart(values: setResultsArray)
@@ -164,6 +188,7 @@ class QualificationsViewController: UIViewController {
         let fmt = NumberFormatter()
         fmt.maximumIntegerDigits = 1
         let output = sum / (Double(results.count) / Double(components.count))
+        doubleAverageGrade = output
         averageGrade = fmt.string(from: NSNumber(value: output))
     }
     
@@ -177,6 +202,7 @@ class QualificationsViewController: UIViewController {
         let fmt = NumberFormatter()
         fmt.maximumIntegerDigits = 2
         let output = round(sum / (Double(results.count) / Double(components.count)))
+        doubleAveragePercentage = output
         averagePercentage = fmt.string(from: NSNumber(value: output))
         print("av % \(averagePercentage)")
     }
@@ -234,5 +260,77 @@ class QualificationsViewController: UIViewController {
         }
         print("Results set array \(setResultsArray)")
     }
+    
+    // MARK Stats Box
+    func setupProgressViews(){
+        progressView.startAngle = 270
+        progressView.progressThickness = 0.6
+        progressView.trackThickness = 0.0
+        progressView.roundedCorners = false
+        progressView.glowMode = .noGlow
+        progressView.set(colors: controlColour)
+        
+        progressView2.startAngle = 270
+        progressView2.progressThickness = 0.6
+        progressView2.trackThickness = 0.0
+        progressView2.roundedCorners = false
+        progressView2.glowMode = .noGlow
+        progressView2.set(colors: controlColour)
+        
+        progressView3.startAngle = 270
+        progressView3.progressThickness = 0.6
+        progressView3.trackThickness = 0.0
+        progressView3.roundedCorners = false
+        progressView3.glowMode = .noGlow
+        progressView3.set(colors: controlColour)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let angle = convertToAngle(percent: 0.2)
+        let angle2 = convertToAngle(percent: 0.7)
+        let angle3 = convertToAngle(percent: percentVar3)
+        progressView.animate(toAngle: angle!, duration: 1.6, completion: nil)
+        progressView2.animate(toAngle: angle2!, duration: 1.6, completion: nil)
+        progressView3.animate(toAngle: angle3!, duration: 1.6, completion: nil)
+        incrementLabel(to: 0.2, secondEndValue: 0.70, thirdEndValue: percentVar3)
+    }
+    
+    func convertToAngle(percent: Double) -> Double? {
+        let angle = (percent * 100) * 3.6
+        return angle
+    }
+    
+    func incrementLabel(to firstEndValue: Double, secondEndValue: Double, thirdEndValue: Double) {
+        let duration: Double = animationDuration
+        DispatchQueue.global().async {
+            
+            for i in 0 ..< (Int((firstEndValue * 100) + 1)) {
+                let sleepTime = UInt32(duration/Double(firstEndValue) * 10000.0)
+                usleep(sleepTime)
+                DispatchQueue.main.async {
+                    self.percentLabel.text = "\(i)%"
+                }
+            }
+        }
+        DispatchQueue.global().async {
+            for i in 0 ..< (Int((secondEndValue * 100) + 1)) {
+                let sleepTime = UInt32(duration/Double(secondEndValue) * 10000.0)
+                usleep(sleepTime)
+                DispatchQueue.main.async {
+                    self.percentLabel2.text = "\(i)"
+                }
+            }
+        }
+        DispatchQueue.global().async {
+            for i in 0 ..< (Int((thirdEndValue * 100) + 1)) {
+                let sleepTime = UInt32(duration/Double(thirdEndValue) * 10000.0)
+                usleep(sleepTime)
+                DispatchQueue.main.async {
+                    self.percentLabel3.text = "\(i)"
+                }
+            }
+        }
+    }
+
 }
 

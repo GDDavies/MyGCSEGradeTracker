@@ -119,7 +119,7 @@ class UpgradeViewController: UIViewController, SKProductsRequestDelegate, SKPaym
                     break
                 case .failed:
                     print("Purchased Failed")
-                    print(transaction.error as Any)
+                    //print(transaction.error as Any)
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
                     let alertController = UIAlertController(title: "Purchase Failed", message: "Your purchases failed, please try again.", preferredStyle: .alert)
                     alertController.addAction(doneAction)

@@ -30,7 +30,6 @@ class QualificationCollectionView: UICollectionViewController {
         ]
     
     var addedQualification: Qualification?
-    var addedUnit: Unit?
     
     @IBOutlet weak var addButton: UIBarButtonItem!
     
