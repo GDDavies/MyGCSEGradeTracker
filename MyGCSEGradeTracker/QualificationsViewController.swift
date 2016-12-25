@@ -25,7 +25,7 @@ class QualificationsViewController: UIViewController {
     let target = 70.0
     
     @IBOutlet weak var lineChartView: LineChartView!
-        
+    
     let percentVar3 = 90.0
     let animationDuration = 1.5
     
@@ -36,6 +36,10 @@ class QualificationsViewController: UIViewController {
     @IBOutlet weak var percentLabel: SACountingLabel!
     @IBOutlet weak var percentLabel2: SACountingLabel!
     @IBOutlet weak var percentLabel3: SACountingLabel!
+    
+    @IBOutlet weak var averageGradeLabel: UILabel!
+    @IBOutlet weak var averagePercentLabel: UILabel!
+    @IBOutlet weak var lastThreePercentLabel: UILabel!
     
     var averageGrade: String?
     var doubleAverageGrade: Double?
@@ -78,6 +82,12 @@ class QualificationsViewController: UIViewController {
         setupProgressViews()
         
         percentLabel.textColor = backgroundColor
+        percentLabel2.textColor = backgroundColor
+        percentLabel3.textColor = backgroundColor
+        
+        averageGradeLabel.textColor = backgroundColor
+        averagePercentLabel.textColor = backgroundColor
+        lastThreePercentLabel.textColor = backgroundColor
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Results", style: .plain, target: self, action: #selector(addResultsTapped))
 
@@ -105,10 +115,10 @@ class QualificationsViewController: UIViewController {
         let resultsData = LineChartDataSet(values: mappedResults, label: "")
         
         // Format lines and circles
-        resultsData.colors = [UIColor.black]
+        resultsData.colors = [backgroundColor!]
         resultsData.lineWidth = 2
-        resultsData.circleColors = [UIColor.black]
-        resultsData.circleHoleColor = UIColor.black
+        resultsData.circleColors = [backgroundColor!]
+        resultsData.circleHoleColor = backgroundColor
         resultsData.circleRadius = 5
         
         // format numbers on line
@@ -135,7 +145,7 @@ class QualificationsViewController: UIViewController {
             lineChartView.data = data
         } else {
             // Don't add data
-            lineChartView.noDataText = "Please provide at least two results sets for the chart."
+            lineChartView.noDataText = "Please provide at least two sets of results for the chart."
         }
         
         // Target line

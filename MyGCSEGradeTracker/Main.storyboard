@@ -438,6 +438,9 @@
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
+                        <outlet property="averageGradeLabel" destination="JmS-11-fWx" id="17E-zw-99F"/>
+                        <outlet property="averagePercentLabel" destination="urF-nQ-Ge9" id="ODi-Cc-Jea"/>
+                        <outlet property="lastThreePercentLabel" destination="VKj-ru-6sF" id="ho4-HO-K5T"/>
                         <outlet property="lineChartView" destination="9s1-eD-zGm" id="mVn-x1-gmB"/>
                         <outlet property="percentLabel" destination="IJ4-Tu-l4y" id="Aos-t8-u7l"/>
                         <outlet property="percentLabel2" destination="K8e-qc-a7B" id="CkL-Oe-yRH"/>
