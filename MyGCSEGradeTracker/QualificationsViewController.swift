@@ -22,28 +22,12 @@ class QualificationsViewController: UIViewController {
     
     var sourceCell: CustomQualificationCollectionViewCell?
     
-    var backgrounColor: UIColor?
-    
     let target = 70.0
     
     @IBOutlet weak var lineChartView: LineChartView!
-    
-    @IBOutlet weak var createSetButton: UIButton!
-    
-    @IBOutlet weak var numberOfResultsTextLabel: UILabel!
-    @IBOutlet weak var averageGradeTextLabel: UILabel!
-    @IBOutlet weak var averagePercentageTextLabel: UILabel!
-
-    @IBOutlet weak var statsBox: UIView!
-    @IBOutlet weak var setsOfResultsLabel: UILabel!
-    @IBOutlet weak var averageGradeLabel: UILabel!
-    @IBOutlet weak var averagePercentageLabel: UILabel!
-    
-    @IBOutlet weak var statsBox1: UIImageView!
-    
+        
     let percentVar3 = 90.0
     let animationDuration = 1.5
-    let controlColour = UIColor.darkGray
     
     @IBOutlet weak var progressView: KDCircularProgress!
     @IBOutlet weak var progressView2: KDCircularProgress!
@@ -86,20 +70,17 @@ class QualificationsViewController: UIViewController {
     
         self.title = selectedQual
         
-        createSetButton.backgroundColor = backgroundColor
-        //statsBox.backgroundColor = backgroundColor
-        
         NotificationCenter.default.addObserver(self, selector: #selector(loadResults(_:)), name: NSNotification.Name(rawValue: "loadResults"), object: nil)
-        
-//        self.statsBox1.layer.cornerRadius = self.statsBox1.bounds.size.width / 2.0
-//        self.statsBox1.clipsToBounds = true
         
         _ = averageGradeCalc()
         _ = averagePercentageCalc()
         
         setupProgressViews()
         
-        percentLabel.textColor = controlColour
+        percentLabel.textColor = backgroundColor
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Results", style: .plain, target: self, action: #selector(addResultsTapped))
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -110,6 +91,10 @@ class QualificationsViewController: UIViewController {
        // averagePercentageLabel.text = averagePercentage!
         setChart(values: setResultsArray)
         self.lineChartView.animate(xAxisDuration: 0.5, yAxisDuration: 1.5)        
+    }
+    
+    func addResultsTapped() {
+        performSegue(withIdentifier: "AddResults", sender: self)
     }
     
     func setChart(values: [Double]) {
@@ -215,7 +200,7 @@ class QualificationsViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "CreateSet" {
+        if segue.identifier == "AddResults" {
             
             let svc = segue.destination as? UINavigationController
             
@@ -229,38 +214,29 @@ class QualificationsViewController: UIViewController {
     }
     
     func createSets() {
-        
         if setResultsArray.count > 0 {
             setResultsArray.removeAll()
         }
-        
         let numberOfSets = results.count / components.count
         var addResults = 0.0
         
         var i = 1
-        
         while i <= numberOfSets {
-            
             var setResults: Results<Result> {
                 get {
                     return try! Realm().objects(Result.self).filter("qualification == '\(selectedQual!)' AND set == \(i)")
                 }
             }
-            
             var x = 0
             while x < components.count {
-                
                 let weightedResult = Double(setResults[x].result) * components[x].weighting
-                
                 addResults += weightedResult
                 x += 1
             }
             setResultsArray.append(addResults)
             i += 1
-
             addResults = 0
         }
-        print("Results set array \(setResultsArray)")
     }
     
     // MARK Stats Box
@@ -270,21 +246,21 @@ class QualificationsViewController: UIViewController {
         progressView.trackThickness = 0.0
         progressView.roundedCorners = false
         progressView.glowMode = .noGlow
-        progressView.set(colors: controlColour)
+        progressView.set(colors: backgroundColor!)
         
         progressView2.startAngle = 270
         progressView2.progressThickness = 0.6
         progressView2.trackThickness = 0.0
         progressView2.roundedCorners = false
         progressView2.glowMode = .noGlow
-        progressView2.set(colors: controlColour)
+        progressView2.set(colors: backgroundColor!)
         
         progressView3.startAngle = 270
         progressView3.progressThickness = 0.6
         progressView3.trackThickness = 0.0
         progressView3.roundedCorners = false
         progressView3.glowMode = .noGlow
-        progressView3.set(colors: controlColour)
+        progressView3.set(colors: backgroundColor!)
     }
     
     override func viewDidAppear(_ animated: Bool) {

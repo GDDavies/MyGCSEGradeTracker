@@ -330,20 +330,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dr6-NY-Esy">
-                                <rect key="frame" x="0.0" y="551" width="375" height="67"/>
-                                <color key="backgroundColor" red="0.23137254901960785" green="0.47843137254901963" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="67" id="8s9-Jc-XaX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
-                                <state key="normal" title="Add Results">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="H2y-HJ-0or" kind="presentation" identifier="CreateSet" id="i63-kk-A0T"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OfJ-hJ-auQ">
                                 <rect key="frame" x="16" y="399" width="343" height="127"/>
                                 <subviews>
@@ -380,13 +366,13 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AV. GRADE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JmS-11-fWx">
-                                        <rect key="frame" x="10.5" y="66" width="85" height="19"/>
+                                        <rect key="frame" x="11" y="66" width="85" height="19"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AV. LAST 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKj-ru-6sF">
-                                        <rect key="frame" x="249" y="65" width="81.5" height="19.5"/>
+                                        <rect key="frame" x="248" y="65" width="82" height="20"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -440,22 +426,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="OfJ-hJ-auQ" firstAttribute="trailing" secondItem="EF7-r4-sXc" secondAttribute="trailingMargin" id="4bY-ZT-nhp"/>
                             <constraint firstItem="OfJ-hJ-auQ" firstAttribute="top" secondItem="9s1-eD-zGm" secondAttribute="bottom" constant="42" id="5mE-Ec-FVg"/>
-                            <constraint firstItem="dr6-NY-Esy" firstAttribute="bottom" secondItem="f1b-7Z-FVp" secondAttribute="top" id="DQk-rF-fpT"/>
-                            <constraint firstItem="dr6-NY-Esy" firstAttribute="leading" secondItem="EF7-r4-sXc" secondAttribute="leading" id="Lgz-lL-1FG"/>
                             <constraint firstItem="OfJ-hJ-auQ" firstAttribute="top" secondItem="EF7-r4-sXc" secondAttribute="top" constant="399" id="Nax-Nb-TtV"/>
                             <constraint firstItem="9s1-eD-zGm" firstAttribute="top" secondItem="MWF-lv-xAB" secondAttribute="bottom" constant="8" symbolic="YES" id="RgE-vh-3sV"/>
                             <constraint firstItem="9s1-eD-zGm" firstAttribute="leading" secondItem="EF7-r4-sXc" secondAttribute="leadingMargin" constant="3" id="aNX-Vt-Jqc"/>
                             <constraint firstItem="OfJ-hJ-auQ" firstAttribute="leading" secondItem="EF7-r4-sXc" secondAttribute="leadingMargin" id="dvv-3Q-xLJ"/>
-                            <constraint firstItem="dr6-NY-Esy" firstAttribute="top" secondItem="OfJ-hJ-auQ" secondAttribute="bottom" constant="25" id="eac-XH-qEZ"/>
-                            <constraint firstItem="OfJ-hJ-auQ" firstAttribute="centerX" secondItem="dr6-NY-Esy" secondAttribute="centerX" id="oFJ-4b-SAU"/>
                             <constraint firstItem="9s1-eD-zGm" firstAttribute="centerX" secondItem="OfJ-hJ-auQ" secondAttribute="centerX" id="pel-3w-hKC"/>
-                            <constraint firstAttribute="trailing" secondItem="dr6-NY-Esy" secondAttribute="trailing" id="wzA-o6-9V5"/>
+                            <constraint firstItem="f1b-7Z-FVp" firstAttribute="top" secondItem="OfJ-hJ-auQ" secondAttribute="bottom" constant="92" id="txa-56-phv"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
-                        <outlet property="createSetButton" destination="dr6-NY-Esy" id="1UW-ee-3PO"/>
                         <outlet property="lineChartView" destination="9s1-eD-zGm" id="mVn-x1-gmB"/>
                         <outlet property="percentLabel" destination="IJ4-Tu-l4y" id="Aos-t8-u7l"/>
                         <outlet property="percentLabel2" destination="K8e-qc-a7B" id="CkL-Oe-yRH"/>
@@ -463,6 +445,7 @@
                         <outlet property="progressView" destination="gPg-Jk-hLp" id="7hh-ZW-gl4"/>
                         <outlet property="progressView2" destination="sql-LU-0rg" id="vH1-OG-3NX"/>
                         <outlet property="progressView3" destination="30O-FX-Au0" id="qvR-nD-o3x"/>
+                        <segue destination="H2y-HJ-0or" kind="presentation" identifier="AddResults" id="CWn-3i-JFj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gLR-5z-jSz" userLabel="First Responder" sceneMemberID="firstResponder"/>
