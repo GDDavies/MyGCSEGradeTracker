@@ -19,15 +19,10 @@ class ManageQualificationsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        navigationController?.navigationBar.topItem?.title = "Manage Qualifications"
+        navigationController?.navigationBar.topItem?.title = "Manage"
         navigationItem.rightBarButtonItem = self.editButtonItem
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(dismissView))
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,12 +57,6 @@ class ManageQualificationsTableViewController: UITableViewController {
         cell.detailTextLabel?.text = "\(qualification.numberOfComponents) components"
         return cell
     }
-
-//    // Override to support conditional editing of the table view.
-//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//        // Return false if you do not want the specified item to be editable.
-//        return true
-//    }
 
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -114,7 +103,6 @@ class ManageQualificationsTableViewController: UITableViewController {
                 //this is optional, it makes the delete button go away on the cell
                 tableView.reloadRows(at: [indexPath], with: .automatic)
             })
-            
             alertController.addAction(delete)
             alertController.addAction(cancel)
             present(alertController, animated: true, completion: nil)
@@ -122,20 +110,17 @@ class ManageQualificationsTableViewController: UITableViewController {
     }
 
     // MARK: - Navigation
+    
+    func dismissView() {
+        dismiss(animated: true, completion: nil)
+    }
 
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      
          if segue.identifier == "ShowSets" {
-            
-//            let path = self.tableView.indexPathForSelectedRow
-//            let vc = segue.destination as! ManageResultsTableViewController
-//             
-//            vc.selectedQualification = qualifications[(path?.row)!]
-            
             let controller = segue.destination as! ManageSetsTableViewController
             let row = self.tableView.indexPathForSelectedRow?.row
             controller.selectedQualification = qualifications[row!]
         }
      }
-
 }
