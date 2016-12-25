@@ -41,7 +41,7 @@ class QualificationsViewController: UIViewController {
     
     @IBOutlet weak var statsBox1: UIImageView!
     
-    let percentVar3 = 1.0
+    let percentVar3 = 90.0
     let animationDuration = 1.5
     let controlColour = UIColor.darkGray
     
@@ -49,9 +49,9 @@ class QualificationsViewController: UIViewController {
     @IBOutlet weak var progressView2: KDCircularProgress!
     @IBOutlet weak var progressView3: KDCircularProgress!
     
-    @IBOutlet weak var percentLabel: UILabel!
-    @IBOutlet weak var percentLabel2: UILabel!
-    @IBOutlet weak var percentLabel3: UILabel!
+    @IBOutlet weak var percentLabel: SACountingLabel!
+    @IBOutlet weak var percentLabel2: SACountingLabel!
+    @IBOutlet weak var percentLabel3: SACountingLabel!
     
     var averageGrade: String?
     var doubleAverageGrade: Double?
@@ -94,8 +94,8 @@ class QualificationsViewController: UIViewController {
 //        self.statsBox1.layer.cornerRadius = self.statsBox1.bounds.size.width / 2.0
 //        self.statsBox1.clipsToBounds = true
         
-        averageGradeCalc()
-        averagePercentageCalc()
+        _ = averageGradeCalc()
+        _ = averagePercentageCalc()
         
         setupProgressViews()
         
@@ -109,7 +109,7 @@ class QualificationsViewController: UIViewController {
         //averageGradeLabel.text = averageGrade!
        // averagePercentageLabel.text = averagePercentage!
         setChart(values: setResultsArray)
-        self.lineChartView.animate(xAxisDuration: 0.5, yAxisDuration: 1.5)
+        self.lineChartView.animate(xAxisDuration: 0.5, yAxisDuration: 1.5)        
     }
     
     func setChart(values: [Double]) {
@@ -179,7 +179,7 @@ class QualificationsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func averageGradeCalc() {
+    func averageGradeCalc() -> String? {
         var sum = 0.0
         for i in 0..<setResultsArray.count {
             sum += round(setResultsArray[i] / 10)
@@ -188,11 +188,12 @@ class QualificationsViewController: UIViewController {
         let fmt = NumberFormatter()
         fmt.maximumIntegerDigits = 1
         let output = sum / (Double(results.count) / Double(components.count))
-        doubleAverageGrade = output
         averageGrade = fmt.string(from: NSNumber(value: output))
+        print("grade \(output)")
+        return averageGrade
     }
     
-    func averagePercentageCalc() {
+    func averagePercentageCalc() -> Double? {
         var sum = 0.0
         for i in 0..<setResultsArray.count {
             sum += setResultsArray[i]
@@ -202,9 +203,10 @@ class QualificationsViewController: UIViewController {
         let fmt = NumberFormatter()
         fmt.maximumIntegerDigits = 2
         let output = round(sum / (Double(results.count) / Double(components.count)))
-        doubleAveragePercentage = output
         averagePercentage = fmt.string(from: NSNumber(value: output))
         print("av % \(averagePercentage)")
+        print(output)
+        return output
     }
     
     func loadResults(_ notification: Foundation.Notification){
@@ -286,51 +288,33 @@ class QualificationsViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let angle = convertToAngle(percent: 0.2)
-        let angle2 = convertToAngle(percent: 0.7)
-        let angle3 = convertToAngle(percent: percentVar3)
+        let angle = convertToAngle(grade: Double(averageGradeCalc()!)!)
+        let angle2 = convertToAngle2(percent: averagePercentageCalc()!)
+        let angle3 = convertToAngle2(percent: percentVar3)
         progressView.animate(toAngle: angle!, duration: 1.6, completion: nil)
         progressView2.animate(toAngle: angle2!, duration: 1.6, completion: nil)
         progressView3.animate(toAngle: angle3!, duration: 1.6, completion: nil)
-        incrementLabel(to: 0.2, secondEndValue: 0.70, thirdEndValue: percentVar3)
+        incrementLabel(to: Double(averageGradeCalc()!)!, secondEndValue: averagePercentageCalc()!, thirdEndValue: percentVar3)
     }
     
-    func convertToAngle(percent: Double) -> Double? {
-        let angle = (percent * 100) * 3.6
+    func convertToAngle(grade: Double) -> Double? {
+        let angle = (grade * 10) * 3.6
+        print("angle = \(angle)")
+        return angle
+    }
+    
+    func convertToAngle2(percent: Double) -> Double? {
+        let angle = percent * 3.6
         return angle
     }
     
     func incrementLabel(to firstEndValue: Double, secondEndValue: Double, thirdEndValue: Double) {
-        let duration: Double = animationDuration
-        DispatchQueue.global().async {
-            
-            for i in 0 ..< (Int((firstEndValue * 100) + 1)) {
-                let sleepTime = UInt32(duration/Double(firstEndValue) * 10000.0)
-                usleep(sleepTime)
-                DispatchQueue.main.async {
-                    self.percentLabel.text = "\(i)%"
-                }
-            }
-        }
-        DispatchQueue.global().async {
-            for i in 0 ..< (Int((secondEndValue * 100) + 1)) {
-                let sleepTime = UInt32(duration/Double(secondEndValue) * 10000.0)
-                usleep(sleepTime)
-                DispatchQueue.main.async {
-                    self.percentLabel2.text = "\(i)"
-                }
-            }
-        }
-        DispatchQueue.global().async {
-            for i in 0 ..< (Int((thirdEndValue * 100) + 1)) {
-                let sleepTime = UInt32(duration/Double(thirdEndValue) * 10000.0)
-                usleep(sleepTime)
-                DispatchQueue.main.async {
-                    self.percentLabel3.text = "\(i)"
-                }
-            }
-        }
+        
+        percentLabel.countFrom(fromValue: 0, to: Float(firstEndValue), withDuration: animationDuration, andAnimationType: .Linear, andCountingType: .Int)
+        percentLabel2.format = "%.0f%%"
+        percentLabel2.countFrom(fromValue: 0, to: Float(secondEndValue), withDuration: animationDuration, andAnimationType: .Linear, andCountingType: .Custom)
+        percentLabel3.format = "%.0f%%"
+        percentLabel3.countFrom(fromValue: 0, to: Float(thirdEndValue), withDuration: animationDuration, andAnimationType: .Linear, andCountingType: .Custom)
     }
-
 }
 
