@@ -22,7 +22,7 @@ class QualificationsViewController: UIViewController {
     
     var sourceCell: CustomQualificationCollectionViewCell?
     
-    let target = 70.0
+    var target: Double?
     
     @IBOutlet weak var lineChartView: LineChartView!
     
@@ -45,6 +45,8 @@ class QualificationsViewController: UIViewController {
     var doubleAverageGrade: Double?
     var averagePercentage: String?
     var doubleAveragePercentage: Double?
+    
+    var animateStats = true
     
     let realm = try! Realm()
     
@@ -81,13 +83,13 @@ class QualificationsViewController: UIViewController {
         
         setupProgressViews()
         
-        percentLabel.textColor = backgroundColor
-        percentLabel2.textColor = backgroundColor
-        percentLabel3.textColor = backgroundColor
+        percentLabel.textColor = UIColor.darkGray
+        percentLabel2.textColor = UIColor.darkGray
+        percentLabel3.textColor = UIColor.darkGray
         
-        averageGradeLabel.textColor = backgroundColor
-        averagePercentLabel.textColor = backgroundColor
-        lastThreePercentLabel.textColor = backgroundColor
+        averageGradeLabel.textColor = UIColor.darkGray
+        averagePercentLabel.textColor = UIColor.darkGray
+        lastThreePercentLabel.textColor = UIColor.darkGray
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Results", style: .plain, target: self, action: #selector(addResultsTapped))
 
@@ -95,12 +97,8 @@ class QualificationsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         createSets()
-        //setsOfResultsLabel.text = String(results.count / components.count)
-
-        //averageGradeLabel.text = averageGrade!
-       // averagePercentageLabel.text = averagePercentage!
         setChart(values: setResultsArray)
-        self.lineChartView.animate(xAxisDuration: 0.5, yAxisDuration: 1.5)        
+        self.lineChartView.animate(xAxisDuration: 0.5, yAxisDuration: 1.5)
     }
     
     func addResultsTapped() {
@@ -115,8 +113,8 @@ class QualificationsViewController: UIViewController {
         let resultsData = LineChartDataSet(values: mappedResults, label: "")
         
         // Format lines and circles
-        resultsData.colors = [backgroundColor!]
-        resultsData.lineWidth = 2
+        resultsData.colors = [UIColor.darkGray]
+        resultsData.lineWidth = 1
         resultsData.circleColors = [backgroundColor!]
         resultsData.circleHoleColor = backgroundColor
         resultsData.circleRadius = 5
@@ -149,21 +147,26 @@ class QualificationsViewController: UIViewController {
         }
         
         // Target line
-        let trgt = ChartLimitLine(limit: target, label: "Target: \(target)%")
-        lineChartView.leftAxis.addLimitLine(trgt)
+        if let newTarget = target {
+            let trgt = ChartLimitLine(limit: newTarget, label: "") //Target: \(target)%
+            lineChartView.leftAxis.addLimitLine(trgt)
+        }
         
         lineChartView.rightAxis.drawGridLinesEnabled = false
         lineChartView.rightAxis.drawLabelsEnabled = false
+        lineChartView.extraRightOffset = 20
         
         lineChartView.leftAxis.drawGridLinesEnabled = false
         lineChartView.leftAxis.axisMinimum = 0
         lineChartView.leftAxis.axisMaximum = 100
-        
+        lineChartView.leftAxis.labelFont = UIFont(name: "HelveticaNeue-Bold", size: 12)!
+
         lineChartView.xAxis.axisMinimum = 1
         lineChartView.xAxis.granularityEnabled = true
         lineChartView.xAxis.granularity = 1
         lineChartView.xAxis.labelPosition = .bottom
         lineChartView.xAxis.gridColor = UIColor.white
+        lineChartView.xAxis.labelFont = UIFont(name: "HelveticaNeue-Bold", size: 12)!
         
         lineChartView.legend.enabled = false
         lineChartView.chartDescription?.enabled = false
@@ -253,8 +256,9 @@ class QualificationsViewController: UIViewController {
     func setupProgressViews(){
         progressView.startAngle = 270
         progressView.progressThickness = 0.6
-        progressView.trackThickness = 0.0
         progressView.roundedCorners = false
+        progressView.trackThickness = 0.6
+        progressView.trackColor = UIColor.darkGray
         progressView.glowMode = .noGlow
         progressView.set(colors: backgroundColor!)
         
@@ -262,6 +266,8 @@ class QualificationsViewController: UIViewController {
         progressView2.progressThickness = 0.6
         progressView2.trackThickness = 0.0
         progressView2.roundedCorners = false
+        progressView2.trackThickness = 0.6
+        progressView2.trackColor = UIColor.darkGray
         progressView2.glowMode = .noGlow
         progressView2.set(colors: backgroundColor!)
         
@@ -269,18 +275,23 @@ class QualificationsViewController: UIViewController {
         progressView3.progressThickness = 0.6
         progressView3.trackThickness = 0.0
         progressView3.roundedCorners = false
+        progressView3.trackThickness = 0.6
+        progressView3.trackColor = UIColor.darkGray
         progressView3.glowMode = .noGlow
         progressView3.set(colors: backgroundColor!)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let angle = convertToAngle(grade: Double(averageGradeCalc()!)!)
-        let angle2 = convertToAngle2(percent: averagePercentageCalc()!)
-        let angle3 = convertToAngle2(percent: percentVar3)
-        progressView.animate(toAngle: angle!, duration: 1.6, completion: nil)
-        progressView2.animate(toAngle: angle2!, duration: 1.6, completion: nil)
-        progressView3.animate(toAngle: angle3!, duration: 1.6, completion: nil)
-        incrementLabel(to: Double(averageGradeCalc()!)!, secondEndValue: averagePercentageCalc()!, thirdEndValue: percentVar3)
+        if results.count != 0 && animateStats {
+            let angle = convertToAngle(grade: Double(averageGradeCalc()!)!)
+            let angle2 = convertToAngle2(percent: averagePercentageCalc()!)
+            let angle3 = convertToAngle2(percent: percentVar3)
+            progressView.animate(toAngle: angle!, duration: 1.6, completion: nil)
+            progressView2.animate(toAngle: angle2!, duration: 1.6, completion: nil)
+            progressView3.animate(toAngle: angle3!, duration: 1.6, completion: nil)
+            incrementLabel(to: Double(averageGradeCalc()!)!, secondEndValue: averagePercentageCalc()!, thirdEndValue: percentVar3)
+            animateStats = false
+        }
     }
     
     func convertToAngle(grade: Double) -> Double? {
