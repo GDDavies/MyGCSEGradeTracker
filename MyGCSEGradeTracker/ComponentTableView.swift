@@ -83,7 +83,6 @@ class ComponentTableViewController: UITableViewController, UINavigationControlle
         
         textViewOutput.remove(at: textRow)
         textViewOutput.insert(currentValue!, at: textRow)
-        print(textViewOutput)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

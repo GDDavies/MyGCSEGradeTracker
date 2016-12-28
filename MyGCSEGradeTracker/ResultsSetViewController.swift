@@ -93,7 +93,6 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
             self.enabledSaveButtonBtmConstraint.constant = keyboardHeight
         }
         self.view.layoutIfNeeded();
-        print(keyboardHeight);
     }
     
     func keyboardWillHide(notification: NSNotification) {
@@ -193,10 +192,6 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
         
         resultsArray.remove(at: textRow)
         resultsArray.insert(currentValue!, at: textRow) // BUG
-        
-        print(textRow)
-        print(resultsArray)
-        
     }
     
     func populateResultsArray() {

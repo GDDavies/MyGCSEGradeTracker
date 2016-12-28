@@ -41,44 +41,34 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
     @IBAction func saveQualification(_ sender: Any) {
         if validateWeightings() && validateQualificationName() {
             
-            print("Results saved")
             addNewQualification()
             addNewComponents()
             dismiss(animated: true, completion: nil)
             
         } else if textViewOutput[0] == "" {
+            
             let alert = UIAlertController(title: "No Qualification Name", message: "Please enter a name for the qualification", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
-            print("Results NOT saved")
-            
         } else if textViewOutput[1] == "" {
+            
             let alert = UIAlertController(title: "Missing Components", message: "Please input the number of components", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             
-            print("Results NOT saved")
-            
-            
         } else if validateWeightings() == false && validateQualificationName() {
+            
             let alert = UIAlertController(title: "Incorrect Weightings", message: "Combined component weightings should equal 100%", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-            
-            print("Results NOT saved")
-            
-            
+
         } else {
+            
             let alert = UIAlertController(title: "Missing Information", message: "Please enter the required information", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-            
-            print("Results NOT saved")
         }
-        
-        print(textViewOutput)
-        print(componentWeightings)
     }
     
     func validateWeightings() -> Bool {
@@ -92,7 +82,6 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
         //}
         
         if sum == 100 {
-            print("Is 100")
             return true
         } else {
             return false
@@ -235,7 +224,6 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
                 if componentsIndexPath.isEmpty {
                     updateComponentRows()
                 } else if tableView.numberOfRows(inSection: 1) == Int(textViewOutput[1])! + 1 {
-                    print("Do nothing")
                 } else {
                     
                     for i in 1...componentTitleArray.count {

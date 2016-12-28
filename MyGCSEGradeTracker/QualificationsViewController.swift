@@ -74,20 +74,20 @@ class QualificationsViewController: UIViewController {
     
         self.title = selectedQual
         
-        NotificationCenter.default.addObserver(self, selector: #selector(loadResults(_:)), name: NSNotification.Name(rawValue: "loadResults"), object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(loadResults(_:)), name: NSNotification.Name(rawValue: "loadResults"), object: nil)
         
         _ = averageGradeCalc()
         _ = averagePercentageCalc()
         
         setupProgressViews()
         
-        percentLabel.textColor = UIColor.darkGray
-        percentLabel2.textColor = UIColor.darkGray
-        percentLabel3.textColor = UIColor.darkGray
+        percentLabel.textColor = UIColor.white
+        percentLabel2.textColor = UIColor.white
+        percentLabel3.textColor = UIColor.white
         
-        averageGradeLabel.textColor = UIColor.darkGray
-        averagePercentLabel.textColor = UIColor.darkGray
-        lastThreePercentLabel.textColor = UIColor.darkGray
+        averageGradeLabel.textColor = UIColor.white
+        averagePercentLabel.textColor = UIColor.white
+        lastThreePercentLabel.textColor = UIColor.white
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Results", style: .plain, target: self, action: #selector(addResultsTapped))
 
@@ -116,6 +116,9 @@ class QualificationsViewController: UIViewController {
         resultsData.circleColors = [backgroundColor!]
         resultsData.circleHoleColor = backgroundColor
         resultsData.circleRadius = 0
+        resultsData.valueFont = UIFont(name: "HelveticaNeue-Bold", size: 8)!
+        resultsData.valueTextColor = UIColor.white
+        resultsData.highlightColor = UIColor.white
         
         // format numbers on line
         let lineValueFormatter = NumberFormatter()
@@ -164,8 +167,6 @@ class QualificationsViewController: UIViewController {
         
         lineChartView.lineData?.setDrawValues(true)
         
-        lineChartView.highlightPerTapEnabled = true
-        
         lineChartView.leftAxis.drawGridLinesEnabled = true
         lineChartView.leftAxis.axisLineColor = backgroundColor!
         lineChartView.leftAxis.axisMinimum = 0
@@ -195,13 +196,11 @@ class QualificationsViewController: UIViewController {
         var sum = 0.0
         for i in 0..<setResultsArray.count {
             sum += round(setResultsArray[i] / 10)
-            print(sum)
         }
         let fmt = NumberFormatter()
         fmt.maximumIntegerDigits = 1
         let output = sum / (Double(results.count) / Double(components.count))
         averageGrade = fmt.string(from: NSNumber(value: output))
-        print("grade \(output)")
         return averageGrade
     }
     
@@ -209,21 +208,12 @@ class QualificationsViewController: UIViewController {
         var sum = 0.0
         for i in 0..<setResultsArray.count {
             sum += setResultsArray[i]
-            print(sum)
         }
-        print(setResultsArray)
         let fmt = NumberFormatter()
         fmt.maximumIntegerDigits = 2
         let output = round(sum / (Double(results.count) / Double(components.count)))
         averagePercentage = fmt.string(from: NSNumber(value: output))
-        print("av % \(averagePercentage)")
-        print(output)
         return output
-    }
-    
-    func loadResults(_ notification: Foundation.Notification){
-
-        print("Results loaded")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -272,7 +262,7 @@ class QualificationsViewController: UIViewController {
         progressView.progressThickness = 0.6
         progressView.roundedCorners = false
         progressView.trackThickness = 0.6
-        progressView.trackColor = UIColor.darkGray
+        progressView.trackColor = UIColor.white
         progressView.glowMode = .noGlow
         progressView.set(colors: backgroundColor!)
         
@@ -281,7 +271,7 @@ class QualificationsViewController: UIViewController {
         progressView2.trackThickness = 0.0
         progressView2.roundedCorners = false
         progressView2.trackThickness = 0.6
-        progressView2.trackColor = UIColor.darkGray
+        progressView2.trackColor = UIColor.white
         progressView2.glowMode = .noGlow
         progressView2.set(colors: backgroundColor!)
         
@@ -290,7 +280,7 @@ class QualificationsViewController: UIViewController {
         progressView3.trackThickness = 0.0
         progressView3.roundedCorners = false
         progressView3.trackThickness = 0.6
-        progressView3.trackColor = UIColor.darkGray
+        progressView3.trackColor = UIColor.white
         progressView3.glowMode = .noGlow
         progressView3.set(colors: backgroundColor!)
     }
@@ -309,7 +299,6 @@ class QualificationsViewController: UIViewController {
     
     func convertToAngle(grade: Double) -> Double? {
         let angle = (grade * 10) * 3.6
-        print("angle = \(angle)")
         return angle
     }
     

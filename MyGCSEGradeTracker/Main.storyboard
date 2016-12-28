@@ -300,7 +300,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9s1-eD-zGm" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="64" width="375" height="327"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="334"/>
                                 <color key="backgroundColor" red="0.20886585867056795" green="0.60155738776569745" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
@@ -318,13 +318,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OfJ-hJ-auQ">
-                                <rect key="frame" x="16" y="399" width="343" height="176"/>
+                                <rect key="frame" x="16" y="398" width="343" height="134"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gPg-Jk-hLp" customClass="KDCircularProgress" customModule="MyGCSEGradeTracker" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="8" width="90" height="137"/>
+                                        <rect key="frame" x="8" y="23" width="90" height="88"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJ4-Tu-l4y" customClass="SACountingLabel" customModule="MyGCSEGradeTracker" customModuleProvider="target">
-                                                <rect key="frame" x="40" y="58.5" width="10" height="21"/>
+                                                <rect key="frame" x="40" y="34" width="10" height="21"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -332,25 +332,13 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="IJ4-Tu-l4y" firstAttribute="centerX" secondItem="gPg-Jk-hLp" secondAttribute="centerX" id="6SK-xb-i9I"/>
-                                            <constraint firstItem="IJ4-Tu-l4y" firstAttribute="centerY" secondItem="gPg-Jk-hLp" secondAttribute="centerY" id="wxv-6y-fWr"/>
+                                            <constraint firstItem="IJ4-Tu-l4y" firstAttribute="centerX" secondItem="gPg-Jk-hLp" secondAttribute="centerX" id="FGb-Nm-RpN"/>
+                                            <constraint firstItem="IJ4-Tu-l4y" firstAttribute="centerY" secondItem="gPg-Jk-hLp" secondAttribute="centerY" id="aTv-Pe-MKP"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sql-LU-0rg" customClass="KDCircularProgress" customModule="MyGCSEGradeTracker" customModuleProvider="target">
-                                        <rect key="frame" x="126" y="8" width="90" height="136"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8e-qc-a7B" customClass="SACountingLabel" customModule="MyGCSEGradeTracker" customModuleProvider="target">
-                                                <rect key="frame" x="40" y="57.5" width="10" height="21"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                                <color key="textColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
+                                        <rect key="frame" x="126" y="23" width="90" height="88"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstItem="K8e-qc-a7B" firstAttribute="centerY" secondItem="sql-LU-0rg" secondAttribute="centerY" id="1Ov-P6-lBi"/>
-                                            <constraint firstItem="K8e-qc-a7B" firstAttribute="centerX" secondItem="sql-LU-0rg" secondAttribute="centerX" id="SXu-Vn-zTf"/>
-                                        </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AV. GRADE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JmS-11-fWx">
                                         <rect key="frame" x="11" y="115" width="85" height="19"/>
@@ -358,17 +346,23 @@
                                         <color key="textColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AV. LAST 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKj-ru-6sF">
-                                        <rect key="frame" x="248" y="114" width="82" height="20"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AV. PERCENT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="urF-nQ-Ge9">
+                                        <rect key="frame" x="116" y="114" width="111" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8e-qc-a7B" customClass="SACountingLabel" customModule="MyGCSEGradeTracker" customModuleProvider="target">
+                                        <rect key="frame" x="166" y="56" width="10" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="30O-FX-Au0" customClass="KDCircularProgress" customModule="MyGCSEGradeTracker" customModuleProvider="target">
-                                        <rect key="frame" x="244" y="8" width="90" height="136"/>
+                                        <rect key="frame" x="244" y="23" width="90" height="88"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tF7-Ue-1BB" customClass="SACountingLabel" customModule="MyGCSEGradeTracker" customModuleProvider="target">
-                                                <rect key="frame" x="40" y="57.5" width="10" height="21"/>
+                                                <rect key="frame" x="40" y="34" width="10" height="21"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                 <color key="textColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -376,52 +370,150 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="tF7-Ue-1BB" firstAttribute="centerY" secondItem="30O-FX-Au0" secondAttribute="centerY" id="ZrQ-Oz-ft3"/>
-                                            <constraint firstItem="tF7-Ue-1BB" firstAttribute="centerX" secondItem="30O-FX-Au0" secondAttribute="centerX" id="vlC-7z-Ia9"/>
+                                            <constraint firstItem="tF7-Ue-1BB" firstAttribute="centerX" secondItem="30O-FX-Au0" secondAttribute="centerX" id="1dw-nk-M2M"/>
+                                            <constraint firstItem="tF7-Ue-1BB" firstAttribute="centerY" secondItem="30O-FX-Au0" secondAttribute="centerY" id="vV9-Md-U4D"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AV. PERCENT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="urF-nQ-Ge9">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AV. LAST 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKj-ru-6sF">
+                                        <rect key="frame" x="248" y="114" width="82" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                        <color key="textColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="30O-FX-Au0" secondAttribute="trailing" constant="9" id="2lU-iW-iyw"/>
+                                    <constraint firstItem="gPg-Jk-hLp" firstAttribute="centerY" secondItem="OfJ-hJ-auQ" secondAttribute="centerY" id="5rR-23-C5w"/>
+                                    <constraint firstItem="VKj-ru-6sF" firstAttribute="centerX" secondItem="30O-FX-Au0" secondAttribute="centerX" id="Avi-ud-YZM"/>
+                                    <constraint firstItem="sql-LU-0rg" firstAttribute="centerX" secondItem="OfJ-hJ-auQ" secondAttribute="centerX" id="CZg-fq-NwT"/>
+                                    <constraint firstItem="sql-LU-0rg" firstAttribute="top" secondItem="gPg-Jk-hLp" secondAttribute="top" id="Pcm-J2-MBi"/>
+                                    <constraint firstItem="JmS-11-fWx" firstAttribute="bottom" secondItem="OfJ-hJ-auQ" secondAttribute="bottomMargin" constant="8" id="Tdg-CK-AYF"/>
+                                    <constraint firstItem="sql-LU-0rg" firstAttribute="bottom" secondItem="30O-FX-Au0" secondAttribute="bottom" id="WzG-Yr-NG8"/>
+                                    <constraint firstItem="urF-nQ-Ge9" firstAttribute="leading" secondItem="JmS-11-fWx" secondAttribute="trailing" constant="20" id="X1Y-2x-H0m"/>
+                                    <constraint firstItem="K8e-qc-a7B" firstAttribute="centerX" secondItem="sql-LU-0rg" secondAttribute="centerX" id="YPN-6z-BwM"/>
+                                    <constraint firstItem="30O-FX-Au0" firstAttribute="leading" secondItem="sql-LU-0rg" secondAttribute="trailing" constant="28" id="YTk-QT-jK6"/>
+                                    <constraint firstItem="sql-LU-0rg" firstAttribute="height" secondItem="gPg-Jk-hLp" secondAttribute="height" id="aGQ-YO-RbX"/>
+                                    <constraint firstItem="urF-nQ-Ge9" firstAttribute="centerX" secondItem="sql-LU-0rg" secondAttribute="centerX" id="b1o-cr-ksg"/>
+                                    <constraint firstItem="VKj-ru-6sF" firstAttribute="top" secondItem="30O-FX-Au0" secondAttribute="bottom" constant="3" id="dgu-Ec-TPA"/>
+                                    <constraint firstItem="JmS-11-fWx" firstAttribute="baseline" secondItem="VKj-ru-6sF" secondAttribute="baseline" id="erA-hF-73u"/>
+                                    <constraint firstItem="JmS-11-fWx" firstAttribute="top" secondItem="gPg-Jk-hLp" secondAttribute="bottom" constant="4" id="hVh-Ms-se7"/>
+                                    <constraint firstItem="JmS-11-fWx" firstAttribute="centerX" secondItem="gPg-Jk-hLp" secondAttribute="centerX" id="hXu-3q-Qty"/>
+                                    <constraint firstItem="30O-FX-Au0" firstAttribute="height" secondItem="sql-LU-0rg" secondAttribute="height" id="hvG-K5-1m2"/>
+                                    <constraint firstItem="K8e-qc-a7B" firstAttribute="centerY" secondItem="sql-LU-0rg" secondAttribute="centerY" id="jIr-6O-6df"/>
+                                    <constraint firstItem="gPg-Jk-hLp" firstAttribute="leading" secondItem="OfJ-hJ-auQ" secondAttribute="leading" constant="8" id="neC-pR-5E9"/>
+                                    <constraint firstItem="urF-nQ-Ge9" firstAttribute="top" secondItem="sql-LU-0rg" secondAttribute="bottom" constant="3" id="nvf-KJ-rMF"/>
+                                    <constraint firstItem="sql-LU-0rg" firstAttribute="top" secondItem="30O-FX-Au0" secondAttribute="top" id="oAT-dc-3C8"/>
+                                    <constraint firstItem="sql-LU-0rg" firstAttribute="width" secondItem="gPg-Jk-hLp" secondAttribute="width" id="qQY-Vd-mMW"/>
+                                    <constraint firstItem="30O-FX-Au0" firstAttribute="width" secondItem="sql-LU-0rg" secondAttribute="width" id="wj7-BJ-3ah"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IGc-qI-ult">
+                                <rect key="frame" x="16" y="529" width="343" height="118"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wax-Ad-ma5" customClass="KDCircularProgress" customModule="MyGCSEGradeTracker" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="23" width="90" height="88"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yg-aE-weq" customClass="SACountingLabel" customModule="MyGCSEGradeTracker" customModuleProvider="target">
+                                                <rect key="frame" x="40" y="34" width="10" height="21"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="5yg-aE-weq" firstAttribute="centerY" secondItem="Wax-Ad-ma5" secondAttribute="centerY" id="R9z-7y-C91"/>
+                                            <constraint firstItem="5yg-aE-weq" firstAttribute="centerX" secondItem="Wax-Ad-ma5" secondAttribute="centerX" id="xvc-Tc-Raj"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uXe-OB-N6e" customClass="KDCircularProgress" customModule="MyGCSEGradeTracker" customModuleProvider="target">
+                                        <rect key="frame" x="126" y="23" width="90" height="88"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AV. GRADE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3C-AV-xdu">
+                                        <rect key="frame" x="11" y="115" width="85" height="19"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                        <color key="textColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AV. PERCENT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7LA-jZ-ImX">
                                         <rect key="frame" x="116" y="114" width="111" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIz-jJ-SBq" customClass="SACountingLabel" customModule="MyGCSEGradeTracker" customModuleProvider="target">
+                                        <rect key="frame" x="166" y="56" width="10" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dii-l4-zlU" customClass="KDCircularProgress" customModule="MyGCSEGradeTracker" customModuleProvider="target">
+                                        <rect key="frame" x="244" y="23" width="90" height="88"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaZ-KA-iIK" customClass="SACountingLabel" customModule="MyGCSEGradeTracker" customModuleProvider="target">
+                                                <rect key="frame" x="40" y="34" width="10" height="21"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                <color key="textColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="yaZ-KA-iIK" firstAttribute="centerY" secondItem="Dii-l4-zlU" secondAttribute="centerY" id="WTg-Wo-xMU"/>
+                                            <constraint firstItem="yaZ-KA-iIK" firstAttribute="centerX" secondItem="Dii-l4-zlU" secondAttribute="centerX" id="nmb-t6-tCl"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AV. LAST 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vn-VK-bxw">
+                                        <rect key="frame" x="248" y="114" width="82" height="20"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                        <color key="textColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="30O-FX-Au0" secondAttribute="trailing" constant="9" id="2lU-iW-iyw"/>
-                                    <constraint firstItem="JmS-11-fWx" firstAttribute="centerX" secondItem="gPg-Jk-hLp" secondAttribute="centerX" id="43P-Kk-SWC"/>
-                                    <constraint firstItem="30O-FX-Au0" firstAttribute="height" secondItem="sql-LU-0rg" secondAttribute="height" id="9AV-Bj-HAj"/>
-                                    <constraint firstItem="VKj-ru-6sF" firstAttribute="centerX" secondItem="30O-FX-Au0" secondAttribute="centerX" id="Avi-ud-YZM"/>
-                                    <constraint firstItem="JmS-11-fWx" firstAttribute="top" secondItem="gPg-Jk-hLp" secondAttribute="bottom" constant="-30" id="Btr-OY-lGv"/>
-                                    <constraint firstItem="sql-LU-0rg" firstAttribute="centerX" secondItem="OfJ-hJ-auQ" secondAttribute="centerX" id="CZg-fq-NwT"/>
-                                    <constraint firstItem="30O-FX-Au0" firstAttribute="width" secondItem="sql-LU-0rg" secondAttribute="width" id="EUP-Pu-Xaq"/>
-                                    <constraint firstItem="gPg-Jk-hLp" firstAttribute="centerY" secondItem="sql-LU-0rg" secondAttribute="centerY" id="QUt-sh-tA9"/>
-                                    <constraint firstItem="sql-LU-0rg" firstAttribute="bottom" secondItem="30O-FX-Au0" secondAttribute="bottom" id="WzG-Yr-NG8"/>
-                                    <constraint firstItem="30O-FX-Au0" firstAttribute="leading" secondItem="sql-LU-0rg" secondAttribute="trailing" constant="28" id="YTk-QT-jK6"/>
-                                    <constraint firstItem="urF-nQ-Ge9" firstAttribute="centerX" secondItem="sql-LU-0rg" secondAttribute="centerX" id="b1o-cr-ksg"/>
-                                    <constraint firstItem="VKj-ru-6sF" firstAttribute="top" secondItem="30O-FX-Au0" secondAttribute="bottom" constant="-30" id="dgu-Ec-TPA"/>
-                                    <constraint firstItem="sql-LU-0rg" firstAttribute="leading" secondItem="gPg-Jk-hLp" secondAttribute="trailing" constant="28" id="ifU-3s-bst"/>
-                                    <constraint firstItem="gPg-Jk-hLp" firstAttribute="top" secondItem="sql-LU-0rg" secondAttribute="top" id="l0c-if-SPn"/>
-                                    <constraint firstItem="urF-nQ-Ge9" firstAttribute="top" secondItem="sql-LU-0rg" secondAttribute="bottom" constant="-30" id="nvf-KJ-rMF"/>
-                                    <constraint firstItem="sql-LU-0rg" firstAttribute="top" secondItem="30O-FX-Au0" secondAttribute="top" id="oAT-dc-3C8"/>
-                                    <constraint firstAttribute="bottom" secondItem="gPg-Jk-hLp" secondAttribute="bottom" constant="31" id="oQH-le-Z9t"/>
-                                    <constraint firstItem="gPg-Jk-hLp" firstAttribute="leading" secondItem="OfJ-hJ-auQ" secondAttribute="leadingMargin" id="sGz-Wo-8C2"/>
-                                    <constraint firstItem="gPg-Jk-hLp" firstAttribute="top" secondItem="OfJ-hJ-auQ" secondAttribute="topMargin" id="wpC-pi-JdU"/>
+                                    <constraint firstItem="Wax-Ad-ma5" firstAttribute="leading" secondItem="IGc-qI-ult" secondAttribute="leading" constant="8" id="3ip-11-kh8"/>
+                                    <constraint firstItem="8vn-VK-bxw" firstAttribute="top" secondItem="Dii-l4-zlU" secondAttribute="bottom" constant="3" id="5NN-VM-kVB"/>
+                                    <constraint firstItem="w3C-AV-xdu" firstAttribute="bottom" secondItem="IGc-qI-ult" secondAttribute="bottomMargin" constant="24" id="5tJ-nJ-PfA"/>
+                                    <constraint firstItem="Dii-l4-zlU" firstAttribute="leading" secondItem="uXe-OB-N6e" secondAttribute="trailing" constant="28" id="9C4-oC-TY7"/>
+                                    <constraint firstItem="8vn-VK-bxw" firstAttribute="centerX" secondItem="Dii-l4-zlU" secondAttribute="centerX" id="9y6-er-gqO"/>
+                                    <constraint firstItem="uXe-OB-N6e" firstAttribute="top" secondItem="Dii-l4-zlU" secondAttribute="top" id="FJC-CH-tL6"/>
+                                    <constraint firstItem="uXe-OB-N6e" firstAttribute="bottom" secondItem="Dii-l4-zlU" secondAttribute="bottom" id="GfI-2H-DUK"/>
+                                    <constraint firstItem="uXe-OB-N6e" firstAttribute="height" secondItem="Wax-Ad-ma5" secondAttribute="height" id="J9n-Cd-9q9"/>
+                                    <constraint firstItem="7LA-jZ-ImX" firstAttribute="centerX" secondItem="uXe-OB-N6e" secondAttribute="centerX" id="KjM-cX-Tbq"/>
+                                    <constraint firstItem="uXe-OB-N6e" firstAttribute="top" secondItem="Wax-Ad-ma5" secondAttribute="top" id="Sb4-cl-UTx"/>
+                                    <constraint firstItem="w3C-AV-xdu" firstAttribute="baseline" secondItem="8vn-VK-bxw" secondAttribute="baseline" id="Sof-Vt-SIQ"/>
+                                    <constraint firstItem="Dii-l4-zlU" firstAttribute="height" secondItem="uXe-OB-N6e" secondAttribute="height" id="WfE-05-bR3"/>
+                                    <constraint firstItem="hIz-jJ-SBq" firstAttribute="centerX" secondItem="uXe-OB-N6e" secondAttribute="centerX" id="XQM-O9-vqh"/>
+                                    <constraint firstItem="7LA-jZ-ImX" firstAttribute="leading" secondItem="w3C-AV-xdu" secondAttribute="trailing" constant="20" id="c17-py-Ts3"/>
+                                    <constraint firstItem="w3C-AV-xdu" firstAttribute="top" secondItem="Wax-Ad-ma5" secondAttribute="bottom" constant="4" id="eE9-MA-6AE"/>
+                                    <constraint firstItem="hIz-jJ-SBq" firstAttribute="centerY" secondItem="uXe-OB-N6e" secondAttribute="centerY" id="fA0-uE-uel"/>
+                                    <constraint firstItem="7LA-jZ-ImX" firstAttribute="top" secondItem="uXe-OB-N6e" secondAttribute="bottom" constant="3" id="hxu-Ns-mIE"/>
+                                    <constraint firstItem="uXe-OB-N6e" firstAttribute="width" secondItem="Wax-Ad-ma5" secondAttribute="width" id="i4M-YL-x3E"/>
+                                    <constraint firstAttribute="trailing" secondItem="Dii-l4-zlU" secondAttribute="trailing" constant="9" id="kXP-qX-tt3"/>
+                                    <constraint firstItem="Dii-l4-zlU" firstAttribute="width" secondItem="uXe-OB-N6e" secondAttribute="width" id="kzM-mo-yeu"/>
+                                    <constraint firstItem="w3C-AV-xdu" firstAttribute="centerX" secondItem="Wax-Ad-ma5" secondAttribute="centerX" id="t9Q-Wn-QrY"/>
+                                    <constraint firstItem="Wax-Ad-ma5" firstAttribute="centerY" secondItem="IGc-qI-ult" secondAttribute="centerY" constant="8" id="tUc-lQ-IM3"/>
+                                    <constraint firstItem="uXe-OB-N6e" firstAttribute="centerX" secondItem="IGc-qI-ult" secondAttribute="centerX" id="yT6-Zk-NJ2"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="OfJ-hJ-auQ" firstAttribute="trailing" secondItem="EF7-r4-sXc" secondAttribute="trailingMargin" id="4bY-ZT-nhp"/>
-                            <constraint firstItem="OfJ-hJ-auQ" firstAttribute="top" secondItem="9s1-eD-zGm" secondAttribute="bottom" constant="8" id="5mE-Ec-FVg"/>
+                            <constraint firstItem="OfJ-hJ-auQ" firstAttribute="top" secondItem="9s1-eD-zGm" secondAttribute="bottom" id="5mE-Ec-FVg"/>
                             <constraint firstAttribute="trailing" secondItem="9s1-eD-zGm" secondAttribute="trailing" id="6k2-Kt-4MW"/>
                             <constraint firstItem="9s1-eD-zGm" firstAttribute="leading" secondItem="EF7-r4-sXc" secondAttribute="leading" id="Apo-Ad-K2z"/>
-                            <constraint firstItem="OfJ-hJ-auQ" firstAttribute="top" secondItem="EF7-r4-sXc" secondAttribute="top" constant="399" id="Nax-Nb-TtV"/>
+                            <constraint firstItem="OfJ-hJ-auQ" firstAttribute="height" secondItem="EF7-r4-sXc" secondAttribute="height" multiplier="0.2" id="LdE-bw-vny"/>
                             <constraint firstItem="9s1-eD-zGm" firstAttribute="top" secondItem="MWF-lv-xAB" secondAttribute="bottom" id="RgE-vh-3sV"/>
+                            <constraint firstItem="IGc-qI-ult" firstAttribute="top" secondItem="OfJ-hJ-auQ" secondAttribute="bottom" constant="-3" id="SyX-YZ-qd1"/>
                             <constraint firstItem="OfJ-hJ-auQ" firstAttribute="leading" secondItem="EF7-r4-sXc" secondAttribute="leadingMargin" id="dvv-3Q-xLJ"/>
+                            <constraint firstItem="IGc-qI-ult" firstAttribute="centerX" secondItem="EF7-r4-sXc" secondAttribute="centerX" id="g5n-yo-maG"/>
+                            <constraint firstItem="9s1-eD-zGm" firstAttribute="height" secondItem="EF7-r4-sXc" secondAttribute="height" multiplier="0.5" id="hZV-ta-nwq"/>
+                            <constraint firstAttribute="bottom" secondItem="IGc-qI-ult" secondAttribute="bottom" constant="20" symbolic="YES" id="kDP-XL-o6D"/>
                             <constraint firstItem="9s1-eD-zGm" firstAttribute="centerX" secondItem="OfJ-hJ-auQ" secondAttribute="centerX" id="pel-3w-hKC"/>
-                            <constraint firstItem="f1b-7Z-FVp" firstAttribute="top" secondItem="OfJ-hJ-auQ" secondAttribute="bottom" constant="92" id="txa-56-phv"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>

@@ -99,8 +99,6 @@ class ManageSetsTableViewController: UITableViewController {
             }
             var i = 0
             while i == 0 {
-                
-                print(results[i])
                 i += 1
             }
             
@@ -108,8 +106,6 @@ class ManageSetsTableViewController: UITableViewController {
                 realm.delete(editedResults)
                 for result in results {
                     if result.set > chosenSet {
-                        print("Result Set = \(result.set)")
-                        print("Chosen set = \(chosenSet)")
                         result.set -= 1
                     }
                 }
@@ -119,12 +115,6 @@ class ManageSetsTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.reloadData()
         }
-    }
-    
-    func addTarget() {
-        
-        print("target added")
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
