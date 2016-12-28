@@ -45,7 +45,7 @@ class QualificationsViewController: UIViewController {
     var doubleAverageGrade: Double?
     var averagePercentage: String?
     var doubleAveragePercentage: Double?
-        
+    
     let realm = try! Realm()
     
     var results: Results<Result> {
@@ -111,11 +111,11 @@ class QualificationsViewController: UIViewController {
         let resultsData = LineChartDataSet(values: mappedResults, label: "")
         
         // Format lines and circles
-        resultsData.colors = [UIColor.darkGray]
-        resultsData.lineWidth = 1
+        resultsData.colors = [UIColor.white]
+        resultsData.lineWidth = 2
         resultsData.circleColors = [backgroundColor!]
         resultsData.circleHoleColor = backgroundColor
-        resultsData.circleRadius = 5
+        resultsData.circleRadius = 0
         
         // format numbers on line
         let lineValueFormatter = NumberFormatter()
@@ -150,26 +150,42 @@ class QualificationsViewController: UIViewController {
             lineChartView.leftAxis.addLimitLine(trgt)
         }
         
+        lineChartView.highlightPerTapEnabled = false
+        
+        lineChartView.backgroundColor = backgroundColor
+        
         lineChartView.rightAxis.drawGridLinesEnabled = false
         lineChartView.rightAxis.drawLabelsEnabled = false
-        lineChartView.extraRightOffset = 20
+        lineChartView.rightAxis.axisLineColor = backgroundColor!
+        lineChartView.extraLeftOffset = 10
+        lineChartView.extraRightOffset = 40
+        lineChartView.extraTopOffset = 40
+        lineChartView.extraBottomOffset = 30
         
-        lineChartView.leftAxis.drawGridLinesEnabled = false
+        lineChartView.lineData?.setDrawValues(true)
+        
+        lineChartView.highlightPerTapEnabled = true
+        
+        lineChartView.leftAxis.drawGridLinesEnabled = true
+        lineChartView.leftAxis.axisLineColor = backgroundColor!
         lineChartView.leftAxis.axisMinimum = 0
         lineChartView.leftAxis.axisMaximum = 100
         lineChartView.leftAxis.labelFont = UIFont(name: "HelveticaNeue-Bold", size: 12)!
+        lineChartView.leftAxis.labelTextColor = UIColor.white
+        lineChartView.leftAxis.gridColor = UIColor.white
 
         lineChartView.xAxis.axisMinimum = 1
         lineChartView.xAxis.granularityEnabled = true
         lineChartView.xAxis.granularity = 1
         lineChartView.xAxis.labelPosition = .bottom
-        lineChartView.xAxis.gridColor = UIColor.white
+        lineChartView.xAxis.gridColor = backgroundColor!
         lineChartView.xAxis.labelFont = UIFont(name: "HelveticaNeue-Bold", size: 12)!
+        lineChartView.xAxis.labelTextColor = UIColor.white
         
         lineChartView.legend.enabled = false
         lineChartView.chartDescription?.enabled = false
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

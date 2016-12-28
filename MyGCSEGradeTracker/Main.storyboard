@@ -300,8 +300,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9s1-eD-zGm" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="19" y="72" width="338" height="285"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="327"/>
+                                <color key="backgroundColor" red="0.20886585867056795" green="0.60155738776569745" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
                                         <real key="value" value="2"/>
@@ -414,10 +414,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="OfJ-hJ-auQ" firstAttribute="trailing" secondItem="EF7-r4-sXc" secondAttribute="trailingMargin" id="4bY-ZT-nhp"/>
-                            <constraint firstItem="OfJ-hJ-auQ" firstAttribute="top" secondItem="9s1-eD-zGm" secondAttribute="bottom" constant="42" id="5mE-Ec-FVg"/>
+                            <constraint firstItem="OfJ-hJ-auQ" firstAttribute="top" secondItem="9s1-eD-zGm" secondAttribute="bottom" constant="8" id="5mE-Ec-FVg"/>
+                            <constraint firstAttribute="trailing" secondItem="9s1-eD-zGm" secondAttribute="trailing" id="6k2-Kt-4MW"/>
+                            <constraint firstItem="9s1-eD-zGm" firstAttribute="leading" secondItem="EF7-r4-sXc" secondAttribute="leading" id="Apo-Ad-K2z"/>
                             <constraint firstItem="OfJ-hJ-auQ" firstAttribute="top" secondItem="EF7-r4-sXc" secondAttribute="top" constant="399" id="Nax-Nb-TtV"/>
-                            <constraint firstItem="9s1-eD-zGm" firstAttribute="top" secondItem="MWF-lv-xAB" secondAttribute="bottom" constant="8" symbolic="YES" id="RgE-vh-3sV"/>
-                            <constraint firstItem="9s1-eD-zGm" firstAttribute="leading" secondItem="EF7-r4-sXc" secondAttribute="leadingMargin" constant="3" id="aNX-Vt-Jqc"/>
+                            <constraint firstItem="9s1-eD-zGm" firstAttribute="top" secondItem="MWF-lv-xAB" secondAttribute="bottom" id="RgE-vh-3sV"/>
                             <constraint firstItem="OfJ-hJ-auQ" firstAttribute="leading" secondItem="EF7-r4-sXc" secondAttribute="leadingMargin" id="dvv-3Q-xLJ"/>
                             <constraint firstItem="9s1-eD-zGm" firstAttribute="centerX" secondItem="OfJ-hJ-auQ" secondAttribute="centerX" id="pel-3w-hKC"/>
                             <constraint firstItem="f1b-7Z-FVp" firstAttribute="top" secondItem="OfJ-hJ-auQ" secondAttribute="bottom" constant="92" id="txa-56-phv"/>
