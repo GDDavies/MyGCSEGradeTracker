@@ -45,9 +45,7 @@ class QualificationsViewController: UIViewController {
     var doubleAverageGrade: Double?
     var averagePercentage: String?
     var doubleAveragePercentage: Double?
-    
-    var animateStats = true
-    
+        
     let realm = try! Realm()
     
     var results: Results<Result> {
@@ -282,7 +280,7 @@ class QualificationsViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if results.count != 0 && animateStats {
+        if results.count != 0 {
             let angle = convertToAngle(grade: Double(averageGradeCalc()!)!)
             let angle2 = convertToAngle2(percent: averagePercentageCalc()!)
             let angle3 = convertToAngle2(percent: percentVar3)
@@ -290,7 +288,6 @@ class QualificationsViewController: UIViewController {
             progressView2.animate(toAngle: angle2!, duration: 1.6, completion: nil)
             progressView3.animate(toAngle: angle3!, duration: 1.6, completion: nil)
             incrementLabel(to: Double(averageGradeCalc()!)!, secondEndValue: averagePercentageCalc()!, thirdEndValue: percentVar3)
-            animateStats = false
         }
     }
     
