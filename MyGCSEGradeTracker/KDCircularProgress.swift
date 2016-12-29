@@ -96,7 +96,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
         }
     }
     
-    @IBInspectable public var startAngle: Double = 0 {
+    @IBInspectable public var startAngle: Double = 270 {
         didSet {
             startAngle = Utility.mod(value: startAngle, range: 360, minMax: (0, 360))
             progressLayer.startAngle = startAngle
@@ -111,7 +111,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
         }
     }
     
-    @IBInspectable public var roundedCorners: Bool = true {
+    @IBInspectable public var roundedCorners: Bool = false {
         didSet {
             progressLayer.roundedCorners = roundedCorners
         }
@@ -136,27 +136,27 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
         }
     }
     
-    @IBInspectable public var glowMode: KDCircularProgressGlowMode = .forward {
+    @IBInspectable public var glowMode: KDCircularProgressGlowMode = .noGlow {
         didSet {
             progressLayer.glowMode = glowMode
         }
     }
     
-    @IBInspectable public var progressThickness: CGFloat = 0.4 {//Between 0 and 1
+    @IBInspectable public var progressThickness: CGFloat = 0.6 {//Between 0 and 1
         didSet {
             progressThickness = Utility.clamp(value: progressThickness, minMax: (0, 1))
             progressLayer.progressThickness = progressThickness/2
         }
     }
     
-    @IBInspectable public var trackThickness: CGFloat = 0.5 {//Between 0 and 1
+    @IBInspectable public var trackThickness: CGFloat = 0.6 {//Between 0 and 1
         didSet {
             trackThickness = Utility.clamp(value: trackThickness, minMax: (0, 1))
             progressLayer.trackThickness = trackThickness/2
         }
     }
     
-    @IBInspectable public var trackColor: UIColor = .black {
+    @IBInspectable public var trackColor: UIColor = .white {
         didSet {
             progressLayer.trackColor = trackColor
             progressLayer.setNeedsDisplay()
@@ -348,7 +348,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
                 }
             }
         }
-        var roundedCorners: Bool = true
+        var roundedCorners: Bool = false
         var lerpColorMode: Bool = false
         var gradientRotateSpeed: CGFloat = 0 {
             didSet {
@@ -358,8 +358,8 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
         var glowAmount: CGFloat = 0
         var glowMode: KDCircularProgressGlowMode = .forward
         var progressThickness: CGFloat = 0.5
-        var trackThickness: CGFloat = 0.5
-        var trackColor: UIColor = .black
+        var trackThickness: CGFloat = 0.6
+        var trackColor: UIColor = .white
         var progressInsideFillColor: UIColor = .clear
         var colorsArray: [UIColor] = [] {
             didSet {

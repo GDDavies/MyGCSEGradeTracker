@@ -73,14 +73,11 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
     
     func validateWeightings() -> Bool {
         var sum = 0
-        
-        // ******** BUG
-        //if componentWeightings[0] != "" && componentWeightings[1] != ""{
         for component in componentWeightings {
-            sum += Int(component)!
+            if component != "" {
+                sum += Int(component)!
+            }
         }
-        //}
-        
         if sum == 100 {
             return true
         } else {

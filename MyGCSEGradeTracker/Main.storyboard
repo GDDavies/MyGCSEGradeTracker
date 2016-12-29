@@ -601,18 +601,6 @@
                                     <action selector="saveResultSet:" destination="NAt-C3-ImJ" eventType="touchUpInside" id="ogZ-I1-yfo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JBQ-tr-tTs">
-                                <rect key="frame" x="0.0" y="600.5" width="375" height="66.5"/>
-                                <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
-                                <state key="normal" title="Save Set">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveResultSet:" destination="NAt-C3-ImJ" eventType="touchUpInside" id="2Pg-tJ-tyv"/>
-                                    <segue destination="AUj-Ge-0WR" kind="unwind" unwindAction="unwindToThisViewWithSender:" id="sSl-Cd-wwO"/>
-                                </connections>
-                            </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="puJ-vi-0bb">
                                 <rect key="frame" x="123.5" y="90" width="128" height="29"/>
                                 <constraints>
@@ -628,17 +616,13 @@
                         <constraints>
                             <constraint firstItem="owM-Nw-Z4B" firstAttribute="height" secondItem="iMx-ba-rhI" secondAttribute="height" multiplier="0.1" id="7lD-tE-3S0"/>
                             <constraint firstItem="p0e-Oj-i7j" firstAttribute="top" secondItem="owM-Nw-Z4B" secondAttribute="bottom" id="JZM-jL-Uaq"/>
-                            <constraint firstItem="JBQ-tr-tTs" firstAttribute="top" secondItem="WlO-Zn-Z4o" secondAttribute="bottom" constant="-0.5" id="OFh-fu-S7z"/>
-                            <constraint firstItem="JBQ-tr-tTs" firstAttribute="height" secondItem="owM-Nw-Z4B" secondAttribute="height" id="Rz7-5n-fWZ"/>
+                            <constraint firstItem="owM-Nw-Z4B" firstAttribute="top" secondItem="WlO-Zn-Z4o" secondAttribute="bottom" constant="-1" id="RSI-vL-5gL"/>
                             <constraint firstAttribute="trailing" secondItem="owM-Nw-Z4B" secondAttribute="trailing" id="b7L-fd-jCx"/>
                             <constraint firstItem="owM-Nw-Z4B" firstAttribute="leading" secondItem="iMx-ba-rhI" secondAttribute="leading" id="bQI-N7-nbZ"/>
                             <constraint firstItem="puJ-vi-0bb" firstAttribute="centerX" secondItem="iMx-ba-rhI" secondAttribute="centerX" id="ebA-JK-z7Q"/>
                             <constraint firstItem="WlO-Zn-Z4o" firstAttribute="leading" secondItem="iMx-ba-rhI" secondAttribute="leading" id="ejQ-GQ-akb"/>
-                            <constraint firstItem="JBQ-tr-tTs" firstAttribute="leading" secondItem="iMx-ba-rhI" secondAttribute="leading" id="ey2-8W-XoN"/>
                             <constraint firstItem="puJ-vi-0bb" firstAttribute="top" secondItem="dU3-od-Ndy" secondAttribute="bottom" constant="26" id="k77-wy-V1K"/>
                             <constraint firstItem="WlO-Zn-Z4o" firstAttribute="top" secondItem="puJ-vi-0bb" secondAttribute="bottom" constant="20" id="mAk-1R-3Fw"/>
-                            <constraint firstAttribute="trailing" secondItem="JBQ-tr-tTs" secondAttribute="trailing" id="pgU-bT-mRh"/>
-                            <constraint firstItem="p0e-Oj-i7j" firstAttribute="top" secondItem="JBQ-tr-tTs" secondAttribute="bottom" id="rRH-9a-TcW"/>
                             <constraint firstAttribute="trailing" secondItem="WlO-Zn-Z4o" secondAttribute="trailing" id="uKM-PY-lqS"/>
                         </constraints>
                     </view>
@@ -651,15 +635,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="componentsTableView" destination="WlO-Zn-Z4o" id="lkC-x8-YzG"/>
-                        <outlet property="disabledSaveButtonBtmConstraint" destination="rRH-9a-TcW" id="oeY-8q-CPT"/>
-                        <outlet property="disabledSaveSetButton" destination="JBQ-tr-tTs" id="AKo-Ft-Q04"/>
                         <outlet property="enabledSaveButtonBtmConstraint" destination="JZM-jL-Uaq" id="PTL-vE-ArH"/>
                         <outlet property="resultType" destination="puJ-vi-0bb" id="y4e-61-c30"/>
                         <outlet property="saveSetButton" destination="owM-Nw-Z4B" id="hHi-IX-8di"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2iG-V8-5zi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="AUj-Ge-0WR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4682.3999999999996" y="1216.6416791604199"/>
         </scene>

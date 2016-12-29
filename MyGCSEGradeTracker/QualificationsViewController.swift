@@ -258,30 +258,8 @@ class QualificationsViewController: UIViewController {
     
     // MARK Stats Box
     func setupProgressViews(){
-        progressView.startAngle = 270
-        progressView.progressThickness = 0.6
-        progressView.roundedCorners = false
-        progressView.trackThickness = 0.6
-        progressView.trackColor = UIColor.white
-        progressView.glowMode = .noGlow
         progressView.set(colors: backgroundColor!)
-        
-        progressView2.startAngle = 270
-        progressView2.progressThickness = 0.6
-        progressView2.trackThickness = 0.0
-        progressView2.roundedCorners = false
-        progressView2.trackThickness = 0.6
-        progressView2.trackColor = UIColor.white
-        progressView2.glowMode = .noGlow
         progressView2.set(colors: backgroundColor!)
-        
-        progressView3.startAngle = 270
-        progressView3.progressThickness = 0.6
-        progressView3.trackThickness = 0.0
-        progressView3.roundedCorners = false
-        progressView3.trackThickness = 0.6
-        progressView3.trackColor = UIColor.white
-        progressView3.glowMode = .noGlow
         progressView3.set(colors: backgroundColor!)
     }
     

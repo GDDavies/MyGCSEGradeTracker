@@ -25,13 +25,13 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
     
     var grades: Grade?
     
-    var resultsArray = [Int]()
+    //var resultsDictionary = [Int]()
+    
+    var resultsDictionary: [Int:Int] = [:]
     
     var resultSet = [Result]()
     
     @IBOutlet weak var saveSetButton: UIButton!
-    @IBOutlet weak var disabledSaveSetButton: UIButton!
-    @IBOutlet weak var disabledSaveButtonBtmConstraint: NSLayoutConstraint!
     @IBOutlet weak var enabledSaveButtonBtmConstraint: NSLayoutConstraint!
     
     var backgroundColor: UIColor?
@@ -65,23 +65,12 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        
-        //disableButton() *****
-        enableButton()
-        
-        //saveResultButton.setTitleColor(backgroundColor, for: .normal)
-        //datePicker.setValue(UIColor.white, forKey: "textColor")
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
-        resultType.addTarget(self, action: #selector(resultTypeChanged), for: .touchUpInside)
         resultType.tintColor = self.backgroundColor
-        
+        saveSetButton.backgroundColor = self.backgroundColor
         self.title = "Input Results"
-        
-        populateResultsArray()
     }
     
     func keyboardWillShow(notification: NSNotification) {
@@ -89,7 +78,6 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
         let keyboardHeight = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
         
         UIView.animate(withDuration: 0.3) {
-            self.disabledSaveButtonBtmConstraint.constant = keyboardHeight
             self.enabledSaveButtonBtmConstraint.constant = keyboardHeight
         }
         self.view.layoutIfNeeded();
@@ -97,26 +85,9 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func keyboardWillHide(notification: NSNotification) {
         UIView.animate(withDuration: 0.3) {
-            self.disabledSaveButtonBtmConstraint.constant = 0
             self.enabledSaveButtonBtmConstraint.constant = 0
         }
         self.view.layoutIfNeeded();
-    }
-    
-    func disableButton() {
-        disabledSaveSetButton.isEnabled = false
-        disabledSaveSetButton.isHidden = false
-        saveSetButton.isHidden = true
-    }
-    
-    func enableButton() {
-        saveSetButton.backgroundColor = self.backgroundColor
-        disabledSaveSetButton.isHidden = true
-        saveSetButton.isHidden = false
-    }
-    
-    func resultTypeChanged() {
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -136,48 +107,37 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
                 newResult.type = segmentResultType
                 resultTypeString = segmentResultType
             }
-            
+            if resultTypeString == "Grade" {
+                convertedResult = resultsDictionary[i - 1]! * 10
+            } else {
+                convertedResult = resultsDictionary[i - 1]
+            }
             newResult.qualification = selectedQualification.name
             newResult.component = "Component \(i)"
-            
-            if resultTypeString == "Grade" {
-                convertedResult = resultsArray[i - 1] * 10
-            } else {
-                convertedResult = resultsArray[i - 1]
-            }
-            
             newResult.result = convertedResult!
-            
-            //     newResult.date = datePicker.date
             newResult.set = (results.count / components.count) + 1
             
             resultSet.append(newResult)
-            
-            if resultsArray.count == components.count {
-                enableButton()
-            }
             componentsTableView.reloadData()
         }
-                
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func exitView(_ sender: UIButton) {
-    }
-    
     @IBAction func saveResultSet(_ sender: UIButton) {
-        
-        saveResults()
-        
-        let realm = try! Realm()
-        
-        try! realm.write {
-            realm.add(resultSet)
+        if resultsDictionary.count == components.count {
+            saveResults()
+            
+            let realm = try! Realm()
+            try! realm.write {
+                realm.add(resultSet)
+            }
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadResults"), object: nil)
+            _ = self.navigationController?.popViewController(animated: true)
+        } else {
+            let alert = UIAlertController(title: "Missing Information", message: "Please enter a result for each component", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
-        
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadResults"), object: nil)
-        
-        _ = self.navigationController?.popViewController(animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -190,13 +150,10 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
         let currentValue = Int(sender.text!)
         let textRow = sender.tag
         
-        resultsArray.remove(at: textRow)
-        resultsArray.insert(currentValue!, at: textRow) // BUG
-    }
-    
-    func populateResultsArray() {
-        for _ in 1...components.count {
-            resultsArray.append(0)
+        resultsDictionary.removeValue(forKey: textRow)
+        
+        if let unwrappedValue = currentValue {
+            resultsDictionary[textRow] = unwrappedValue
         }
     }
     
@@ -207,26 +164,14 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell4", for: indexPath) as! CustomTableViewCell
-        
         let component = components[(indexPath as NSIndexPath).row]
-        
-        if indexPath.row == completedComponents {
-        //cell.accessoryType = .checkmark
-        }
         
         cell.labelOutlet?.text = component.name
         cell.placeholderTextOutlet.tag = indexPath.row
         cell.placeholderTextOutlet.addTarget(self, action: #selector(textViewValueChange), for: .editingChanged)
         cell.placeholderTextOutlet.keyboardType = UIKeyboardType.numberPad
         cell.selectionStyle = .none
-        
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        resultTextField.text = ""
-//        weightingTextField.text = ""
-//        completedComponents = indexPath.row
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
