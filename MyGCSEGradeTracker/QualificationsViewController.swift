@@ -232,8 +232,6 @@ class QualificationsViewController: UIViewController {
     func setupProgressViews(){
         progressView.set(colors: backgroundColor!)
         progressView2.set(colors: backgroundColor!)
-//       progressView3.set(colors: backgroundColor!)
-//        progressView4.set(colors: backgroundColor!)
         progressView5.set(colors: backgroundColor!)
         progressView6.set(colors: backgroundColor!)
     }
@@ -242,14 +240,14 @@ class QualificationsViewController: UIViewController {
         if results.count != 0 {
             let angle = convertToAngle(grade: Double(averageGradeCalc()!)!)
             let angle2 = convertToAngle2(percent: averagePercentageCalc()!)
-            let angle5 = 270
+            let angle5 = convertToAngle2(percent: averageLastThreeCalc())
             let angle6 = 180
 
             progressView.animate(toAngle: angle!, duration: 1.6, completion: nil)
             progressView2.animate(toAngle: angle2!, duration: 1.6, completion: nil)
-            progressView5.animate(toAngle: Double(angle5), duration: 1.6, completion: nil)
+            progressView5.animate(toAngle: Double(angle5!), duration: 1.6, completion: nil)
             progressView6.animate(toAngle: Double(angle6), duration: 1.6, completion: nil)
-            incrementLabel(to: Double(averageGradeCalc()!)!, secondEndValue: averagePercentageCalc()!, thirdEndValue: numberOfSetsCalc(), fourthEndValue: differenceFromTargetCalc(), fifthEndValue: 75.0, sixthEndValue: 50.0)
+            incrementLabel(to: Double(averageGradeCalc()!)!, secondEndValue: averagePercentageCalc()!, thirdEndValue: numberOfSetsCalc(), fourthEndValue: differenceFromTargetCalc(), fifthEndValue: averageLastThreeCalc(), sixthEndValue: 50.0)
         }
     }
     
@@ -322,7 +320,11 @@ class QualificationsViewController: UIViewController {
     }
     
     func averageLastThreeCalc() -> Double {
-        return 0.0
+        var sum = 0.0
+        for i in stride(from: setResultsArray.count - 1, to: setResultsArray.count - 4, by: -1) {
+            sum += setResultsArray[i]
+        }
+        return sum / 3
     }
     
     func lastThreeChangeCalc() {
