@@ -19,24 +19,20 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
     var selectedGrade: String?
     var selectedDate: Date?
     
+    @IBOutlet weak var componentsTableView: UITableView!
+    
     var completedComponents: Int?
     
     let dateFormatter = DateFormatter()
     
     var grades: Grade?
-    
-    //var resultsDictionary = [Int]()
-    
     var resultsDictionary: [Int:Int] = [:]
-    
     var resultSet = [Result]()
     
     @IBOutlet weak var saveSetButton: UIButton!
     @IBOutlet weak var enabledSaveButtonBtmConstraint: NSLayoutConstraint!
     
     var backgroundColor: UIColor?
-    
-    @IBOutlet weak var componentsTableView: UITableView!
     
     let realm = try! Realm()
     
@@ -124,7 +120,7 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func saveResultSet(_ sender: UIButton) {
-        if resultsDictionary.count == components.count {
+        if resultsDictionary.count == components.count && resultsValidated() {
             saveResults()
             
             let realm = try! Realm()
@@ -133,16 +129,59 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
             }
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadResults"), object: nil)
             _ = self.navigationController?.popViewController(animated: true)
+        } else if !resultsValidated() {
+            if resultType.titleForSegment(at: resultType.selectedSegmentIndex) == "Grade" {
+                let alert = UIAlertController(title: "Incorrect Result", message: "Please enter results between 1-9", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "Incorrect Result", message: "Please enter results between 0-100", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         } else {
             let alert = UIAlertController(title: "Missing Information", message: "Please enter a result for each component", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
+    func resultsValidated() -> Bool {
+        if resultsDictionary.count == components.count {
+            if resultType.titleForSegment(at: resultType.selectedSegmentIndex) == "Grade" {
+                var j = 0
+                for i in 0..<components.count {
+                    if resultsDictionary[i]! > 0 && resultsDictionary[i]! < 10 {
+                        j += 1
+                        print(j)
+                    }
+                }
+                if j == components.count {
+                    print("components count = \(components.count)")
+                    return true
+                } else {
+                    return false
+                }
+            } else if resultType.titleForSegment(at: resultType.selectedSegmentIndex) == "%" {
+                var j = 0
+                for i in 0..<components.count {
+                    print(resultsDictionary)
+                    if resultsDictionary[i]! >= 0 && resultsDictionary[i]! <= 100 {
+                        j += 1
+                    }
+                }
+                if j == components.count {
+                    return true
+                } else {
+                    return false
+                }
+            }
+        }
+    return false
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func textViewValueChange(sender: UITextField) {
@@ -159,7 +198,6 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return components.count
-
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -178,6 +216,5 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
         selectedComponent = components[indexPath.row]
         return indexPath
     }
-    
 }
 

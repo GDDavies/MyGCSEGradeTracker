@@ -634,7 +634,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="componentsTableView" destination="WlO-Zn-Z4o" id="lkC-x8-YzG"/>
+                        <outlet property="componentsTableView" destination="WlO-Zn-Z4o" id="exo-A8-Oc9"/>
                         <outlet property="enabledSaveButtonBtmConstraint" destination="JZM-jL-Uaq" id="PTL-vE-ArH"/>
                         <outlet property="resultType" destination="puJ-vi-0bb" id="y4e-61-c30"/>
                         <outlet property="saveSetButton" destination="owM-Nw-Z4B" id="hHi-IX-8di"/>
