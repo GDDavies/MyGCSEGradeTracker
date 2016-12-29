@@ -153,11 +153,9 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
                 for i in 0..<components.count {
                     if resultsDictionary[i]! > 0 && resultsDictionary[i]! < 10 {
                         j += 1
-                        print(j)
                     }
                 }
                 if j == components.count {
-                    print("components count = \(components.count)")
                     return true
                 } else {
                     return false
@@ -165,7 +163,6 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
             } else if resultType.titleForSegment(at: resultType.selectedSegmentIndex) == "%" {
                 var j = 0
                 for i in 0..<components.count {
-                    print(resultsDictionary)
                     if resultsDictionary[i]! >= 0 && resultsDictionary[i]! <= 100 {
                         j += 1
                     }

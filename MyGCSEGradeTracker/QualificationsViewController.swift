@@ -17,11 +17,8 @@ class QualificationsViewController: UIViewController {
     var selectedComponent: Component!
     
     var setResultsArray = [Double]()
-    
     var backgroundColor: UIColor?
-    
     var sourceCell: CustomQualificationCollectionViewCell?
-    
     var target: Double?
     
     @IBOutlet weak var lineChartView: LineChartView!
@@ -32,14 +29,23 @@ class QualificationsViewController: UIViewController {
     @IBOutlet weak var progressView: KDCircularProgress!
     @IBOutlet weak var progressView2: KDCircularProgress!
     @IBOutlet weak var progressView3: KDCircularProgress!
+    @IBOutlet weak var progressView4: KDCircularProgress!
+    @IBOutlet weak var progressView5: KDCircularProgress!
+    @IBOutlet weak var progressView6: KDCircularProgress!
     
     @IBOutlet weak var percentLabel: SACountingLabel!
     @IBOutlet weak var percentLabel2: SACountingLabel!
     @IBOutlet weak var percentLabel3: SACountingLabel!
+    @IBOutlet weak var percentLabel4: SACountingLabel!
+    @IBOutlet weak var percentLabel5: SACountingLabel!
+    @IBOutlet weak var percentLabel6: SACountingLabel!
     
     @IBOutlet weak var averageGradeLabel: UILabel!
     @IBOutlet weak var averagePercentLabel: UILabel!
-    @IBOutlet weak var lastThreePercentLabel: UILabel!
+    @IBOutlet weak var numberOfSets: UILabel!
+    @IBOutlet weak var diffFromTarget: UILabel!
+    @IBOutlet weak var averageLastThree: UILabel!
+    @IBOutlet weak var changeLastThree: UILabel!
     
     var averageGrade: String?
     var doubleAverageGrade: Double?
@@ -47,19 +53,16 @@ class QualificationsViewController: UIViewController {
     var doubleAveragePercentage: Double?
     
     let realm = try! Realm()
-    
     var results: Results<Result> {
         get {
             return try! Realm().objects(Result.self).filter("qualification == '\(selectedQual!)'")
         }
     }
-    
     var components: Results<Component> {
         get {
             return try! Realm().objects(Component.self).filter("qualification == '\(selectedQual!)'")
         }
     }
-    
     var qualifications: Results<Qualification> {
         get {
             return try! Realm().objects(Qualification.self).filter("name == '\(selectedQual!)'")
@@ -68,29 +71,28 @@ class QualificationsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         selectedQual = selectedQualification.name
         backgroundColor = sourceCell?.backgroundColor
-    
         self.title = selectedQual
-        
-        //NotificationCenter.default.addObserver(self, selector: #selector(loadResults(_:)), name: NSNotification.Name(rawValue: "loadResults"), object: nil)
-        
         _ = averageGradeCalc()
         _ = averagePercentageCalc()
-        
         setupProgressViews()
         
         percentLabel.textColor = UIColor.white
         percentLabel2.textColor = UIColor.white
         percentLabel3.textColor = UIColor.white
+        percentLabel4.textColor = UIColor.white
+        percentLabel5.textColor = UIColor.white
+        percentLabel6.textColor = UIColor.white
         
         averageGradeLabel.textColor = UIColor.white
         averagePercentLabel.textColor = UIColor.white
-        lastThreePercentLabel.textColor = UIColor.white
+        numberOfSets.textColor = UIColor.white
+        diffFromTarget.textColor = UIColor.white
+        averageLastThree.textColor = UIColor.white
+        changeLastThree.textColor = UIColor.white
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Results", style: .plain, target: self, action: #selector(addResultsTapped))
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -104,9 +106,7 @@ class QualificationsViewController: UIViewController {
     }
     
     func setChart(values: [Double]) {
-        
         let mappedResults = values.enumerated().map { x, y in return ChartDataEntry(x: Double(x+1), y: y) }
-
         let data = LineChartData()
         let resultsData = LineChartDataSet(values: mappedResults, label: "")
         
@@ -154,7 +154,6 @@ class QualificationsViewController: UIViewController {
         }
         
         lineChartView.highlightPerTapEnabled = false
-        
         lineChartView.backgroundColor = backgroundColor
         
         lineChartView.rightAxis.drawGridLinesEnabled = false
@@ -189,40 +188,12 @@ class QualificationsViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func averageGradeCalc() -> String? {
-        var sum = 0.0
-        for i in 0..<setResultsArray.count {
-            sum += round(setResultsArray[i] / 10)
-        }
-        let fmt = NumberFormatter()
-        fmt.maximumIntegerDigits = 1
-        let output = sum / (Double(results.count) / Double(components.count))
-        averageGrade = fmt.string(from: NSNumber(value: output))
-        return averageGrade
-    }
-    
-    func averagePercentageCalc() -> Double? {
-        var sum = 0.0
-        for i in 0..<setResultsArray.count {
-            sum += setResultsArray[i]
-        }
-        let fmt = NumberFormatter()
-        fmt.maximumIntegerDigits = 2
-        let output = round(sum / (Double(results.count) / Double(components.count)))
-        averagePercentage = fmt.string(from: NSNumber(value: output))
-        return output
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddResults" {
-            
             let svc = segue.destination as? UINavigationController
-            
             let controller = svc?.topViewController as! ResultsSetViewController
-            
             controller.selectedQual = selectedQual
             controller.selectedQualification = selectedQualification
             controller.selectedComponent = selectedComponent
@@ -260,18 +231,28 @@ class QualificationsViewController: UIViewController {
     func setupProgressViews(){
         progressView.set(colors: backgroundColor!)
         progressView2.set(colors: backgroundColor!)
-        progressView3.set(colors: backgroundColor!)
+//       progressView3.set(colors: backgroundColor!)
+//        progressView4.set(colors: backgroundColor!)
+        progressView5.set(colors: backgroundColor!)
+        progressView6.set(colors: backgroundColor!)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         if results.count != 0 {
             let angle = convertToAngle(grade: Double(averageGradeCalc()!)!)
             let angle2 = convertToAngle2(percent: averagePercentageCalc()!)
-            let angle3 = convertToAngle2(percent: percentVar3)
+ //           let angle3 = convertToAngle2(percent: percentVar3)
+//            let angle4 = 90
+            let angle5 = 270
+            let angle6 = 180
+
             progressView.animate(toAngle: angle!, duration: 1.6, completion: nil)
             progressView2.animate(toAngle: angle2!, duration: 1.6, completion: nil)
-            progressView3.animate(toAngle: angle3!, duration: 1.6, completion: nil)
-            incrementLabel(to: Double(averageGradeCalc()!)!, secondEndValue: averagePercentageCalc()!, thirdEndValue: percentVar3)
+//            progressView3.animate(toAngle: angle3!, duration: 1.6, completion: nil)
+//            progressView4.animate(toAngle: Double(angle4), duration: 1.6, completion: nil)
+            progressView5.animate(toAngle: Double(angle5), duration: 1.6, completion: nil)
+            progressView6.animate(toAngle: Double(angle6), duration: 1.6, completion: nil)
+            incrementLabel(to: Double(averageGradeCalc()!)!, secondEndValue: averagePercentageCalc()!, thirdEndValue: percentVar3, fourthEndValue: 25.0, fifthEndValue: 75.0, sixthEndValue: 50.0)
         }
     }
     
@@ -285,13 +266,51 @@ class QualificationsViewController: UIViewController {
         return angle
     }
     
-    func incrementLabel(to firstEndValue: Double, secondEndValue: Double, thirdEndValue: Double) {
-        
+    func incrementLabel(to firstEndValue: Double, secondEndValue: Double, thirdEndValue: Double, fourthEndValue: Double, fifthEndValue: Double, sixthEndValue: Double) {
         percentLabel.countFrom(fromValue: 0, to: Float(firstEndValue), withDuration: animationDuration, andAnimationType: .Linear, andCountingType: .Int)
         percentLabel2.format = "%.0f%%"
         percentLabel2.countFrom(fromValue: 0, to: Float(secondEndValue), withDuration: animationDuration, andAnimationType: .Linear, andCountingType: .Custom)
-        percentLabel3.format = "%.0f%%"
-        percentLabel3.countFrom(fromValue: 0, to: Float(thirdEndValue), withDuration: animationDuration, andAnimationType: .Linear, andCountingType: .Custom)
+//        percentLabel3.format = "%.0f%%"
+        percentLabel3.countFrom(fromValue: 0, to: Float(thirdEndValue), withDuration: animationDuration, andAnimationType: .Linear, andCountingType: .Int)
+        percentLabel4.format = "+%.0f%"
+        percentLabel4.countFrom(fromValue: 0, to: Float(fourthEndValue), withDuration: animationDuration, andAnimationType: .Linear, andCountingType: .Custom)
+        percentLabel5.format = "%.0f%%"
+        percentLabel5.countFrom(fromValue: 0, to: Float(fifthEndValue), withDuration: animationDuration, andAnimationType: .Linear, andCountingType: .Custom)
+        percentLabel6.format = "%.0f%%"
+        percentLabel6.countFrom(fromValue: 0, to: Float(sixthEndValue), withDuration: animationDuration, andAnimationType: .Linear, andCountingType: .Custom)
+    }
+    
+    // MARK: Stats labels functions
+    func averageGradeCalc() -> String? {
+        var sum = 0.0
+        for i in 0..<setResultsArray.count {
+            sum += round(setResultsArray[i] / 10)
+        }
+        let fmt = NumberFormatter()
+        fmt.maximumIntegerDigits = 1
+        let output = sum / (Double(results.count) / Double(components.count))
+        averageGrade = fmt.string(from: NSNumber(value: output))
+        return averageGrade
+    }
+    
+    func averagePercentageCalc() -> Double? {
+        var sum = 0.0
+        for i in 0..<setResultsArray.count {
+            sum += setResultsArray[i]
+        }
+        let fmt = NumberFormatter()
+        fmt.maximumIntegerDigits = 2
+        let output = round(sum / (Double(results.count) / Double(components.count)))
+        averagePercentage = fmt.string(from: NSNumber(value: output))
+        return output
+    }
+    
+    func averageLastThreeCalc() -> Double {
+        return 0.0
+    }
+    
+    func lastThreeChange() {
+        
     }
 }
 
