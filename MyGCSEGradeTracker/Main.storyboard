@@ -468,20 +468,20 @@
                                             <constraint firstItem="VSu-3e-dPG" firstAttribute="centerX" secondItem="0kH-hR-jTn" secondAttribute="centerX" id="CKP-CL-mbk"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AV. GRADE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSI-xK-qYg">
-                                        <rect key="frame" x="11" y="107" width="85" height="19"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TARGET DIFF." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSI-xK-qYg">
+                                        <rect key="frame" x="0.0" y="106" width="106" height="20"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AV. PERCENT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARD-A1-r9B">
-                                        <rect key="frame" x="116" y="106" width="111" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AV. LAST 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARD-A1-r9B">
+                                        <rect key="frame" x="116" y="105" width="111" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO. SETS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6AP-fr-m8U">
-                                        <rect key="frame" x="252" y="108" width="75" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DIFF. LAST 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6AP-fr-m8U">
+                                        <rect key="frame" x="241" y="107" width="96" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="4Ov-bV-Thl"/>
                                         </constraints>
@@ -513,11 +513,14 @@
                             <constraint firstItem="umD-GY-OHq" firstAttribute="width" secondItem="OfJ-hJ-auQ" secondAttribute="width" id="4hZ-6y-F84"/>
                             <constraint firstItem="OfJ-hJ-auQ" firstAttribute="top" secondItem="9s1-eD-zGm" secondAttribute="bottom" id="5mE-Ec-FVg"/>
                             <constraint firstAttribute="trailing" secondItem="9s1-eD-zGm" secondAttribute="trailing" id="6k2-Kt-4MW"/>
+                            <constraint firstItem="0kH-hR-jTn" firstAttribute="centerX" secondItem="30O-FX-Au0" secondAttribute="centerX" id="AcR-43-31O"/>
                             <constraint firstItem="9s1-eD-zGm" firstAttribute="leading" secondItem="EF7-r4-sXc" secondAttribute="leading" id="Apo-Ad-K2z"/>
+                            <constraint firstItem="ZmH-Kv-lll" firstAttribute="centerX" secondItem="gPg-Jk-hLp" secondAttribute="centerX" id="FRo-Qg-IEs"/>
                             <constraint firstItem="umD-GY-OHq" firstAttribute="centerX" secondItem="EF7-r4-sXc" secondAttribute="centerX" id="GBY-ZG-A8z"/>
                             <constraint firstItem="OfJ-hJ-auQ" firstAttribute="height" secondItem="EF7-r4-sXc" secondAttribute="height" multiplier="0.2" id="LdE-bw-vny"/>
                             <constraint firstItem="umD-GY-OHq" firstAttribute="height" secondItem="OfJ-hJ-auQ" secondAttribute="height" id="OO3-wh-jhG"/>
                             <constraint firstItem="9s1-eD-zGm" firstAttribute="top" secondItem="MWF-lv-xAB" secondAttribute="bottom" id="RgE-vh-3sV"/>
+                            <constraint firstItem="Nt6-8P-pCe" firstAttribute="centerX" secondItem="sql-LU-0rg" secondAttribute="centerX" id="Rte-iy-9px"/>
                             <constraint firstItem="0kH-hR-jTn" firstAttribute="width" secondItem="gPg-Jk-hLp" secondAttribute="width" id="XnR-is-plL"/>
                             <constraint firstItem="OfJ-hJ-auQ" firstAttribute="leading" secondItem="EF7-r4-sXc" secondAttribute="leadingMargin" id="dvv-3Q-xLJ"/>
                             <constraint firstItem="0kH-hR-jTn" firstAttribute="height" secondItem="gPg-Jk-hLp" secondAttribute="height" id="evQ-5a-0gF"/>
