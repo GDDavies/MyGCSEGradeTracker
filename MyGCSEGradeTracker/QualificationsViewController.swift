@@ -78,19 +78,19 @@ class QualificationsViewController: UIViewController {
         _ = averagePercentageCalc()
         setupProgressViews()
         
-        percentLabel.textColor = UIColor.white
-        percentLabel2.textColor = UIColor.white
-        percentLabel3.textColor = UIColor.white
-        percentLabel4.textColor = UIColor.white
-        percentLabel5.textColor = UIColor.white
-        percentLabel6.textColor = UIColor.white
+        percentLabel.textColor = UIColor.lightGray
+        percentLabel2.textColor = UIColor.lightGray
+        percentLabel3.textColor = UIColor.lightGray
+        percentLabel4.textColor = UIColor.lightGray
+        percentLabel5.textColor = UIColor.lightGray
+        percentLabel6.textColor = UIColor.lightGray
         
-        averageGradeLabel.textColor = UIColor.white
-        averagePercentLabel.textColor = UIColor.white
-        numberOfSets.textColor = UIColor.white
-        diffFromTarget.textColor = UIColor.white
-        averageLastThree.textColor = UIColor.white
-        changeLastThree.textColor = UIColor.white
+        averageGradeLabel.textColor = UIColor.lightGray
+        averagePercentLabel.textColor = UIColor.lightGray
+        numberOfSets.textColor = UIColor.lightGray
+        diffFromTarget.textColor = UIColor.lightGray
+        averageLastThree.textColor = UIColor.lightGray
+        changeLastThree.textColor = UIColor.lightGray
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Results", style: .plain, target: self, action: #selector(addResultsTapped))
     }
@@ -116,8 +116,8 @@ class QualificationsViewController: UIViewController {
         resultsData.circleColors = [backgroundColor!]
         resultsData.circleHoleColor = backgroundColor
         resultsData.circleRadius = 0
-        resultsData.valueFont = UIFont(name: "HelveticaNeue-Bold", size: 8)!
-        resultsData.valueTextColor = UIColor.white
+        resultsData.valueFont = UIFont(name: "HelveticaNeue-Bold", size: 10)!
+        resultsData.valueTextColor = UIColor.black
         resultsData.highlightColor = UIColor.white
         
         // format numbers on line

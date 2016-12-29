@@ -156,7 +156,7 @@ public class KDCircularProgress: UIView, CAAnimationDelegate {
         }
     }
     
-    @IBInspectable public var trackColor: UIColor = .white {
+    @IBInspectable public var trackColor: UIColor = .lightGray {
         didSet {
             progressLayer.trackColor = trackColor
             progressLayer.setNeedsDisplay()

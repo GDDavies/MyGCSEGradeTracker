@@ -391,7 +391,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="sql-LU-0rg" firstAttribute="centerX" secondItem="OfJ-hJ-auQ" secondAttribute="centerX" id="7jQ-sy-uNR"/>
                                     <constraint firstItem="JmS-11-fWx" firstAttribute="firstBaseline" secondItem="urF-nQ-Ge9" secondAttribute="firstBaseline" id="AXH-sf-dFP"/>
@@ -490,7 +490,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="ZmH-Kv-lll" firstAttribute="centerY" secondItem="umD-GY-OHq" secondAttribute="centerY" id="3gM-p7-3NG"/>
                                     <constraint firstItem="0kH-hR-jTn" firstAttribute="leading" secondItem="ARD-A1-r9B" secondAttribute="trailing" constant="17" id="9Ba-eG-Tqj"/>
@@ -507,7 +507,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="OfJ-hJ-auQ" firstAttribute="trailing" secondItem="EF7-r4-sXc" secondAttribute="trailingMargin" id="4bY-ZT-nhp"/>
                             <constraint firstItem="umD-GY-OHq" firstAttribute="width" secondItem="OfJ-hJ-auQ" secondAttribute="width" id="4hZ-6y-F84"/>
