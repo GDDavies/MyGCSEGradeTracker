@@ -244,7 +244,7 @@ class QualificationsViewController: UIViewController {
             progressView.animate(toAngle: angle!, duration: 1.6, completion: nil)
             progressView2.animate(toAngle: angle2!, duration: 1.6, completion: nil)
             progressView3.animate(toAngle: Double(angle3!), duration: 1.6, completion: nil)
-            incrementLabel(to: Double(averageGradeCalc()!)!, secondEndValue: averagePercentageCalc()!, thirdEndValue: averageLastThreeCalc(), fourthEndValue: differenceFromTargetCalc(), fifthEndValue: numberOfSetsCalc(), sixthEndValue: lastThreeChangeCalc())
+            incrementLabel(to: Double(averageGradeCalc()!)!, secondEndValue: averagePercentageCalc()!, thirdEndValue: averageLastThreeCalc(), fourthEndValue: numberOfSetsCalc(), fifthEndValue: lastTwoChangeCalc(), sixthEndValue: differenceFromTargetCalc())
         }
     }
     
@@ -265,17 +265,17 @@ class QualificationsViewController: UIViewController {
         percentLabel3.format = "%.0f%%"
         percentLabel3.countFrom(fromValue: 0, to: Float(thirdEndValue), withDuration: animationDuration, andAnimationType: .Linear, andCountingType: .Custom)
         
-        let label4PositiveOrNegative = differenceFromTargetCalc()
-        if label4PositiveOrNegative >= 0 {
-            percentLabel4.format = "+%.0f%%"
+        percentLabel4.countFrom(fromValue: 0, to: Float(fourthEndValue), withDuration: animationDuration, andAnimationType: .Linear, andCountingType: .Int)
+        
+        let label5PositiveOrNegative = lastTwoChangeCalc()
+        if label5PositiveOrNegative >= 0 {
+            percentLabel5.format = "+%.0f%%"
         }else{
-            percentLabel4.format = "%.0f%%"
+            percentLabel5.format = "%.0f%%"
         }
-        percentLabel4.countFrom(fromValue: 0, to: Float(fourthEndValue), withDuration: animationDuration, andAnimationType: .Linear, andCountingType: .Custom)
+        percentLabel5.countFrom(fromValue: 0, to: Float(fifthEndValue), withDuration: animationDuration, andAnimationType: .Linear, andCountingType: .Custom)
         
-        percentLabel5.countFrom(fromValue: 0, to: Float(fifthEndValue), withDuration: animationDuration, andAnimationType: .Linear, andCountingType: .Int)
-        
-        let label6PositiveOrNegative = lastThreeChangeCalc()
+        let label6PositiveOrNegative = differenceFromTargetCalc()
         if label6PositiveOrNegative >= 0 {
             percentLabel6.format = "+%.0f%%"
         }else{
@@ -331,7 +331,7 @@ class QualificationsViewController: UIViewController {
         return 0.0
     }
     
-    func lastThreeChangeCalc() -> Double {
+    func lastTwoChangeCalc() -> Double {
         if setResultsArray.count >= 2 {
             var lastTwoResults = [Double]()
             var sum = 0.0
