@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import Charts
+import GoogleMobileAds
 
 class QualificationsViewController: UIViewController {
     
@@ -46,6 +47,8 @@ class QualificationsViewController: UIViewController {
     @IBOutlet weak var averageLastThree: UILabel!
     @IBOutlet weak var changeLastThree: UILabel!
     
+    @IBOutlet weak var bannerView: GADBannerView!
+    
     var averageGrade: String?
     var doubleAverageGrade: Double?
     var averagePercentage: String?
@@ -70,6 +73,17 @@ class QualificationsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Banner Advert
+        bannerView.adUnitID = "ca-app-pub-2293319568548111/6520329187"
+        bannerView.rootViewController = self
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID]
+        bannerView.load(request)
+        
+        
+        
+        //Setup
         selectedQual = selectedQualification.name
         backgroundColor = sourceCell?.backgroundColor
         self.title = selectedQual
@@ -241,9 +255,9 @@ class QualificationsViewController: UIViewController {
             let angle2 = convertToAngle2(percent: averagePercentageCalc()!)
             let angle3 = convertToAngle2(percent: averageLastThreeCalc())
 
-            progressView.animate(toAngle: angle!, duration: 1.6, completion: nil)
-            progressView2.animate(toAngle: angle2!, duration: 1.6, completion: nil)
-            progressView3.animate(toAngle: Double(angle3!), duration: 1.6, completion: nil)
+            progressView.animate(toAngle: angle!, duration: animationDuration, completion: nil)
+            progressView2.animate(toAngle: angle2!, duration: animationDuration, completion: nil)
+            progressView3.animate(toAngle: Double(angle3!), duration: animationDuration, completion: nil)
             incrementLabel(to: Double(averageGradeCalc()!)!, secondEndValue: averagePercentageCalc()!, thirdEndValue: averageLastThreeCalc(), fourthEndValue: numberOfSetsCalc(), fifthEndValue: lastTwoChangeCalc(), sixthEndValue: differenceFromTargetCalc())
         }
     }

@@ -417,7 +417,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="umD-GY-OHq">
-                                <rect key="frame" x="16" y="525" width="343" height="134"/>
+                                <rect key="frame" x="16" y="525" width="343" height="84"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZmH-Kv-lll">
                                         <rect key="frame" x="8" y="20" width="90" height="34"/>
@@ -480,7 +480,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TO TARGET" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6AP-fr-m8U">
-                                        <rect key="frame" x="245" y="56" width="90" height="19.5"/>
+                                        <rect key="frame" x="244" y="56" width="90" height="19.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -488,7 +488,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="ZmH-Kv-lll" firstAttribute="centerY" secondItem="umD-GY-OHq" secondAttribute="centerY" constant="-30" id="3gM-p7-3NG"/>
+                                    <constraint firstItem="ZmH-Kv-lll" firstAttribute="centerY" secondItem="umD-GY-OHq" secondAttribute="centerY" constant="-5" id="3gM-p7-3NG"/>
                                     <constraint firstItem="ARD-A1-r9B" firstAttribute="baseline" secondItem="aSI-xK-qYg" secondAttribute="baseline" id="6C4-Bf-9rS"/>
                                     <constraint firstItem="6AP-fr-m8U" firstAttribute="baseline" secondItem="ARD-A1-r9B" secondAttribute="baseline" id="98j-fD-Iey"/>
                                     <constraint firstItem="6AP-fr-m8U" firstAttribute="centerX" secondItem="0kH-hR-jTn" secondAttribute="centerX" id="CGV-rq-JJL"/>
@@ -501,6 +501,14 @@
                                     <constraint firstItem="ZmH-Kv-lll" firstAttribute="leading" secondItem="umD-GY-OHq" secondAttribute="leadingMargin" id="q1L-GC-eDy"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dkH-F6-b0o" customClass="GADBannerView">
+                                <rect key="frame" x="27" y="609" width="320" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="i14-b8-gf0"/>
+                                    <constraint firstAttribute="height" constant="50" id="r43-gN-o2j"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -510,10 +518,12 @@
                             <constraint firstAttribute="trailing" secondItem="9s1-eD-zGm" secondAttribute="trailing" id="6k2-Kt-4MW"/>
                             <constraint firstItem="0kH-hR-jTn" firstAttribute="centerX" secondItem="30O-FX-Au0" secondAttribute="centerX" id="AcR-43-31O"/>
                             <constraint firstItem="9s1-eD-zGm" firstAttribute="leading" secondItem="EF7-r4-sXc" secondAttribute="leading" id="Apo-Ad-K2z"/>
+                            <constraint firstItem="dkH-F6-b0o" firstAttribute="top" secondItem="umD-GY-OHq" secondAttribute="bottom" id="DZD-fQ-aSq"/>
                             <constraint firstItem="ZmH-Kv-lll" firstAttribute="centerX" secondItem="gPg-Jk-hLp" secondAttribute="centerX" id="FRo-Qg-IEs"/>
+                            <constraint firstItem="dkH-F6-b0o" firstAttribute="centerX" secondItem="EF7-r4-sXc" secondAttribute="centerX" id="Fpe-7S-J58"/>
                             <constraint firstItem="umD-GY-OHq" firstAttribute="centerX" secondItem="EF7-r4-sXc" secondAttribute="centerX" id="GBY-ZG-A8z"/>
                             <constraint firstItem="OfJ-hJ-auQ" firstAttribute="height" secondItem="EF7-r4-sXc" secondAttribute="height" multiplier="0.2" id="LdE-bw-vny"/>
-                            <constraint firstItem="umD-GY-OHq" firstAttribute="height" secondItem="OfJ-hJ-auQ" secondAttribute="height" id="OO3-wh-jhG"/>
+                            <constraint firstItem="umD-GY-OHq" firstAttribute="height" secondItem="OfJ-hJ-auQ" secondAttribute="height" constant="-50" id="OO3-wh-jhG"/>
                             <constraint firstItem="9s1-eD-zGm" firstAttribute="top" secondItem="MWF-lv-xAB" secondAttribute="bottom" id="RgE-vh-3sV"/>
                             <constraint firstItem="Nt6-8P-pCe" firstAttribute="centerX" secondItem="sql-LU-0rg" secondAttribute="centerX" id="Rte-iy-9px"/>
                             <constraint firstItem="0kH-hR-jTn" firstAttribute="width" secondItem="gPg-Jk-hLp" secondAttribute="width" id="XnR-is-plL"/>
@@ -533,6 +543,7 @@
                         <outlet property="averageGradeLabel" destination="JmS-11-fWx" id="17E-zw-99F"/>
                         <outlet property="averageLastThree" destination="ARD-A1-r9B" id="tti-PK-TpB"/>
                         <outlet property="averagePercentLabel" destination="urF-nQ-Ge9" id="ODi-Cc-Jea"/>
+                        <outlet property="bannerView" destination="dkH-F6-b0o" id="Rr3-ft-yoz"/>
                         <outlet property="changeLastThree" destination="6AP-fr-m8U" id="IBl-EO-BHJ"/>
                         <outlet property="diffFromTarget" destination="aSI-xK-qYg" id="ayF-9j-J6s"/>
                         <outlet property="lineChartView" destination="9s1-eD-zGm" id="mVn-x1-gmB"/>
