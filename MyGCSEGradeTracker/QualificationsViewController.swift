@@ -49,11 +49,6 @@ class QualificationsViewController: UIViewController {
     
     @IBOutlet weak var bannerView: GADBannerView!
     
-    var averageGrade: String?
-    var doubleAverageGrade: Double?
-    var averagePercentage: String?
-    var doubleAveragePercentage: Double?
-    
     let realm = try! Realm()
     var results: Results<Result> {
         get {
@@ -80,9 +75,7 @@ class QualificationsViewController: UIViewController {
         let request = GADRequest()
         request.testDevices = [kGADSimulatorID]
         bannerView.load(request)
-        
-        
-        
+    
         //Setup
         selectedQual = selectedQualification.name
         backgroundColor = sourceCell?.backgroundColor
@@ -251,23 +244,23 @@ class QualificationsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         if results.count != 0 {
-            let angle = convertToAngle(grade: Double(averageGradeCalc()!)!)
-            let angle2 = convertToAngle2(percent: averagePercentageCalc()!)
+            let angle = convertToAngle(grade: averageGradeCalc())
+            let angle2 = convertToAngle2(percent: averagePercentageCalc())
             let angle3 = convertToAngle2(percent: averageLastThreeCalc())
 
-            progressView.animate(toAngle: angle!, duration: animationDuration, completion: nil)
-            progressView2.animate(toAngle: angle2!, duration: animationDuration, completion: nil)
-            progressView3.animate(toAngle: Double(angle3!), duration: animationDuration, completion: nil)
-            incrementLabel(to: Double(averageGradeCalc()!)!, secondEndValue: averagePercentageCalc()!, thirdEndValue: averageLastThreeCalc(), fourthEndValue: numberOfSetsCalc(), fifthEndValue: lastTwoChangeCalc(), sixthEndValue: differenceFromTargetCalc())
+            progressView.animate(toAngle: angle, duration: animationDuration, completion: nil)
+            progressView2.animate(toAngle: angle2, duration: animationDuration, completion: nil)
+            progressView3.animate(toAngle: Double(angle3), duration: animationDuration, completion: nil)
+            incrementLabel(to: averageGradeCalc(), secondEndValue: averagePercentageCalc(), thirdEndValue: averageLastThreeCalc(), fourthEndValue: numberOfSetsCalc(), fifthEndValue: lastTwoChangeCalc(), sixthEndValue: differenceFromTargetCalc())
         }
     }
     
-    func convertToAngle(grade: Double) -> Double? {
+    func convertToAngle(grade: Double) -> Double {
         let angle = (grade * 10) * 3.6
         return angle
     }
     
-    func convertToAngle2(percent: Double) -> Double? {
+    func convertToAngle2(percent: Double) -> Double {
         let angle = percent * 3.6
         return angle
     }
@@ -278,7 +271,6 @@ class QualificationsViewController: UIViewController {
         percentLabel2.countFrom(fromValue: 0, to: Float(secondEndValue), withDuration: animationDuration, andAnimationType: .Linear, andCountingType: .Custom)
         percentLabel3.format = "%.0f%%"
         percentLabel3.countFrom(fromValue: 0, to: Float(thirdEndValue), withDuration: animationDuration, andAnimationType: .Linear, andCountingType: .Custom)
-        
         percentLabel4.countFrom(fromValue: 0, to: Float(fourthEndValue), withDuration: animationDuration, andAnimationType: .Linear, andCountingType: .Int)
         
         let label5PositiveOrNegative = lastTwoChangeCalc()
@@ -299,27 +291,21 @@ class QualificationsViewController: UIViewController {
     }
     
     // MARK: Stats labels functions
-    func averageGradeCalc() -> String? {
+    func averageGradeCalc() -> Double {
         var sum = 0.0
         for i in 0..<setResultsArray.count {
             sum += round(setResultsArray[i] / 10)
         }
-        let fmt = NumberFormatter()
-        fmt.maximumIntegerDigits = 1
         let output = sum / (Double(results.count) / Double(components.count))
-        averageGrade = fmt.string(from: NSNumber(value: output))
-        return averageGrade
+        return output
     }
     
-    func averagePercentageCalc() -> Double? {
+    func averagePercentageCalc() -> Double {
         var sum = 0.0
         for i in 0..<setResultsArray.count {
             sum += setResultsArray[i]
         }
-        let fmt = NumberFormatter()
-        fmt.maximumIntegerDigits = 2
         let output = round(sum / (Double(results.count) / Double(components.count)))
-        averagePercentage = fmt.string(from: NSNumber(value: output))
         return output
     }
     
@@ -329,7 +315,8 @@ class QualificationsViewController: UIViewController {
     
     func differenceFromTargetCalc() -> Double {
         if let unTarget = target {
-            return  Double(averagePercentage!)! - unTarget
+            let averagePercent = averagePercentageCalc()
+            return  averagePercent - unTarget
         }
         return 0.0
     }
@@ -351,10 +338,8 @@ class QualificationsViewController: UIViewController {
             var sum = 0.0
             for i in stride(from: setResultsArray.count - 1, to: setResultsArray.count - 3, by: -1) {
                 lastTwoResults.append(setResultsArray[i])
-                print(lastTwoResults)
             }
             sum = lastTwoResults[0] - lastTwoResults[1]
-            print(sum)
             return sum
         }
         return 0.0
