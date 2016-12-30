@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import Flurry_iOS_SDK
 
 class QualificationCollectionView: UICollectionViewController {
     
@@ -37,11 +38,6 @@ class QualificationCollectionView: UICollectionViewController {
     lazy var qualifications: Results<Qualification> = { self.realm.objects(Qualification.self) }()
     
     var selectedQualification: Qualification!
-//    var selectedQualificationIndex: IndexPath?
-    
-    @IBAction func addQualification(_ sender: AnyObject) {
-        //animateIn()
-    }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
@@ -50,25 +46,20 @@ class QualificationCollectionView: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.navigationController?.delegate = self
-        
         navigationController?.navigationBar.topItem?.title = "Qualifications"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadQualifications(_:)),name:NSNotification.Name(rawValue: "load"), object: nil)
-        
         print("File location: \(Realm.Configuration.defaultConfiguration.fileURL!)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         collectionView?.reloadData()
         hasUpgraded = UserDefaults.standard.bool(forKey: userDefaultsKey)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     //MARK: UICollectionViewDataSource
@@ -102,12 +93,12 @@ class QualificationCollectionView: UICollectionViewController {
             let vc = segue.destination as! QualificationsViewController
             let cell = sender as! CustomQualificationCollectionViewCell
             let indexPath = collectionView?.indexPath(for: cell)
-            
-            // This next line is very importat for the proper functioning of the animation:
-            // the sourceCell property tells the animator which is the cell involved in the transition
+
             sourceCell = cell
             vc.selectedQualification = qualifications[(indexPath?.row)!]
             vc.sourceCell = cell
+        } else if segue.identifier == "ManageQualifications" {
+            Flurry.logEvent("Managed-Qualifications")
         }
     }
     
@@ -118,18 +109,15 @@ class QualificationCollectionView: UICollectionViewController {
                 let alertController = UIAlertController(title: "Please Upgrade", message: "In order to add more than one qualification please upgrade.", preferredStyle: .alert)
                 
                 let cancelAction = UIAlertAction(title: "Later", style: .cancel) { action in
-                    // ...
                 }
                 alertController.addAction(cancelAction)
                 
                 let upgradeAction = UIAlertAction(title: "Upgrade", style: .default) { action in
                     self.performSegue(withIdentifier: "ShowUpgradeViewController", sender: nil)
                 }
-                
                 alertController.addAction(upgradeAction)
                 
                 self.present(alertController, animated: true) {
-                    // ...
                 }
                 return false
             } else {

@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import Flurry_iOS_SDK
 
 class ManageQualificationsTableViewController: UITableViewController {
     
@@ -89,6 +90,7 @@ class ManageQualificationsTableViewController: UITableViewController {
                 }
                 
                 try! self.realm.write {
+                    Flurry.logEvent("Deleted-Qualification")
                     self.realm.delete(deletedQualification)
                     self.realm.delete(deletedResults)
                     self.realm.delete(deletedComponents)

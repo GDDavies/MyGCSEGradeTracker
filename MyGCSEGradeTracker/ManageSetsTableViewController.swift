@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import Flurry_iOS_SDK
 
 class ManageSetsTableViewController: UITableViewController {
         
@@ -103,6 +104,7 @@ class ManageSetsTableViewController: UITableViewController {
             }
             
             try! realm.write {
+                Flurry.logEvent("Deleted-Set")
                 realm.delete(editedResults)
                 for result in results {
                     if result.set > chosenSet {

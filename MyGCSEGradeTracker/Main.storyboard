@@ -269,7 +269,7 @@
                     <navigationItem key="navigationItem" id="kSQ-Fo-ith">
                         <barButtonItem key="leftBarButtonItem" title="Manage" id="O7f-r8-2uj">
                             <connections>
-                                <segue destination="C0w-2u-gvA" kind="show" id="tSl-Cy-IhF"/>
+                                <segue destination="C0w-2u-gvA" kind="show" identifier="ManageQualifications" id="tSl-Cy-IhF"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="e8R-Ve-TTD">

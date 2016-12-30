@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import Flurry_iOS_SDK
 
 class AddQualificationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
 
@@ -43,6 +44,7 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
             
             addNewQualification()
             addNewComponents()
+            Flurry.logEvent("Added-Qualification")
             dismiss(animated: true, completion: nil)
             
         } else if textViewOutput[0] == "" {
@@ -276,6 +278,9 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
     
     func addNewComponents() {
         let realm = try! Realm()
+        
+        let parameters = ["Number-of-Components" : Int(textViewOutput[1])!]
+        Flurry.logEvent("Added-Components", withParameters: parameters)
         
         var i = 1
         while i <= Int(textViewOutput[1])! {
