@@ -153,6 +153,8 @@ class QualificationsViewController: UIViewController {
         } else {
             // Don't add data
             lineChartView.noDataText = "Please provide at least two sets of results for the chart."
+            lineChartView.noDataTextColor = UIColor.white
+            lineChartView.noDataFont = UIFont(name: "HelveticaNeue-Bold", size: 12)!
         }
         
         // Target line
@@ -315,7 +317,7 @@ class QualificationsViewController: UIViewController {
     
     func differenceFromTargetCalc() -> Double {
         if let unTarget = target {
-            let averagePercent = averagePercentageCalc()
+            let averagePercent = averageLastThreeCalc()
             return  averagePercent - unTarget
         }
         return 0.0
