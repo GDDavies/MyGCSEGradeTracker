@@ -229,16 +229,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="197" height="197"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Components: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nsn-zt-Usf">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Components: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nsn-zt-Usf">
                                             <rect key="frame" x="73" y="8" width="116" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="12Y-XF-hJU">
-                                            <rect key="frame" x="8" y="149" width="141" height="48"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="12Y-XF-hJU">
+                                            <rect key="frame" x="8" y="149" width="86.333333333333329" height="40"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="33"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -246,6 +244,12 @@
                                     </subviews>
                                 </view>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="topMargin" secondItem="nsn-zt-Usf" secondAttribute="top" id="2gl-st-FqB"/>
+                                    <constraint firstAttribute="leadingMargin" secondItem="12Y-XF-hJU" secondAttribute="leading" id="HQE-Bj-FCU"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="12Y-XF-hJU" secondAttribute="bottom" id="Rdi-2j-xlh"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="nsn-zt-Usf" secondAttribute="trailing" id="zh0-4Q-I9A"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="numberOfComponentsLabel" destination="nsn-zt-Usf" id="5q2-Ut-gnU"/>
                                     <outlet property="qualificationLabel" destination="12Y-XF-hJU" id="YE3-oh-u7o"/>
