@@ -32,6 +32,8 @@ class QualificationCollectionView: UICollectionViewController {
     
     var addedQualification: Qualification?
     
+    let defaults = UserDefaults.standard
+    
     @IBOutlet weak var addButton: UIBarButtonItem!
     
     let realm = try! Realm()
@@ -48,18 +50,29 @@ class QualificationCollectionView: UICollectionViewController {
         
         navigationController?.navigationBar.topItem?.title = "Qualifications"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(loadQualifications(_:)),name:NSNotification.Name(rawValue: "load"), object: nil)
+        layoutCells()
         print("File location: \(Realm.Configuration.defaultConfiguration.fileURL!)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         collectionView?.reloadData()
         hasUpgraded = UserDefaults.standard.bool(forKey: userDefaultsKey)
+        navigationController?.setToolbarHidden(false, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func layoutCells() {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        let width = UIScreen.main.bounds.width
+        layout.sectionInset = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
+        layout.itemSize = CGSize(width: (width / 2) - 5, height: (width / 2) - 5)
+        layout.minimumInteritemSpacing = 5
+        layout.minimumLineSpacing = 10
+        collectionView!.collectionViewLayout = layout
     }
     
     //MARK: UICollectionViewDataSource
@@ -97,6 +110,7 @@ class QualificationCollectionView: UICollectionViewController {
             sourceCell = cell
             vc.selectedQualification = qualifications[(indexPath?.row)!]
             vc.sourceCell = cell
+            vc.targetPercentage = defaults.object(forKey: "TargetPercentage") as? Double
         } else if segue.identifier == "ManageQualifications" {
             Flurry.logEvent("Managed-Qualifications")
         }
@@ -132,24 +146,55 @@ class QualificationCollectionView: UICollectionViewController {
         self.collectionView?.reloadData()
     }
 
-
-}
-
-//MARK: UICollectionViewDelegateFlowLayout
-extension QualificationCollectionView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    @IBAction func addTargetButton(_ sender: Any) {
+        let target = defaults.object(forKey: "TargetPercentage") as? Double
+        var message: String?
+        if let tgt = target {
+            message = "The target is currently \(Int(tgt)). Please input your target:"
+        } else {
+            message = "Please input your target:"
+        }
+        let alertController = UIAlertController(title: "Target Percentage", message: message!, preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
+            if let field = alertController.textFields?[0] {
+                alertController.textFields?[0].keyboardType = .numberPad
+                // store data
+                self.defaults.set(Double(field.text!), forKey: "TargetPercentage")
+                self.defaults.synchronize()
+            } else {
+                // user did not fill field
+            }
+        }
         
-        screenSize = UIScreen.main.bounds
-        screenWidth = screenSize.width
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
         
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
-        layout.minimumInteritemSpacing = 5
-        layout.minimumLineSpacing = 10
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Target %"
+        }
         
-        return CGSize(width: (screenWidth/2) - 5, height: (screenWidth/2) - 5)
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
+    
 }
+
+////MARK: UICollectionViewDelegateFlowLayout
+//extension QualificationCollectionView: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        
+//        screenSize = UIScreen.main.bounds
+//        screenWidth = screenSize.width
+//        
+//        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+//        layout.sectionInset = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
+//        layout.minimumInteritemSpacing = 5
+//        layout.minimumLineSpacing = 10
+//        
+//        return CGSize(width: (screenWidth/2) - 5, height: (screenWidth/2) - 5)
+//    }
+//}
 //
 ////MARK: UINavigationControllerDelegate
 //extension QualificationCollectionView: UINavigationControllerDelegate {

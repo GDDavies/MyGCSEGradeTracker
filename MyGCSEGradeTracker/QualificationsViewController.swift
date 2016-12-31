@@ -20,7 +20,7 @@ class QualificationsViewController: UIViewController {
     var setResultsArray = [Double]()
     var backgroundColor: UIColor?
     var sourceCell: CustomQualificationCollectionViewCell?
-    var target: Double?
+    var targetPercentage: Double?
     
     @IBOutlet weak var lineChartView: LineChartView!
     
@@ -69,6 +69,8 @@ class QualificationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.setToolbarHidden(true, animated: false)
+        
         //Banner Advert
         bannerView.adUnitID = "ca-app-pub-2293319568548111/6520329187"
         bannerView.rootViewController = self
@@ -83,8 +85,6 @@ class QualificationsViewController: UIViewController {
         _ = averageGradeCalc()
         _ = averagePercentageCalc()
         setupProgressViews()
-        
-        target = 70.0
         
         percentLabel.textColor = UIColor.lightGray
         percentLabel2.textColor = UIColor.lightGray
@@ -158,9 +158,11 @@ class QualificationsViewController: UIViewController {
         }
         
         // Target line
-        if let newTarget = target {
-            let trgt = ChartLimitLine(limit: newTarget, label: "") //Target: \(target)%
-            lineChartView.leftAxis.addLimitLine(trgt)
+        if let newTarget = targetPercentage {
+            if newTarget != 0 {
+                let trgt = ChartLimitLine(limit: newTarget, label: "") //Target: \(target)%
+                lineChartView.leftAxis.addLimitLine(trgt)
+            }
         }
         
         lineChartView.highlightPerTapEnabled = false
@@ -316,9 +318,14 @@ class QualificationsViewController: UIViewController {
     }
     
     func differenceFromTargetCalc() -> Double {
-        if let unTarget = target {
+
+        if let unTarget = targetPercentage {
             let averagePercent = averageLastThreeCalc()
-            return  averagePercent - unTarget
+            if averagePercent > 0 {
+                return  averagePercent - unTarget
+            } else {
+                return 0.0
+            }
         }
         return 0.0
     }

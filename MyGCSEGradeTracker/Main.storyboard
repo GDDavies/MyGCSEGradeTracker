@@ -30,10 +30,10 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="Jzn-S8-O1O" customClass="CustomTableViewCell" customModule="MyGCSEGradeTracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.333333333333336" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jzn-S8-O1O" id="3Ov-LL-Sig">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Qualification Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0V-MR-P2i">
@@ -63,10 +63,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell2" id="wHd-Xn-Lpm" customClass="CustomTableViewCell" customModule="MyGCSEGradeTracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="99.333333333333343" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="99.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wHd-Xn-Lpm" id="8CM-fZ-2T1">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Components" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHd-Xf-WOc">
@@ -211,32 +211,32 @@
         <scene sceneID="Y5A-Zw-h9v">
             <objects>
                 <collectionViewController id="2eA-AJ-MhI" customClass="QualificationCollectionView" customModule="MyGCSEGradeTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="heV-Yf-9LD">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="heV-Yf-9LD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JN1-AT-Fu9">
-                            <size key="itemSize" width="145" height="135"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="56N-sA-A4d">
+                            <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="5ZZ-bp-Sr2" customClass="CustomQualificationCollectionViewCell" customModule="MyGCSEGradeTracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="145" height="135"/>
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="145" height="135"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="12Y-XF-hJU">
-                                            <rect key="frame" x="8" y="87" width="129" height="40"/>
+                                            <rect key="frame" x="8" y="2" width="34" height="40"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="33"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Components: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nsn-zt-Usf">
-                                            <rect key="frame" x="21" y="8" width="116" height="20"/>
+                                            <rect key="frame" x="-74" y="8" width="116" height="20"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -266,6 +266,13 @@
                             <outlet property="delegate" destination="2eA-AJ-MhI" id="0XV-Cl-am9"/>
                         </connections>
                     </collectionView>
+                    <toolbarItems>
+                        <barButtonItem title="Add Target" id="eSh-mt-QmR">
+                            <connections>
+                                <action selector="addTargetButton:" destination="2eA-AJ-MhI" id="uvT-Gj-rY4"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="kSQ-Fo-ith">
                         <barButtonItem key="leftBarButtonItem" title="Manage" id="O7f-r8-2uj">
                             <connections>
@@ -286,7 +293,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kLb-kS-cOS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2004" y="1216.6416791604199"/>
+            <point key="canvasLocation" x="1907" y="1215"/>
         </scene>
         <!--Qualifications View Controller-->
         <scene sceneID="H1s-xA-s6U">
@@ -952,7 +959,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dkH-F6-b0o" customClass="GADBannerView">
-                                <rect key="frame" x="47" y="686" width="320" height="50"/>
+                                <rect key="frame" x="47" y="642" width="320" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="i14-b8-gf0"/>
@@ -1095,11 +1102,11 @@
                                 <exclude reference="dIq-qk-7xQ"/>
                                 <exclude reference="txX-gk-2Cm"/>
                                 <exclude reference="ciJ-96-BJ7"/>
-                                <exclude reference="otn-5S-yHg"/>
                                 <exclude reference="9HB-LO-SAZ"/>
                                 <exclude reference="WNM-mt-tUt"/>
                                 <exclude reference="iCH-M6-ki9"/>
                                 <exclude reference="iR8-1c-2Yj"/>
+                                <exclude reference="otn-5S-yHg"/>
                                 <exclude reference="TCU-ID-8BX"/>
                                 <exclude reference="oJh-Po-Jw1"/>
                             </mask>
@@ -1166,15 +1173,15 @@
                                 <include reference="ciJ-96-BJ7"/>
                                 <exclude reference="t7Y-HQ-iUt"/>
                                 <exclude reference="xf5-fY-OIg"/>
-                                <exclude reference="AcR-43-31O"/>
-                                <exclude reference="XnR-is-plL"/>
-                                <exclude reference="evQ-5a-0gF"/>
-                                <include reference="otn-5S-yHg"/>
                                 <include reference="9HB-LO-SAZ"/>
                                 <exclude reference="HR8-xw-jid"/>
                                 <exclude reference="WNM-mt-tUt"/>
                                 <exclude reference="iCH-M6-ki9"/>
                                 <include reference="iR8-1c-2Yj"/>
+                                <exclude reference="AcR-43-31O"/>
+                                <exclude reference="XnR-is-plL"/>
+                                <exclude reference="evQ-5a-0gF"/>
+                                <include reference="otn-5S-yHg"/>
                                 <include reference="TCU-ID-8BX"/>
                                 <include reference="oJh-Po-Jw1"/>
                             </mask>
@@ -1226,10 +1233,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell4" id="o89-If-jLa" customClass="CustomTableViewCell" customModule="MyGCSEGradeTracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.333333333333336" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o89-If-jLa" id="c6e-Sc-nsU">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Component 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6IK-6d-8sU">
@@ -1339,7 +1346,7 @@
         <!--Analyse-->
         <scene sceneID="8It-dV-pn6">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zx1-t4-Ali" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="zx1-t4-Ali" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Analyse" id="MaU-YS-5EK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Oy8-Pj-CIK">
@@ -1347,6 +1354,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="dMl-Tf-6UO">
+                        <rect key="frame" x="0.0" y="692" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="2eA-AJ-MhI" kind="relationship" relationship="rootViewController" id="KF2-cx-0qh"/>
                     </connections>
@@ -1401,7 +1412,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cfj-6k-8WZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2004" y="1942.5787106446778"/>
+            <point key="canvasLocation" x="2004" y="2046"/>
         </scene>
         <!--Manage Sets Table View Controller-->
         <scene sceneID="cc4-FO-afp">
@@ -1513,7 +1524,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wkf-M3-0kp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1064.8" y="1942.5787106446778"/>
+            <point key="canvasLocation" x="1064" y="2061"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="i5v-qz-zcg">
