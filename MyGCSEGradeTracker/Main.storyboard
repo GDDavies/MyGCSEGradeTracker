@@ -131,82 +131,6 @@
             </objects>
             <point key="canvasLocation" x="1908" y="527.58620689655174"/>
         </scene>
-        <!--Upgrade-->
-        <scene sceneID="gre-jO-L7J">
-            <objects>
-                <viewController title="Upgrade" hidesBottomBarWhenPushed="YES" id="3uF-Pg-Gqz" customClass="UpgradeViewController" customModule="MyGCSEGradeTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="J6V-nC-GMa"/>
-                        <viewControllerLayoutGuide type="bottom" id="lv7-kq-seM"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="W7L-ca-Aeh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="azr-io-1yu">
-                                <rect key="frame" x="177" y="445" width="60" height="30"/>
-                                <state key="normal" title="Upgrade"/>
-                                <connections>
-                                    <action selector="upgradeButtonTapped:" destination="3uF-Pg-Gqz" eventType="touchUpInside" id="SPN-kR-JDo"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZM-IJ-xFL">
-                                <rect key="frame" x="146.66666666666669" y="539" width="121.00000000000006" height="30"/>
-                                <state key="normal" title="Restore Purchase"/>
-                                <connections>
-                                    <action selector="restorePurchasesButtonTapped:" destination="3uF-Pg-Gqz" eventType="touchUpInside" id="012-5S-shh"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock the ability to add more than one qualification." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQh-Ti-acR">
-                                <rect key="frame" x="99" y="94" width="216" height="110"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="110" id="xRR-hp-koI"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Price..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vE-XK-6eW">
-                                <rect key="frame" x="150.66666666666669" y="335" width="113.00000000000006" height="66"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="113" id="ISJ-X4-jtK"/>
-                                    <constraint firstAttribute="height" constant="66" id="jKN-zR-lfe"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="uQh-Ti-acR" firstAttribute="centerX" secondItem="W7L-ca-Aeh" secondAttribute="centerX" id="GPj-bV-nPa"/>
-                            <constraint firstItem="yZM-IJ-xFL" firstAttribute="top" secondItem="azr-io-1yu" secondAttribute="bottom" constant="64" id="McR-d3-MkR"/>
-                            <constraint firstItem="azr-io-1yu" firstAttribute="centerX" secondItem="W7L-ca-Aeh" secondAttribute="centerX" id="PMH-nb-ptn"/>
-                            <constraint firstItem="yZM-IJ-xFL" firstAttribute="centerX" secondItem="W7L-ca-Aeh" secondAttribute="centerX" id="QFd-uw-FRN"/>
-                            <constraint firstItem="uQh-Ti-acR" firstAttribute="top" secondItem="J6V-nC-GMa" secondAttribute="bottom" constant="30" id="XvF-lH-wls"/>
-                            <constraint firstItem="uQh-Ti-acR" firstAttribute="leading" secondItem="W7L-ca-Aeh" secondAttribute="leadingMargin" constant="79" id="c8u-ke-gUd"/>
-                            <constraint firstItem="azr-io-1yu" firstAttribute="top" secondItem="0vE-XK-6eW" secondAttribute="bottom" constant="44" id="dqy-gy-Q87"/>
-                            <constraint firstItem="0vE-XK-6eW" firstAttribute="centerY" secondItem="W7L-ca-Aeh" secondAttribute="centerY" id="fxL-RJ-YUO"/>
-                            <constraint firstItem="0vE-XK-6eW" firstAttribute="centerX" secondItem="W7L-ca-Aeh" secondAttribute="centerX" id="kU0-QV-91I"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Upgrade" id="9Ga-3s-C9L">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="elr-Bg-Dg0">
-                            <connections>
-                                <action selector="doneButtonTapped:" destination="3uF-Pg-Gqz" id="e2E-OB-AVI"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="priceLabel" destination="0vE-XK-6eW" id="OOe-pA-Tbf"/>
-                        <outlet property="restoreButton" destination="yZM-IJ-xFL" id="hDA-tz-AdY"/>
-                        <outlet property="upgradeButton" destination="azr-io-1yu" id="j8H-rb-imj"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="r3H-5m-7bc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3784.8000000000002" y="527.58620689655174"/>
-        </scene>
         <!--Qualification Collection View-->
         <scene sceneID="Y5A-Zw-h9v">
             <objects>
@@ -287,7 +211,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="e8R-Ve-TTD" id="dcs-sl-OXa"/>
-                        <segue destination="JzM-KW-Hf5" kind="presentation" identifier="ShowUpgradeViewController" id="kHg-JF-CEc"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kLb-kS-cOS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1524,24 +1447,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wkf-M3-0kp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1064" y="2061"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="i5v-qz-zcg">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JzM-KW-Hf5" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1kI-c2-BDy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="3uF-Pg-Gqz" kind="relationship" relationship="rootViewController" id="ODx-J0-4Gx"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pxH-Nh-0Cv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2845.5999999999999" y="527.58620689655174"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BiP-jG-fQ5">
