@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 import Flurry_iOS_SDK
 
-class QualificationCollectionView: UICollectionViewController {
+class QualificationCollectionView: UICollectionViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
     var sourceCell: UICollectionViewCell?
     
@@ -18,8 +18,9 @@ class QualificationCollectionView: UICollectionViewController {
     var screenSize: CGRect!
     
     let userDefaultsKey = "HasUpgradedUserDefaultsKey"
-    var hasUpgraded: Bool?
-        
+    var hasUpgradedBool: Bool?
+    var product_id = "com.GDaviesDev.MyGCSEGradeTracker.upgrade"
+    
     let colorsArray = [
         UIColor(red: 46/255.0, green: 204/255.0, blue: 113/255.0, alpha: 1.0),
         UIColor(red: 52/255.0, green: 152/255.0, blue: 219/255.0, alpha: 1.0),
@@ -48,6 +49,8 @@ class QualificationCollectionView: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        SKPaymentQueue.default().add(self)
+        
         navigationController?.navigationBar.topItem?.title = "Qualifications"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(loadQualifications(_:)),name:NSNotification.Name(rawValue: "load"), object: nil)
@@ -57,7 +60,7 @@ class QualificationCollectionView: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         collectionView?.reloadData()
-        hasUpgraded = UserDefaults.standard.bool(forKey: userDefaultsKey)
+        hasUpgradedBool = UserDefaults.standard.bool(forKey: userDefaultsKey)
         navigationController?.setToolbarHidden(false, animated: true)
     }
     
@@ -118,18 +121,21 @@ class QualificationCollectionView: UICollectionViewController {
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "AddQual" {
-            if qualifications.count == 4 && hasUpgraded == false {
+            if qualifications.count == 4 && !hasUpgraded() {
                 
-                let alertController = UIAlertController(title: "Please Upgrade", message: "In order to add more than one qualification please upgrade.", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Please Upgrade", message: "In order to add more than one qualification please upgrade.", preferredStyle: .actionSheet)
                 
-                let cancelAction = UIAlertAction(title: "Later", style: .cancel) { action in
-                }
-                alertController.addAction(cancelAction)
+                alertController.addAction(UIAlertAction(title: "Upgrade", style: .default, handler: { (action) in
+                    //execute some code when this option is selected
+                    self.upgrade()
+                }))
+                alertController.addAction(UIAlertAction(title: "Restore Purchase", style: .default, handler: { (action) in
+                    //execute some code when this option is selected
+                    SKPaymentQueue.default().restoreCompletedTransactions()
+                }))
                 
-                let upgradeAction = UIAlertAction(title: "Upgrade", style: .default) { action in
-                    self.performSegue(withIdentifier: "ShowUpgradeViewController", sender: nil)
-                }
-                alertController.addAction(upgradeAction)
+                alertController.addAction(UIAlertAction(title: "Later", style: .cancel, handler: { (action) in
+                }))
                 
                 self.present(alertController, animated: true) {
                 }
@@ -178,33 +184,90 @@ class QualificationCollectionView: UICollectionViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    // MARK: Upgrade or restore purchase
+    func productsRequest (_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        print("Got the request from Apple")
+        
+        let count = response.products.count
+        if (count > 0) {
+            let validProduct = response.products[0] as SKProduct
+            if (validProduct.productIdentifier == self.product_id) {
+                print(validProduct.price)
+                buyProduct(validProduct);
+            } else {
+                print(validProduct.productIdentifier)
+            }
+        } else {
+            print("No products. Check ID.")
+        }
+    }
+    
+    func buyProduct(_ product: SKProduct){
+        print("Sending the Payment Request to Apple")
+        let payment = SKPayment(product: product)
+        SKPaymentQueue.default().add(payment)
+    }
+    
+    func request(_ request: SKRequest, didFailWithError error: Error) {
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        print("Received Payment Transaction Response from Apple")
+        
+        let doneAction = UIAlertAction(title: "Done", style: .default, handler: { (action) in
+            self.dismiss(animated: true, completion: nil)
+        })
+        
+        for transaction:AnyObject in transactions {
+            if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction{
+                switch trans.transactionState {
+                case .purchased:
+                    UserDefaults.standard.set(true, forKey: userDefaultsKey)
+                    print("Product Purchased")
+                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+                    let alertController = UIAlertController(title: "Upgraded!", message: "Thanks for upgrading. You can now add more qualifications.", preferredStyle: .alert)
+                    alertController.addAction(doneAction)
+                    self.present(alertController, animated: true, completion: nil)
+                    break
+                case .restored:
+                    UserDefaults.standard.set(true, forKey: userDefaultsKey)
+                    print("Product Restored")
+                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+                    let alertController = UIAlertController(title: "Restored!", message: "Your purchases have been restored. You can now add more qualifications.", preferredStyle: .alert)
+                    alertController.addAction(doneAction)
+                    self.present(alertController, animated: true, completion: nil)
+                    break
+                case .failed:
+                    print("Purchased Failed")
+                    //print(transaction.error as Any)
+                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+                    let alertController = UIAlertController(title: "Purchase Failed", message: "Your purchase failed, please try again.", preferredStyle: .alert)
+                    alertController.addAction(doneAction)
+                    self.present(alertController, animated: true, completion: nil)
+                    break
+                default:
+                    break
+                }
+            }
+        }
+    }
+    
+    func hasUpgraded() -> Bool {
+        return UserDefaults.standard.bool(forKey: userDefaultsKey)
+    }
+    
+    func upgrade(){
+        print("About to fetch the product");
+        // We check that we are allow to make the purchase.
+        if (SKPaymentQueue.canMakePayments())
+        {
+            let identifiers: Set<String> = [product_id]
+            let request = SKProductsRequest(productIdentifiers: identifiers)
+            request.delegate = self
+            request.start()
+            print("Fetching product")
+        }else{
+            print("Can't make purchase")
+        }
+    }
 }
-
-////MARK: UICollectionViewDelegateFlowLayout
-//extension QualificationCollectionView: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        
-//        screenSize = UIScreen.main.bounds
-//        screenWidth = screenSize.width
-//        
-//        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-//        layout.sectionInset = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
-//        layout.minimumInteritemSpacing = 5
-//        layout.minimumLineSpacing = 10
-//        
-//        return CGSize(width: (screenWidth/2) - 5, height: (screenWidth/2) - 5)
-//    }
-//}
-//
-////MARK: UINavigationControllerDelegate
-//extension QualificationCollectionView: UINavigationControllerDelegate {
-//    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        // In this method belonging to the protocol UINavigationControllerDelegate you must
-//        // return an animator conforming to the protocol UIViewControllerAnimatedTransitioning.
-//        // To perform the Pop in and Out animation PopInAndOutAnimator should be returned
-//        return PopInAndOutAnimator(operation: operation)
-//    }
-//}
-//
-////MARK: CollectionPushAndPoppable
-//extension QualificationCollectionView: CollectionPushAndPoppable {}
