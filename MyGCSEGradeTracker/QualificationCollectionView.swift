@@ -56,11 +56,9 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
         NotificationCenter.default.addObserver(self, selector: #selector(loadQualifications(_:)),name:NSNotification.Name(rawValue: "load"), object: nil)
         
         if UIScreen.main.bounds.height > UIScreen.main.bounds.width {
-            layoutCells()
-            print("Portrait")
+            portraitLayoutCells()
         } else {
-            print("Landscape")
-            horizontalLayout()
+            landscapeLayoutCells()
         }
         print("File location: \(Realm.Configuration.defaultConfiguration.fileURL!)")
     }
@@ -75,38 +73,22 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
         super.didReceiveMemoryWarning()
     }
     
-    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-        print("rotated")
-        
-        if UIScreen.main.bounds.height > UIScreen.main.bounds.width {
-            layoutCells()
-            print("Portrait")
-        } else {    // in landscape
-            print("Landscape")
-            horizontalLayout()
-        }
-    }
-    
-    func layoutCells() {
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        let width = UIScreen.main.bounds.width
-        layout.sectionInset = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
-        layout.itemSize = CGSize(width: (width / 2) - 5, height: (width / 2) - 5)
-        layout.minimumInteritemSpacing = 5
-        layout.minimumLineSpacing = 10
-        collectionView!.collectionViewLayout = layout
-    }
-    
-    func horizontalLayout() {
-        let horizontalLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        let width = UIScreen.main.bounds.width
-        horizontalLayout.scrollDirection = UICollectionViewScrollDirection.horizontal
-        horizontalLayout.sectionInset = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
-        horizontalLayout.itemSize = CGSize(width: (width / 3) - 5, height: (width / 3) - 5)
-        horizontalLayout.minimumInteritemSpacing = 5
-        horizontalLayout.minimumLineSpacing = 10
-        horizontalLayout.scrollDirection = .vertical
-        collectionView!.collectionViewLayout = horizontalLayout
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition: { (UIViewControllerTransitionCoordinatorContext) -> Void in
+            
+            let orient = UIApplication.shared.statusBarOrientation
+            
+            switch orient {
+            case .portrait:
+                self.portraitLayoutCells()
+            default:
+                self.landscapeLayoutCells()
+            }
+            
+        }, completion: { (UIViewControllerTransitionCoordinatorContext) -> Void in
+            print("rotation completed")
+        })
+        super.viewWillTransition(to: size, with: coordinator)
     }
     
     //MARK: UICollectionViewDataSource
@@ -128,6 +110,27 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
         cell.numberOfComponentsLabel.text = "Components: \(String(qualification.numberOfComponents))"
         cell.backgroundColor = colorsArray[indexPath.row % colorsArray.count]
         return cell
+    }
+    
+    // MARK: Cells layouts
+    func portraitLayoutCells() {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        let width = UIScreen.main.bounds.width
+        layout.sectionInset = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
+        layout.itemSize = CGSize(width: (width / 2) - 5, height: (width / 2) - 5)
+        layout.minimumInteritemSpacing = 5
+        layout.minimumLineSpacing = 10
+        self.collectionView!.collectionViewLayout = layout
+    }
+
+    func landscapeLayoutCells() {
+        let horizontalLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        let width = UIScreen.main.bounds.width
+        horizontalLayout.itemSize = CGSize(width: (width / 3) - 5, height: (width / 3) - 5)
+        horizontalLayout.sectionInset = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
+        horizontalLayout.minimumInteritemSpacing = 5
+        horizontalLayout.minimumLineSpacing = 10
+        self.collectionView!.collectionViewLayout = horizontalLayout
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
