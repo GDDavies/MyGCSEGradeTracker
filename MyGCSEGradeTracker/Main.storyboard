@@ -113,7 +113,19 @@
                             <constraint firstItem="C9q-Kv-ncx" firstAttribute="top" secondItem="yps-VD-r13" secondAttribute="bottom" id="awO-MQ-Khw"/>
                             <constraint firstAttribute="trailing" secondItem="yps-VD-r13" secondAttribute="trailing" id="bHo-uy-Mt7"/>
                             <constraint firstAttribute="trailing" secondItem="Qkg-EY-BAy" secondAttribute="trailing" id="ncx-fr-cPw"/>
+                            <constraint firstItem="yps-VD-r13" firstAttribute="height" secondItem="pGj-FC-XB8" secondAttribute="height" multiplier="0.15" id="ofd-60-JxZ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ofd-60-JxZ"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="PQp-Kz-zZJ"/>
+                                <include reference="ofd-60-JxZ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="vnI-wb-8Cr">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="m0c-5a-Zw1">
@@ -1222,12 +1234,24 @@
                             <constraint firstItem="owM-Nw-Z4B" firstAttribute="top" secondItem="WlO-Zn-Z4o" secondAttribute="bottom" constant="-1" id="RSI-vL-5gL"/>
                             <constraint firstAttribute="trailing" secondItem="owM-Nw-Z4B" secondAttribute="trailing" id="b7L-fd-jCx"/>
                             <constraint firstItem="owM-Nw-Z4B" firstAttribute="leading" secondItem="iMx-ba-rhI" secondAttribute="leading" id="bQI-N7-nbZ"/>
+                            <constraint firstItem="owM-Nw-Z4B" firstAttribute="height" secondItem="iMx-ba-rhI" secondAttribute="height" multiplier="0.15" id="eKp-tg-aUO"/>
                             <constraint firstItem="puJ-vi-0bb" firstAttribute="centerX" secondItem="iMx-ba-rhI" secondAttribute="centerX" id="ebA-JK-z7Q"/>
                             <constraint firstItem="WlO-Zn-Z4o" firstAttribute="leading" secondItem="iMx-ba-rhI" secondAttribute="leading" id="ejQ-GQ-akb"/>
                             <constraint firstItem="puJ-vi-0bb" firstAttribute="top" secondItem="dU3-od-Ndy" secondAttribute="bottom" constant="26" id="k77-wy-V1K"/>
                             <constraint firstItem="WlO-Zn-Z4o" firstAttribute="top" secondItem="puJ-vi-0bb" secondAttribute="bottom" constant="20" id="mAk-1R-3Fw"/>
                             <constraint firstAttribute="trailing" secondItem="WlO-Zn-Z4o" secondAttribute="trailing" id="uKM-PY-lqS"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="eKp-tg-aUO"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="7lD-tE-3S0"/>
+                                <include reference="eKp-tg-aUO"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="dax-mW-9d8">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="K6K-Dx-vfv">
