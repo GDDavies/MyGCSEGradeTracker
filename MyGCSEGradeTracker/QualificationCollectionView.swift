@@ -54,7 +54,14 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
         navigationController?.navigationBar.topItem?.title = "Qualifications"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(loadQualifications(_:)),name:NSNotification.Name(rawValue: "load"), object: nil)
-        layoutCells()
+        
+        if UIScreen.main.bounds.height > UIScreen.main.bounds.width {
+            layoutCells()
+            print("Portrait")
+        } else {
+            print("Landscape")
+            horizontalLayout()
+        }
         print("File location: \(Realm.Configuration.defaultConfiguration.fileURL!)")
     }
     
@@ -68,6 +75,18 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
         super.didReceiveMemoryWarning()
     }
     
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        print("rotated")
+        
+        if UIScreen.main.bounds.height > UIScreen.main.bounds.width {
+            layoutCells()
+            print("Portrait")
+        } else {    // in landscape
+            print("Landscape")
+            horizontalLayout()
+        }
+    }
+    
     func layoutCells() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.width
@@ -76,6 +95,18 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
         layout.minimumInteritemSpacing = 5
         layout.minimumLineSpacing = 10
         collectionView!.collectionViewLayout = layout
+    }
+    
+    func horizontalLayout() {
+        let horizontalLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        let width = UIScreen.main.bounds.width
+        horizontalLayout.scrollDirection = UICollectionViewScrollDirection.horizontal
+        horizontalLayout.sectionInset = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
+        horizontalLayout.itemSize = CGSize(width: (width / 3) - 5, height: (width / 3) - 5)
+        horizontalLayout.minimumInteritemSpacing = 5
+        horizontalLayout.minimumLineSpacing = 10
+        horizontalLayout.scrollDirection = .vertical
+        collectionView!.collectionViewLayout = horizontalLayout
     }
     
     //MARK: UICollectionViewDataSource
@@ -93,12 +124,9 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
         
         let qualification = qualifications[(indexPath as NSIndexPath).row]
         
-        //cell.detailTextLabel?.text = "\(String(qualification.numberOfComponents)) Components"
-        
         cell.qualificationLabel.text = qualification.name
         cell.numberOfComponentsLabel.text = "Components: \(String(qualification.numberOfComponents))"
         cell.backgroundColor = colorsArray[indexPath.row % colorsArray.count]
-        
         return cell
     }
     
@@ -123,7 +151,7 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
         if identifier == "AddQual" {
             if qualifications.count == 4 && !hasUpgraded() {
                 
-                let alertController = UIAlertController(title: "Please Upgrade", message: "In order to add more than one qualification please upgrade.", preferredStyle: .actionSheet)
+                let alertController = UIAlertController(title: "Upgrade for More Qualifications", message: "Upgrade for 79p to allow more than four qualifications.", preferredStyle: .actionSheet)
                 
                 alertController.addAction(UIAlertAction(title: "Upgrade", style: .default, handler: { (action) in
                     //execute some code when this option is selected
@@ -186,7 +214,7 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
     
     // MARK: Upgrade or restore purchase
     func productsRequest (_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        print("Got the request from Apple")
+        print("Got the request")
         
         let count = response.products.count
         if (count > 0) {
@@ -198,12 +226,12 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
                 print(validProduct.productIdentifier)
             }
         } else {
-            print("No products. Check ID.")
+            print("No products")
         }
     }
     
     func buyProduct(_ product: SKProduct){
-        print("Sending the Payment Request to Apple")
+        print("Sending the payment request")
         let payment = SKPayment(product: product)
         SKPaymentQueue.default().add(payment)
     }
@@ -212,7 +240,7 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
     }
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        print("Received Payment Transaction Response from Apple")
+        print("Received payment transaction response")
         
         let doneAction = UIAlertAction(title: "Done", style: .default, handler: { (action) in
             self.dismiss(animated: true, completion: nil)
@@ -257,8 +285,8 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
     }
     
     func upgrade(){
-        print("About to fetch the product");
-        // We check that we are allow to make the purchase.
+        print("Going to fetch product")
+        // Check if it's possible to make the purchase
         if (SKPaymentQueue.canMakePayments())
         {
             let identifiers: Set<String> = [product_id]
