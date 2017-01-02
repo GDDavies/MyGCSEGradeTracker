@@ -219,6 +219,9 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
                 self.present(alert, animated: true, completion: nil)
                 
             }else {
+                DispatchQueue.main.async {
+                    tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+                }
                 
                 if componentsIndexPath.isEmpty {
                     updateComponentRows()
