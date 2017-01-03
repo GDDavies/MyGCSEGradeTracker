@@ -6,7 +6,7 @@
   Copyright © 2017 George Davies. All rights reserved.
 */
 //QualCollectionView
-"Qualifications" = "test";
+"Qualifications" = "";
 "Components:" = "";
 "Upgrade for More Qualifications" = "";
 "Upgrade to allow more than four qualifications and remove ads." = "";
@@ -18,13 +18,81 @@
 "Target Percentage" = "";
 "Confirm" = "";
 "Cancel" = "";
-"Target %" = "";
+"Target" = "";
 "Done" = "";
-"Upgraded!" = "";
-"Thanks for upgrading. You can now add more qualifications and ads have been removed." = "";
-"Restored!" = "";
-"Your purchase has been restored. You can now add more qualifications and ads have been removed." = "";
+"Upgraded" = "";
+"Thanks for upgrading. You can now add more qualifications and ads have been removed" = "";
+"Restored" = "";
+"Your purchase has been restored. You can now add more qualifications and ads have been removed" = "";
 "Purchase Failed" = "";
-"Your purchase failed, please try again." = "";
+"Your purchase failed, please try again" = "";
 
 //AddQual
+"Qualification Name Missing" = "";
+"Please enter a name for the qualification" = "";
+"OK" = "";
+"Components Missing" = "";
+"Please input the number of components" = "";
+"Incorrect Weightings" = "";
+"Combined component weightings should equal 100%" = "";
+"Missing Information" = "";
+"Please enter the required information" = "";
+"Qualification Details" = "";
+"Components" = "";
+"Qualification Name" = "";
+"e.g. Maths" = "";
+"e.g." = "";
+"Edit Components" = "";
+"Please input the number of components." = "";
+"Component" = "";
+
+//Quals
+"Add Results" = "";
+"Set" = "";
+"Please provide at least two sets of results for the chart" = "";
+
+//ResultsSet
+"Input Results" = "";
+"Grade" = "";
+"Invalid Result" = "";
+"Please enter results between 1-9" = "";
+"Please enter results between 0-100" = "";
+"Missing Information" = "";
+"Please enter a result for each component" = "";
+
+//ManageQuals
+"Manage" = "";
+"Dismiss" = "";
+"components" = "";
+"Warning!" = "";
+"This action will delete all Components and Results associated with this Qualification" = "";
+"Delete" = "";
+
+//ManageSets
+
+
+//ManageResults
+"Result" = "";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

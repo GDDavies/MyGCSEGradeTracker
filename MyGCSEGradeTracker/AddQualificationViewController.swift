@@ -49,13 +49,13 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
             
         } else if textViewOutput[0] == "" {
             
-            let alert = UIAlertController(title: "\(NSLocalizedString("No Qualification Name", comment: ""))", message: "\(NSLocalizedString("Please enter a name for the qualification", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) //***
+            let alert = UIAlertController(title: "\(NSLocalizedString("Qualification Name Missing", comment: ""))", message: "\(NSLocalizedString("Please enter a name for the qualification", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) //***
             alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) //***
             self.present(alert, animated: true, completion: nil)
             
         } else if textViewOutput[1] == "" {
             
-            let alert = UIAlertController(title: "\(NSLocalizedString("Missing Components", comment: ""))", message: "\(NSLocalizedString("Please input the number of components", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) //***
+            let alert = UIAlertController(title: "\(NSLocalizedString("Components Missing", comment: ""))", message: "\(NSLocalizedString("Please input the number of components", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) //***
             alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) //***
             self.present(alert, animated: true, completion: nil)
             
@@ -154,7 +154,7 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
                 cell?.placeholderTextOutlet.placeholder = "\(NSLocalizedString("e.g. Maths", comment: ""))" //***
             case 1:
                 cell?.labelOutlet.text = "\(NSLocalizedString("No. of Components", comment: ""))" //***
-                cell?.placeholderTextOutlet.placeholder = "\(NSLocalizedString("e.g. 4", comment: ""))" //***
+                cell?.placeholderTextOutlet.placeholder = "\(NSLocalizedString("e.g.", comment: "")) 4" //***
                 cell?.placeholderTextOutlet.keyboardType = UIKeyboardType.numberPad
             default:
                 break
@@ -214,7 +214,7 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
             
             if textViewOutput[1] == "" {
                 
-                let alert = UIAlertController(title: "\(NSLocalizedString("Missing Information", comment: ""))", message: "\(NSLocalizedString("Please input the number of components.", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) //***
+                let alert = UIAlertController(title: "\(NSLocalizedString("Missing Information", comment: ""))", message: "\(NSLocalizedString("Please input the number of components", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) //***
                 alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) //***
                 self.present(alert, animated: true, completion: nil)
                 
@@ -252,7 +252,7 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
     func updateComponentRows() {
         for i in 0..<Int(textViewOutput[1])! {
             componentsIndexPath.append(IndexPath(row: i + 1, section: 1))
-            componentTitleArray.append("\(NSLocalizedString("Component", comment: "")) \(i + 1)v") //***
+            componentTitleArray.append("\(NSLocalizedString("Component", comment: "")) \(i + 1)") //***
             componentWeightings.append("")
             
         }

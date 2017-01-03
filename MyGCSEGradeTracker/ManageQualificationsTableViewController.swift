@@ -54,7 +54,7 @@ class ManageQualificationsTableViewController: UITableViewController {
         // Configure the cell...
         
         cell.textLabel?.text = qualification.name
-        cell.detailTextLabel?.text = "\(NSLocalizedString("\(qualification.numberOfComponents) components", comment: ""))" //***
+        cell.detailTextLabel?.text = "\(qualification.numberOfComponents) \(NSLocalizedString("components", comment: ""))" //***
         return cell
     }
 
@@ -64,12 +64,12 @@ class ManageQualificationsTableViewController: UITableViewController {
             
             let qualToDelete = qualifications[indexPath.row].name
             
-            let alertController = UIAlertController(title: "\(NSLocalizedString("Warning!", comment: ""))", message: "\(NSLocalizedString("This action will delete all Components and Results associated with this Qualification.", comment: ""))", preferredStyle: .alert) //***
+            let alertController = UIAlertController(title: "\(NSLocalizedString("Warning!", comment: ""))", message: "\(NSLocalizedString("This action will delete all Components and Results associated with this Qualification", comment: ""))", preferredStyle: .alert) //***
             let delete = UIAlertAction(title: "\(NSLocalizedString("Delete", comment: ""))", style: .destructive, handler: { action in //***
                 
                 tableView.beginUpdates()
-                //delete from your datasource!
                 
+                //delete from datasource!
                 var deletedQualification: Results<Qualification> {
                     get {
                         return try! Realm().objects(Qualification.self).filter("name == '\(qualToDelete)'")

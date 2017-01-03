@@ -109,7 +109,7 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
                 convertedResult = resultsDictionary[i - 1]
             }
             newResult.qualification = selectedQualification.name
-            newResult.component = "\(NSLocalizedString("Component \(i)", comment: ""))" //***
+            newResult.component = "\(NSLocalizedString("Component", comment: "")) \(i)" //***
             newResult.result = convertedResult!
             newResult.set = (results.count / components.count) + 1
             
@@ -130,12 +130,12 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadResults"), object: nil)
             _ = self.navigationController?.popViewController(animated: true)
         } else if !resultsValidated() {
-            if resultType.titleForSegment(at: resultType.selectedSegmentIndex) == "Grade" {
-                let alert = UIAlertController(title: "\(NSLocalizedString("Incorrect Result", comment: ""))", message: "\(NSLocalizedString("Please enter results between 1-9", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) //***
+            if resultType.titleForSegment(at: resultType.selectedSegmentIndex) == "\(NSLocalizedString("Grade", comment: ""))" {
+                let alert = UIAlertController(title: "\(NSLocalizedString("Invalid Result", comment: ""))", message: "\(NSLocalizedString("Please enter results between 1-9", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) //***
                 alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) //***
                 self.present(alert, animated: true, completion: nil)
             } else {
-                let alert = UIAlertController(title: "\(NSLocalizedString("Incorrect Result", comment: ""))", message: "\(NSLocalizedString("", comment: ""))Please enter results between 0-100", preferredStyle: UIAlertControllerStyle.alert) //***
+                let alert = UIAlertController(title: "\(NSLocalizedString("Invalid Result", comment: ""))", message: "\(NSLocalizedString("Please enter results between 0-100", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) //***
                 alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) //***
                 self.present(alert, animated: true, completion: nil)
             }
@@ -148,7 +148,7 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func resultsValidated() -> Bool {
         if resultsDictionary.count == components.count {
-            if resultType.titleForSegment(at: resultType.selectedSegmentIndex) == "Grade" {
+            if resultType.titleForSegment(at: resultType.selectedSegmentIndex) == "\(NSLocalizedString("Grade", comment: ""))" {
                 var j = 0
                 for i in 0..<components.count {
                     if resultsDictionary[i]! > 0 && resultsDictionary[i]! < 10 {

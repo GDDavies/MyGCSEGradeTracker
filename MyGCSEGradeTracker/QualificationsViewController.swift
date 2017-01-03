@@ -143,7 +143,7 @@ class QualificationsViewController: UIViewController {
         // format x axis numbers
         let xAxisValueFormatter = NumberFormatter()
         xAxisValueFormatter.generatesDecimalNumbers = false
-        xAxisValueFormatter.positivePrefix = "\(NSLocalizedString("Set ", comment: ""))" //***
+        xAxisValueFormatter.positivePrefix = "\(NSLocalizedString("Set", comment: "")) " //***
         lineChartView.xAxis.valueFormatter = DefaultAxisValueFormatter(formatter: xAxisValueFormatter)
         
         if values.count >= 2 {
@@ -152,7 +152,7 @@ class QualificationsViewController: UIViewController {
             lineChartView.data = data
         } else {
             // Don't add data
-            lineChartView.noDataText = "\(NSLocalizedString("Please provide at least two sets of results for the chart.", comment: ""))" //***
+            lineChartView.noDataText = "\(NSLocalizedString("Please provide at least two sets of results for the chart", comment: ""))" //***
             lineChartView.noDataTextColor = UIColor.white
             lineChartView.noDataFont = UIFont(name: "HelveticaNeue-Bold", size: 12)!
         }

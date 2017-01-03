@@ -8,22 +8,69 @@
 
 //QualCollectionView
 "Qualifications" = "Qualifications";
-"Components:" = "Components:";
-"Upgrade for More Qualifications" = "";
-"Upgrade to allow more than four qualifications and remove ads." = "";
-"Upgrade" = "";
-"Restore Purchase" = "";
-"Later" = "";
-"Your target is currently \(Int(tgt)). Please input your new target:" = "";
-"Please input your new target:" = "";
-"Target Percentage" = "";
-"Confirm" = "";
-"Cancel" = "";
-"Target %" = "";
-"Done" = "";
-"Upgraded!" = "";
-"Thanks for upgrading. You can now add more qualifications and ads have been removed." = "";
-"Restored!" = "";
-"Your purchase has been restored. You can now add more qualifications and ads have been removed." = "";
-"Purchase Failed" = "";
-"Your purchase failed, please try again." = "";
+"Components" = "Components";
+"Upgrade for More Qualifications" = "Upgrade for More Qualifications";
+"Upgrade to allow more than four qualifications and remove ads" = "Upgrade to allow more than four qualifications and remove ads";
+"Upgrade" = "Upgrade";
+"Restore Purchase" = "Restore Purchase";
+"Later" = "Later";
+"Your target is currently \(Int(tgt)). Please input your new target" = "Your target is currently \(Int(tgt)). Please input your new target";
+"Please input your new target" = "Please input your new target";
+"Target Percentage" = "Target Percentage";
+"Confirm" = "Confirm";
+"Cancel" = "Cancel";
+"Target" = "Target";
+"Done" = "Done";
+"Upgraded" = "Upgraded";
+"Thanks for upgrading. You can now add more qualifications and ads have been removed" = "Thanks for upgrading. You can now add more qualifications and ads have been removed";
+"Restored" = "Restored";
+"Your purchase has been restored. You can now add more qualifications and ads have been removed" = "Your purchase has been restored. You can now add more qualifications and ads have been removed";
+"Purchase Failed" = "Purchase Failed";
+"Your purchase failed, please try again" = "Your purchase failed, please try again";
+
+//AddQual
+"Qualification Name Missing" = "Qualification Name Missing";
+"Please enter a name for the qualification" = "Please enter a name for the qualification";
+"OK" = "OK";
+"Components Missing" = "Components Missing";
+"Please input the number of components" = "Please input the number of components";
+"Incorrect Weightings" = "Incorrect Weightings";
+"Combined component weightings should equal 100%" = "Combined component weightings should equal 100%";
+"Missing Information" = "Missing Information";
+"Please enter the required information" = "Please enter the required information";
+"Qualification Details" = "Qualification Details";
+"Components" = "Components";
+"Qualification Name" = "Qualification Name";
+"e.g. Maths" = "e.g. Maths";
+"e.g." = "e.g.";
+"Edit Components" = "Edit Components";
+"Please input the number of components" = "Please input the number of components";
+"Component" = "Component";
+
+//Quals
+"Add Results" = "Add Results";
+"Set" = "Set";
+"Please provide at least two sets of results for the chart" = "Please provide at least two sets of results for the chart";
+
+//ResultsSet
+"Input Results" = "Input Results";
+"Grade" = "Grade";
+"Invalid Result" = "Invalid Result";
+"Please enter results between 1-9" = "Please enter results between 1-9";
+"Please enter results between 0-100" = "Please enter results between 0-100";
+"Missing Information" = "Missing Information";
+"Please enter a result for each component" = "Please enter a result for each component";
+
+//ManageQuals
+"Manage" = "Manage";
+"Dismiss" = "Dismiss";
+"components" = "components";
+"Warning!" = "Warning!";
+"This action will delete all Components and Results associated with this Qualification" = "This action will delete all Components and Results associated with this Qualification";
+"Delete" = "Delete";
+
+//ManageSets
+
+
+//ManageResults
+"Result" = "Result";
