@@ -14,8 +14,7 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
     
     var sourceCell: UICollectionViewCell?
     
-    var screenWidth: CGFloat!
-    var screenSize: CGRect!
+    let imageView = UIImageView(image: UIImage(named: "AddQualificationImage1")!)
     
     let userDefaultsKey = "HasUpgradedUserDefaultsKey"
     var hasUpgradedBool: Bool?
@@ -42,10 +41,6 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
     
     var selectedQualification: Qualification!
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return UIStatusBarStyle.lightContent
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,6 +62,11 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
         collectionView?.reloadData()
         hasUpgradedBool = UserDefaults.standard.bool(forKey: userDefaultsKey)
         navigationController?.setToolbarHidden(false, animated: true)
+        if qualifications.count == 0 {
+            layoutImageView()
+        }else{
+            imageView.removeFromSuperview()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -76,15 +76,13 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animate(alongsideTransition: { (UIViewControllerTransitionCoordinatorContext) -> Void in
             
-            let orient = UIApplication.shared.statusBarOrientation
-            
-            switch orient {
+            let orientation = UIApplication.shared.statusBarOrientation
+            switch orientation {
             case .portrait:
                 self.portraitLayoutCells()
             default:
                 self.landscapeLayoutCells()
             }
-            
         }, completion: { (UIViewControllerTransitionCoordinatorContext) -> Void in
             print("rotation completed")
         })
@@ -116,7 +114,6 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
     func portraitLayoutCells() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.width
-        layout.sectionInset = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
         layout.itemSize = CGSize(width: (width / 2) - 5, height: (width / 2) - 5)
         layout.minimumInteritemSpacing = 5
         layout.minimumLineSpacing = 10
@@ -127,7 +124,6 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
         let horizontalLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.width
         horizontalLayout.itemSize = CGSize(width: (width / 3) - 5, height: (width / 3) - 5)
-        horizontalLayout.sectionInset = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
         horizontalLayout.minimumInteritemSpacing = 5
         horizontalLayout.minimumLineSpacing = 10
         self.collectionView!.collectionViewLayout = horizontalLayout
@@ -301,4 +297,46 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
             print("Can't make purchase")
         }
     }
+    
+    //MARK: Auto Layout Constraints For ImageView
+    
+    func addImageViewConstraints() {
+        let navBarHeight = Int(navigationController!.navigationBar.frame.height) + 20
+        let width = UIScreen.main.bounds.width
+
+        let imageViewTrailingConstraint = NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal
+            , toItem: view, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0)
+        
+        let imageViewTopConstraint = NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal
+            , toItem: view, attribute: NSLayoutAttribute.top, multiplier: 1, constant: CGFloat(navBarHeight))
+        
+        imageView.addConstraint(NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: (width / 2) - 5))
+        imageView.addConstraint(NSLayoutConstraint(item: imageView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: (width / 2) - 5))
+        
+        NSLayoutConstraint.activate([imageViewTrailingConstraint, imageViewTopConstraint])
+    }
+    
+    func layoutImageView() {
+        let screenSize = UIScreen.main.bounds
+        let navBarHeight = Int(navigationController!.navigationBar.frame.height) + 20
+        imageView.frame = CGRect(x: Int(screenSize.width - 100), y: navBarHeight, width: 100, height: 100)
+        view.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        addImageViewConstraints()
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

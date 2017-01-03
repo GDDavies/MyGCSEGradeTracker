@@ -23,7 +23,7 @@ class ManageQualificationsTableViewController: UITableViewController {
         
         navigationController?.navigationBar.topItem?.title = "Manage"
         navigationItem.rightBarButtonItem = self.editButtonItem
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissView))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .plain, target: self, action: #selector(dismissView))
     }
 
     override func didReceiveMemoryWarning() {
