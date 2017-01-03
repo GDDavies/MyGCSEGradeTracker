@@ -1,0 +1,99 @@
+
+/* Class = "UITabBarItem"; title = "Manage"; ObjectID = "0vu-Oj-z9A"; */
+"0vu-Oj-z9A.title" = "Manage";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "12Y-XF-hJU"; */
+"12Y-XF-hJU.text" = "Label";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "270-SD-n1m"; */
+"270-SD-n1m.text" = "Title";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "2Ke-c9-Urj"; */
+"2Ke-c9-Urj.text" = "Title";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "4ch-i8-lYO"; */
+"4ch-i8-lYO.text" = "Detail";
+
+/* Class = "UILabel"; text = "TARGET"; ObjectID = "6AP-fr-m8U"; */
+"6AP-fr-m8U.text" = "TARGET";
+
+/* Class = "UILabel"; text = "Component 1"; ObjectID = "6IK-6d-8sU"; */
+"6IK-6d-8sU.text" = "Component 1";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "8Xo-Qs-2ol"; */
+"8Xo-Qs-2ol.text" = "Detail";
+
+/* Class = "UILabel"; text = "LAST RESULT"; ObjectID = "ARD-A1-r9B"; */
+"ARD-A1-r9B.text" = "LAST RESULT";
+
+/* Class = "UILabel"; text = "Qualification Name"; ObjectID = "E0V-MR-P2i"; */
+"E0V-MR-P2i.text" = "Qualification Name";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "IJ4-Tu-l4y"; */
+"IJ4-Tu-l4y.text" = "0";
+
+/* Class = "UITextField"; placeholder = "Result"; ObjectID = "Ing-5v-INV"; */
+"Ing-5v-INV.placeholder" = "Result";
+
+/* Class = "UILabel"; text = "AV. GRADE"; ObjectID = "JmS-11-fWx"; */
+"JmS-11-fWx.text" = "AV. GRADE";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "Joa-H4-WK2"; */
+"Joa-H4-WK2.text" = "Detail";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "K8e-qc-a7B"; */
+"K8e-qc-a7B.text" = "0";
+
+/* Class = "UILabel"; text = "Components"; ObjectID = "LHd-Xf-WOc"; */
+"LHd-Xf-WOc.text" = "Components";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "MMS-Ub-5rA"; */
+"MMS-Ub-5rA.text" = "0";
+
+/* Class = "UITabBarItem"; title = "Analyse"; ObjectID = "MaU-YS-5EK"; */
+"MaU-YS-5EK.title" = "Analyse";
+
+/* Class = "UIBarButtonItem"; title = "Manage"; ObjectID = "O7f-r8-2uj"; */
+"O7f-r8-2uj.title" = "Manage";
+
+/* Class = "UILabel"; text = "AV. LAST 3"; ObjectID = "VKj-ru-6sF"; */
+"VKj-ru-6sF.text" = "AV. LAST 3";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "VSu-3e-dPG"; */
+"VSu-3e-dPG.text" = "0";
+
+/* Class = "UILabel"; text = "SETS"; ObjectID = "aSI-xK-qYg"; */
+"aSI-xK-qYg.text" = "SETS";
+
+/* Class = "UITextField"; placeholder = "e.g. Maths"; ObjectID = "eNI-MJ-Zoz"; */
+"eNI-MJ-Zoz.placeholder" = "e.g. Maths";
+
+/* Class = "UIBarButtonItem"; title = "Add Target"; ObjectID = "eSh-mt-QmR"; */
+"eSh-mt-QmR.title" = "Add Target";
+
+/* Class = "UILabel"; text = "Components: 0"; ObjectID = "nsn-zt-Usf"; */
+"nsn-zt-Usf.text" = "Components: 0";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "oJx-kf-cBK"; */
+"oJx-kf-cBK.text" = "Title";
+
+/* Class = "UIButton"; normalTitle = "Save Set"; ObjectID = "owM-Nw-Z4B"; */
+"owM-Nw-Z4B.normalTitle" = "Save Set";
+
+/* Class = "UISegmentedControl"; puJ-vi-0bb.segmentTitles[0] = "Grade"; ObjectID = "puJ-vi-0bb"; */
+"puJ-vi-0bb.segmentTitles[0]" = "Grade";
+
+/* Class = "UISegmentedControl"; puJ-vi-0bb.segmentTitles[1] = "%"; ObjectID = "puJ-vi-0bb"; */
+"puJ-vi-0bb.segmentTitles[1]" = "%";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "tF7-Ue-1BB"; */
+"tF7-Ue-1BB.text" = "0";
+
+/* Class = "UILabel"; text = "AV. PERCENT"; ObjectID = "urF-nQ-Ge9"; */
+"urF-nQ-Ge9.text" = "AV. PERCENT";
+
+/* Class = "UIButton"; normalTitle = "Save Qualification"; ObjectID = "yps-VD-r13"; */
+"yps-VD-r13.normalTitle" = "Save Qualification";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "zJC-iW-udx"; */
+"zJC-iW-udx.text" = "0";

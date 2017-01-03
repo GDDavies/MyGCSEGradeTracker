@@ -65,7 +65,9 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
         if qualifications.count == 0 {
             layoutImageView()
         }else{
-            imageView.removeFromSuperview()
+            if imageView.superview === self.view {
+                imageView.removeFromSuperview()
+            }
         }
     }
     
@@ -183,28 +185,27 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
         let target = defaults.object(forKey: "TargetPercentage") as? Double
         var message: String?
         if let tgt = target {
-            message = "The target is currently \(Int(tgt)). Please input your target:"
+            message = "Your target is currently \(Int(tgt)). Please input your new target:"
         } else {
             message = "Please input your target:"
         }
         let alertController = UIAlertController(title: "Target Percentage", message: message!, preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
             if let field = alertController.textFields?[0] {
-                alertController.textFields?[0].keyboardType = .numberPad
                 // store data
                 self.defaults.set(Double(field.text!), forKey: "TargetPercentage")
                 self.defaults.synchronize()
             } else {
-                // user did not fill field
+                // user did not enter anything
             }
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
         
-        alertController.addTextField { (textField) in
+        alertController.addTextField { (textField: UITextField!) in
+            textField.keyboardType = UIKeyboardType.numberPad
             textField.placeholder = "Target %"
         }
-        
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
         
@@ -214,7 +215,6 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
     // MARK: Upgrade or restore purchase
     func productsRequest (_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         print("Got the request")
-        
         let count = response.products.count
         if (count > 0) {
             let validProduct = response.products[0] as SKProduct
