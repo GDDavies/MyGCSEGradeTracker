@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  MyGCSEGradeTracker
+
+  Created by George Davies on 03/01/2017.
+  Copyright © 2017 George Davies. All rights reserved.
+*/
+//QualCollectionView
+"Qualifications" = "test";
+"Components:" = "";
+"Upgrade for More Qualifications" = "";
+"Upgrade to allow more than four qualifications and remove ads." = "";
+"Upgrade" = "";
+"Restore Purchase" = "";
+"Later" = "";
+"Your target is currently \(Int(tgt)). Please input your new target:" = "";
+"Please input your new target:" = "";
+"Target Percentage" = "";
+"Confirm" = "";
+"Cancel" = "";
+"Target %" = "";
+"Done" = "";
+"Upgraded!" = "";
+"Thanks for upgrading. You can now add more qualifications and ads have been removed." = "";
+"Restored!" = "";
+"Your purchase has been restored. You can now add more qualifications and ads have been removed." = "";
+"Purchase Failed" = "";
+"Your purchase failed, please try again." = "";
+
+//AddQual

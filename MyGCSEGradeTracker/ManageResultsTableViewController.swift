@@ -25,7 +25,7 @@ class ManageResultsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Set \(selectedSet!)"
+        self.title = "\(NSLocalizedString("Set", comment: "")) \(selectedSet!)" //***
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,7 +51,7 @@ class ManageResultsTableViewController: UITableViewController {
         let result = results[indexPath.row]
         
         cell.textLabel?.text = result.component
-        cell.detailTextLabel?.text = "Result: \(result.result)%"
+        cell.detailTextLabel?.text = "\(NSLocalizedString("Result:", comment: "")) \(result.result)%" //***
 
         return cell
     }

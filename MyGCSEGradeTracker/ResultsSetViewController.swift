@@ -66,7 +66,7 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
         
         resultType.tintColor = self.backgroundColor
         saveSetButton.backgroundColor = self.backgroundColor
-        self.title = "Input Results"
+        self.title = "\(NSLocalizedString("Input Results", comment: ""))" //***
     }
     
     func keyboardWillShow(notification: NSNotification) {
@@ -103,13 +103,13 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
                 newResult.type = segmentResultType
                 resultTypeString = segmentResultType
             }
-            if resultTypeString == "Grade" {
+            if resultTypeString == "\(NSLocalizedString("Grade", comment: ""))" { //***
                 convertedResult = resultsDictionary[i - 1]! * 10
             } else {
                 convertedResult = resultsDictionary[i - 1]
             }
             newResult.qualification = selectedQualification.name
-            newResult.component = "Component \(i)"
+            newResult.component = "\(NSLocalizedString("Component \(i)", comment: ""))" //***
             newResult.result = convertedResult!
             newResult.set = (results.count / components.count) + 1
             
@@ -131,17 +131,17 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
             _ = self.navigationController?.popViewController(animated: true)
         } else if !resultsValidated() {
             if resultType.titleForSegment(at: resultType.selectedSegmentIndex) == "Grade" {
-                let alert = UIAlertController(title: "Incorrect Result", message: "Please enter results between 1-9", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                let alert = UIAlertController(title: "\(NSLocalizedString("Incorrect Result", comment: ""))", message: "\(NSLocalizedString("Please enter results between 1-9", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) //***
+                alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) //***
                 self.present(alert, animated: true, completion: nil)
             } else {
-                let alert = UIAlertController(title: "Incorrect Result", message: "Please enter results between 0-100", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                let alert = UIAlertController(title: "\(NSLocalizedString("Incorrect Result", comment: ""))", message: "\(NSLocalizedString("", comment: ""))Please enter results between 0-100", preferredStyle: UIAlertControllerStyle.alert) //***
+                alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) //***
                 self.present(alert, animated: true, completion: nil)
             }
         } else {
-            let alert = UIAlertController(title: "Missing Information", message: "Please enter a result for each component", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+            let alert = UIAlertController(title: "\(NSLocalizedString("Missing Information", comment: ""))", message: "\(NSLocalizedString("Please enter a result for each component", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) //***
+            alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) //***
             self.present(alert, animated: true, completion: nil)
         }
     }

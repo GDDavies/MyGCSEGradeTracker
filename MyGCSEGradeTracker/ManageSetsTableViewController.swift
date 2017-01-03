@@ -36,7 +36,6 @@ class ManageSetsTableViewController: UITableViewController {
         self.title = selectedQualification.name
         navigationItem.rightBarButtonItem = self.editButtonItem
         numberOfSets = results.count / components.count
-        reorderSets()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -46,10 +45,6 @@ class ManageSetsTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func reorderSets() {
-        // get sets only, work on full set rather than individual results
     }
     
     // MARK: - Table view data source
@@ -74,8 +69,10 @@ class ManageSetsTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "SetCell", for: indexPath)
                 
-        cell.textLabel?.text = "Set \(indexPath.row + 1)"
+        cell.textLabel?.text = "\(NSLocalizedString("Set \(indexPath.row + 1)", comment: ""))" //***
         
+        
+        //******* Maybe date here instead of results
         var detailResultsArray = ""
         
         for result in setResults {
@@ -120,20 +117,11 @@ class ManageSetsTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "ShowResults" {
-            
-            //            let path = self.tableView.indexPathForSelectedRow
-            //            let vc = segue.destination as! ManageResultsTableViewController
-            //
-            //            vc.selectedQualification = qualifications[(path?.row)!]
-            
             let controller = segue.destination as! ManageResultsTableViewController
             let row = self.tableView.indexPathForSelectedRow?.row
             controller.selectedQualification = selectedQualification
             controller.selectedSet = row! + 1
         }
     }
-
-    
 }

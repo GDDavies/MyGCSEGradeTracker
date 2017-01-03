@@ -100,7 +100,7 @@ class QualificationsViewController: UIViewController {
         averageLastThree.textColor = UIColor.lightGray
         changeLastThree.textColor = UIColor.lightGray
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Results", style: .plain, target: self, action: #selector(addResultsTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "\(NSLocalizedString("Add Results", comment: ""))", style: .plain, target: self, action: #selector(addResultsTapped)) //***
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -143,7 +143,7 @@ class QualificationsViewController: UIViewController {
         // format x axis numbers
         let xAxisValueFormatter = NumberFormatter()
         xAxisValueFormatter.generatesDecimalNumbers = false
-        xAxisValueFormatter.positivePrefix = "Set "
+        xAxisValueFormatter.positivePrefix = "\(NSLocalizedString("Set ", comment: ""))" //***
         lineChartView.xAxis.valueFormatter = DefaultAxisValueFormatter(formatter: xAxisValueFormatter)
         
         if values.count >= 2 {
@@ -152,7 +152,7 @@ class QualificationsViewController: UIViewController {
             lineChartView.data = data
         } else {
             // Don't add data
-            lineChartView.noDataText = "Please provide at least two sets of results for the chart."
+            lineChartView.noDataText = "\(NSLocalizedString("Please provide at least two sets of results for the chart.", comment: ""))" //***
             lineChartView.noDataTextColor = UIColor.white
             lineChartView.noDataFont = UIFont(name: "HelveticaNeue-Bold", size: 12)!
         }
@@ -160,7 +160,7 @@ class QualificationsViewController: UIViewController {
         // Target line
         if let newTarget = targetPercentage {
             if newTarget != 0 {
-                let trgt = ChartLimitLine(limit: newTarget, label: "") //Target: \(target)%
+                let trgt = ChartLimitLine(limit: newTarget, label: "")
                 lineChartView.leftAxis.addLimitLine(trgt)
             }
         }

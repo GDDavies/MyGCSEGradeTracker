@@ -49,26 +49,26 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
             
         } else if textViewOutput[0] == "" {
             
-            let alert = UIAlertController(title: "No Qualification Name", message: "Please enter a name for the qualification", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            let alert = UIAlertController(title: "\(NSLocalizedString("No Qualification Name", comment: ""))", message: "\(NSLocalizedString("Please enter a name for the qualification", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) //***
+            alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) //***
             self.present(alert, animated: true, completion: nil)
             
         } else if textViewOutput[1] == "" {
             
-            let alert = UIAlertController(title: "Missing Components", message: "Please input the number of components", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            let alert = UIAlertController(title: "\(NSLocalizedString("Missing Components", comment: ""))", message: "\(NSLocalizedString("Please input the number of components", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) //***
+            alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) //***
             self.present(alert, animated: true, completion: nil)
             
         } else if validateWeightings() == false && validateQualificationName() {
             
-            let alert = UIAlertController(title: "Incorrect Weightings", message: "Combined component weightings should equal 100%", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            let alert = UIAlertController(title: "\(NSLocalizedString("Incorrect Weightings", comment: ""))", message: "\(NSLocalizedString("Combined component weightings should equal 100%", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) //***
+            alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) //***
             self.present(alert, animated: true, completion: nil)
 
         } else {
             
-            let alert = UIAlertController(title: "Missing Information", message: "Please enter the required information", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            let alert = UIAlertController(title: "\(NSLocalizedString("Missing Information", comment: ""))", message: "\(NSLocalizedString("Please enter the required information", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) //***
+            alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) //***
             self.present(alert, animated: true, completion: nil)
         }
     }
@@ -125,9 +125,9 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         if section == 0 {
-            return "Qualification Details"
+            return "\(NSLocalizedString("Qualification Details", comment: ""))" //***
         } else {
-            return "Components"
+            return "\(NSLocalizedString("Components", comment: ""))" //***
         }
     }
     
@@ -150,12 +150,12 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
             
             switch indexPath.row {
             case 0:
-                cell?.labelOutlet.text = "Qualification Name"
-                cell?.placeholderTextOutlet.placeholder = "e.g. Maths"
+                cell?.labelOutlet.text = "\(NSLocalizedString("Qualification Name", comment: ""))" //***
+                cell?.placeholderTextOutlet.placeholder = "\(NSLocalizedString("e.g. Maths", comment: ""))" //***
             case 1:
-                cell?.labelOutlet.text = "No. of Components"
-                cell?.placeholderTextOutlet.placeholder = "e.g. 4"
-                cell?.placeholderTextOutlet.keyboardType = UIKeyboardType.decimalPad
+                cell?.labelOutlet.text = "\(NSLocalizedString("No. of Components", comment: ""))" //***
+                cell?.placeholderTextOutlet.placeholder = "\(NSLocalizedString("e.g. 4", comment: ""))" //***
+                cell?.placeholderTextOutlet.keyboardType = UIKeyboardType.numberPad
             default:
                 break
             }
@@ -168,7 +168,7 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
         if indexPath.section == 1 && indexPath.row == 0 {
             
             cell = tableView.dequeueReusableCell(withIdentifier: "Cell2") as! CustomTableViewCell?
-            cell?.labelOutlet.text = "Edit Components"
+            cell?.labelOutlet.text = "\(NSLocalizedString("Edit Components", comment: ""))" //***
             cell?.accessoryType = .disclosureIndicator
             
             
@@ -184,7 +184,7 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
                 cell?.placeholderTextOutlet.placeholder = ""
             }else{
                 cell?.labelOutlet.text = componentTitleArray[indexPath.row - 1]
-                cell?.placeholderTextOutlet.placeholder = "e.g. \(100 / componentTitleArray.count)%"
+                cell?.placeholderTextOutlet.placeholder = "\(NSLocalizedString("e.g.", comment: "")) \(100 / componentTitleArray.count)%" //***
             }
         }
         
@@ -214,8 +214,8 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
             
             if textViewOutput[1] == "" {
                 
-                let alert = UIAlertController(title: "Missing Information", message: "Please input the number of components", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                let alert = UIAlertController(title: "\(NSLocalizedString("Missing Information", comment: ""))", message: "\(NSLocalizedString("Please input the number of components.", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) //***
+                alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) //***
                 self.present(alert, animated: true, completion: nil)
                 
             }else {
@@ -252,7 +252,7 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
     func updateComponentRows() {
         for i in 0..<Int(textViewOutput[1])! {
             componentsIndexPath.append(IndexPath(row: i + 1, section: 1))
-            componentTitleArray.append("Component \(i + 1)")
+            componentTitleArray.append("\(NSLocalizedString("Component", comment: "")) \(i + 1)v") //***
             componentWeightings.append("")
             
         }
@@ -292,23 +292,12 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
                 
                 let newComponents = Component()
                 
-                newComponents.name = "Component \(i)"
+                newComponents.name = "\(NSLocalizedString("Component", comment: "")) \(i)" //***
                 newComponents.qualification = textViewOutput[0]
                 newComponents.weighting = (Double(componentWeightings[i - 1])! / 100)
-                
                 i += 1
                 realm.add(newComponents)
-            }
-            
-            //            self.addedUnit = newUnits
+            }            
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowComponents" {
-            let destinationVC = segue.destination as? ComponentTableViewController
-            destinationVC?.numberOfComponents = Int(textViewOutput[1])
-        }
-    }
-    
 }
