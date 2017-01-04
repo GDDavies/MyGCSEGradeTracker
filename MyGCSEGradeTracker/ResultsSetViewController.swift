@@ -66,7 +66,7 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
         
         resultType.tintColor = self.backgroundColor
         saveSetButton.backgroundColor = self.backgroundColor
-        self.title = "\(NSLocalizedString("Input Results", comment: ""))" //***
+        self.title = "\(NSLocalizedString("Input Results", comment: ""))" 
     }
     
     func keyboardWillShow(notification: NSNotification) {
@@ -103,13 +103,13 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
                 newResult.type = segmentResultType
                 resultTypeString = segmentResultType
             }
-            if resultTypeString == "\(NSLocalizedString("Grade", comment: ""))" { //***
+            if resultTypeString == "\(NSLocalizedString("Grade", comment: ""))" { 
                 convertedResult = resultsDictionary[i - 1]! * 10
             } else {
                 convertedResult = resultsDictionary[i - 1]
             }
             newResult.qualification = selectedQualification.name
-            newResult.component = "\(NSLocalizedString("Component", comment: "")) \(i)" //***
+            newResult.component = "\(NSLocalizedString("Component", comment: "")) \(i)" 
             newResult.result = convertedResult!
             newResult.set = (results.count / components.count) + 1
             
@@ -131,17 +131,17 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
             _ = self.navigationController?.popViewController(animated: true)
         } else if !resultsValidated() {
             if resultType.titleForSegment(at: resultType.selectedSegmentIndex) == "\(NSLocalizedString("Grade", comment: ""))" {
-                let alert = UIAlertController(title: "\(NSLocalizedString("Invalid Result", comment: ""))", message: "\(NSLocalizedString("Please enter results between 1-9", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) //***
-                alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) //***
+                let alert = UIAlertController(title: "\(NSLocalizedString("Invalid Result", comment: ""))", message: "\(NSLocalizedString("Please enter results between 1-9", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) 
+                alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) 
                 self.present(alert, animated: true, completion: nil)
             } else {
-                let alert = UIAlertController(title: "\(NSLocalizedString("Invalid Result", comment: ""))", message: "\(NSLocalizedString("Please enter results between 0-100", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) //***
-                alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) //***
+                let alert = UIAlertController(title: "\(NSLocalizedString("Invalid Result", comment: ""))", message: "\(NSLocalizedString("Please enter results between 0-100", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) 
+                alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) 
                 self.present(alert, animated: true, completion: nil)
             }
         } else {
-            let alert = UIAlertController(title: "\(NSLocalizedString("Missing Information", comment: ""))", message: "\(NSLocalizedString("Please enter a result for each component", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) //***
-            alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) //***
+            let alert = UIAlertController(title: "\(NSLocalizedString("Missing Information", comment: ""))", message: "\(NSLocalizedString("Please enter a result for each component", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) 
+            alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) 
             self.present(alert, animated: true, completion: nil)
         }
     }

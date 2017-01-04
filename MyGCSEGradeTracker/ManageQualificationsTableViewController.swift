@@ -20,9 +20,9 @@ class ManageQualificationsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.topItem?.title = "\(NSLocalizedString("Manage", comment: ""))" //***
+        navigationController?.navigationBar.topItem?.title = "\(NSLocalizedString("Manage", comment: ""))" 
         navigationItem.rightBarButtonItem = self.editButtonItem
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "\(NSLocalizedString("Dismiss", comment: ""))", style: .plain, target: self, action: #selector(dismissView)) //***
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "\(NSLocalizedString("Dismiss", comment: ""))", style: .plain, target: self, action: #selector(dismissView)) 
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,7 +54,7 @@ class ManageQualificationsTableViewController: UITableViewController {
         // Configure the cell...
         
         cell.textLabel?.text = qualification.name
-        cell.detailTextLabel?.text = "\(qualification.numberOfComponents) \(NSLocalizedString("components", comment: ""))" //***
+        cell.detailTextLabel?.text = "\(qualification.numberOfComponents) \(NSLocalizedString("components", comment: ""))" 
         return cell
     }
 
@@ -64,8 +64,8 @@ class ManageQualificationsTableViewController: UITableViewController {
             
             let qualToDelete = qualifications[indexPath.row].name
             
-            let alertController = UIAlertController(title: "\(NSLocalizedString("Warning!", comment: ""))", message: "\(NSLocalizedString("This action will delete all Components and Results associated with this Qualification", comment: ""))", preferredStyle: .alert) //***
-            let delete = UIAlertAction(title: "\(NSLocalizedString("Delete", comment: ""))", style: .destructive, handler: { action in //***
+            let alertController = UIAlertController(title: "\(NSLocalizedString("Warning!", comment: ""))", message: "\(NSLocalizedString("This action will delete all Components and Results associated with this Qualification", comment: ""))", preferredStyle: .alert) 
+            let delete = UIAlertAction(title: "\(NSLocalizedString("Delete", comment: ""))", style: .destructive, handler: { action in 
                 
                 tableView.beginUpdates()
                 
@@ -99,7 +99,7 @@ class ManageQualificationsTableViewController: UITableViewController {
                 tableView.endUpdates()
             })
             
-            let cancel = UIAlertAction(title: "\(NSLocalizedString("Cancel", comment: ""))", style: .cancel, handler: { action in //***
+            let cancel = UIAlertAction(title: "\(NSLocalizedString("Cancel", comment: ""))", style: .cancel, handler: { action in 
                 
                 //this is optional, it makes the delete button go away on the cell
                 tableView.reloadRows(at: [indexPath], with: .automatic)

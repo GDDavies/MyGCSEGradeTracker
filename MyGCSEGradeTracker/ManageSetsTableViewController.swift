@@ -69,10 +69,10 @@ class ManageSetsTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "SetCell", for: indexPath)
                 
-        cell.textLabel?.text = "\(NSLocalizedString("Set", comment: "")) \(indexPath.row + 1)" //***
+        cell.textLabel?.text = "\(NSLocalizedString("Set", comment: "")) \(indexPath.row + 1)" 
         
         
-        //******* Maybe date here instead of results
+        //**** Maybe date here instead of results
         var detailResultsArray = ""
         
         for result in setResults {
