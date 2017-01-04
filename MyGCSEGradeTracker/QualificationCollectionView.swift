@@ -46,7 +46,7 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
         
         SKPaymentQueue.default().add(self)
         
-        navigationController?.navigationBar.topItem?.title = NSLocalizedString("Qualifications", comment: "") //***
+        navigationController?.navigationBar.topItem?.title = NSLocalizedString("Qualifications", comment: "") 
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(loadQualifications(_:)),name:NSNotification.Name(rawValue: "load"), object: nil)
         
@@ -107,7 +107,7 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
         let qualification = qualifications[(indexPath as NSIndexPath).row]
         
         cell.qualificationLabel.text = qualification.name
-        cell.numberOfComponentsLabel.text = "\(NSLocalizedString("Components", comment: "")): \(String(qualification.numberOfComponents))" //***
+        cell.numberOfComponentsLabel.text = "\(NSLocalizedString("Components", comment: "")): \(String(qualification.numberOfComponents))" 
         cell.backgroundColor = colorsArray[indexPath.row % colorsArray.count]
         return cell
     }
@@ -151,16 +151,16 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "AddQual" {
             if qualifications.count == 4 && !hasUpgraded() {
-                let alertController = UIAlertController(title: "\(NSLocalizedString("Upgrade for More Qualifications", comment: ""))", message: "\(NSLocalizedString("Upgrade to allow more than four qualifications and remove ads.", comment: ""))", preferredStyle: .actionSheet) //***
+                let alertController = UIAlertController(title: "\(NSLocalizedString("Upgrade for More Qualifications", comment: ""))", message: "\(NSLocalizedString("Upgrade to allow more than four qualifications and remove ads.", comment: ""))", preferredStyle: .actionSheet) 
                 
-                alertController.addAction(UIAlertAction(title: "\(NSLocalizedString("Upgrade", comment: ""))", style: .default, handler: { (action) in //***
+                alertController.addAction(UIAlertAction(title: "\(NSLocalizedString("Upgrade", comment: ""))", style: .default, handler: { (action) in 
                     self.upgrade()
                 }))
-                alertController.addAction(UIAlertAction(title: "\(NSLocalizedString("Restore Purchase", comment: ""))", style: .default, handler: { (action) in //***
+                alertController.addAction(UIAlertAction(title: "\(NSLocalizedString("Restore Purchase", comment: ""))", style: .default, handler: { (action) in 
                     SKPaymentQueue.default().restoreCompletedTransactions()
                 }))
                 
-                alertController.addAction(UIAlertAction(title: "\(NSLocalizedString("Later", comment: ""))", style: .cancel, handler: { (action) in //***
+                alertController.addAction(UIAlertAction(title: "\(NSLocalizedString("Later", comment: ""))", style: .cancel, handler: { (action) in 
                 }))
                 
                 self.present(alertController, animated: true) {
@@ -181,12 +181,13 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
         let target = defaults.object(forKey: "TargetPercentage") as? Double
         var message: String?
         if let tgt = target {
-            message = "\(NSLocalizedString("Your target is currently \(Int(tgt)). Please input your new target", comment: "")):" //***
+            print(tgt)
+            message = String(format: NSLocalizedString("Your target is currently %g. Please input your new target", comment: ""), tgt) 
         } else {
-            message = "\(NSLocalizedString("Please input your new target", comment: "")):" //***
+            message = "\(NSLocalizedString("Please input your new target", comment: "")):" 
         }
-        let alertController = UIAlertController(title: "\(NSLocalizedString("Target Percentage", comment: ""))", message: message!, preferredStyle: .alert) //***
-        let confirmAction = UIAlertAction(title: "\(NSLocalizedString("Confirm", comment: ""))", style: .default) { (_) in //***
+        let alertController = UIAlertController(title: "\(NSLocalizedString("Target Percentage", comment: ""))", message: message!, preferredStyle: .alert) 
+        let confirmAction = UIAlertAction(title: "\(NSLocalizedString("Confirm", comment: ""))", style: .default) { (_) in 
             if let field = alertController.textFields?[0] {
                 // store data
                 self.defaults.set(Double(field.text!), forKey: "TargetPercentage")
@@ -196,11 +197,11 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
             }
         }
         
-        let cancelAction = UIAlertAction(title: "\(NSLocalizedString("Cancel", comment: ""))", style: .cancel) { (_) in } //***
+        let cancelAction = UIAlertAction(title: "\(NSLocalizedString("Cancel", comment: ""))", style: .cancel) { (_) in } 
         
         alertController.addTextField { (textField: UITextField!) in
             textField.keyboardType = UIKeyboardType.numberPad
-            textField.placeholder = "\(NSLocalizedString("Target", comment: "")) %" //***
+            textField.placeholder = "\(NSLocalizedString("Target", comment: "")) %" 
         }
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
@@ -237,7 +238,7 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         print("Received payment transaction response")
         
-        let doneAction = UIAlertAction(title: "\(NSLocalizedString("Done", comment: ""))", style: .default, handler: { (action) in //***
+        let doneAction = UIAlertAction(title: "\(NSLocalizedString("Done", comment: ""))", style: .default, handler: { (action) in 
             self.dismiss(animated: true, completion: nil)
         })
         
@@ -248,7 +249,7 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
                     UserDefaults.standard.set(true, forKey: userDefaultsKey)
                     print("Product Purchased")
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
-                    let alertController = UIAlertController(title: "\(NSLocalizedString("Upgraded", comment: ""))!", message: "\(NSLocalizedString("Thanks for upgrading. You can now add more qualifications and ads have been removed", comment: ""))", preferredStyle: .alert) //***
+                    let alertController = UIAlertController(title: "\(NSLocalizedString("Upgraded", comment: ""))!", message: "\(NSLocalizedString("Thanks for upgrading. You can now add more qualifications and ads have been removed", comment: ""))", preferredStyle: .alert) 
                     alertController.addAction(doneAction)
                     self.present(alertController, animated: true, completion: nil)
                     break
@@ -256,7 +257,7 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
                     UserDefaults.standard.set(true, forKey: userDefaultsKey)
                     print("Product Restored")
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
-                    let alertController = UIAlertController(title: "\(NSLocalizedString("Restored", comment: ""))!", message: "\(NSLocalizedString("Your purchases have been restored. You can now add more qualifications and ads have been removed", comment: ""))", preferredStyle: .alert) //***
+                    let alertController = UIAlertController(title: "\(NSLocalizedString("Restored", comment: ""))!", message: "\(NSLocalizedString("Your purchases have been restored. You can now add more qualifications and ads have been removed", comment: ""))", preferredStyle: .alert) 
                     alertController.addAction(doneAction)
                     self.present(alertController, animated: true, completion: nil)
                     break
@@ -264,7 +265,7 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
                     print("Purchased Failed")
                     //print(transaction.error as Any)
                     SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
-                    let alertController = UIAlertController(title: "\(NSLocalizedString("Purchase Failed", comment: ""))", message: "\(NSLocalizedString("Your purchase failed, please try again", comment: ""))", preferredStyle: .alert) //***
+                    let alertController = UIAlertController(title: "\(NSLocalizedString("Purchase Failed", comment: ""))", message: "\(NSLocalizedString("Your purchase failed, please try again", comment: ""))", preferredStyle: .alert) 
                     alertController.addAction(doneAction)
                     self.present(alertController, animated: true, completion: nil)
                     break

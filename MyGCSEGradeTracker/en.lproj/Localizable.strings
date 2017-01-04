@@ -14,7 +14,7 @@
 "Upgrade" = "Upgrade";
 "Restore Purchase" = "Restore Purchase";
 "Later" = "Later";
-"Your target is currently \(Int(tgt)). Please input your new target" = "Your target is currently \(Int(tgt)). Please input your new target";
+"Your target is currently %g. Please input your new target" = "Your target is currently %g. Please input your new target";
 "Please input your new target" = "Please input your new target";
 "Target Percentage" = "Target Percentage";
 "Confirm" = "Confirm";

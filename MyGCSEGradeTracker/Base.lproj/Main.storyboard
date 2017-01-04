@@ -706,19 +706,13 @@
                                         </variation>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LAST RESULT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ARD-A1-r9B">
-                                        <rect key="frame" x="133.66666666666669" y="68.666666666666629" width="107.00000000000003" height="19.333333333333371"/>
+                                        <rect key="frame" x="133" y="69" width="107.33333333333331" height="19"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="heightClass=compact-widthClass=compact">
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact">
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
-                                        </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SETS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aSI-xK-qYg">
-                                        <rect key="frame" x="38.333333333333329" y="68.666666666666629" width="40.999999999999986" height="19.333333333333371"/>
+                                        <rect key="frame" x="5" y="69" width="107.33333333333334" height="19"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -730,7 +724,7 @@
                                         </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TARGET" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6AP-fr-m8U">
-                                        <rect key="frame" x="284" y="68.666666666666629" width="63.333333333333314" height="19.333333333333371"/>
+                                        <rect key="frame" x="261" y="69" width="107.33333333333331" height="19.333333333333258"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="48" id="ZXw-Ux-3yT"/>
                                         </constraints>
@@ -764,7 +758,8 @@
                                     </constraint>
                                     <constraint firstItem="ARD-A1-r9B" firstAttribute="baseline" secondItem="aSI-xK-qYg" secondAttribute="baseline" id="6C4-Bf-9rS"/>
                                     <constraint firstItem="6AP-fr-m8U" firstAttribute="baseline" secondItem="ARD-A1-r9B" secondAttribute="baseline" id="98j-fD-Iey"/>
-                                    <constraint firstItem="6AP-fr-m8U" firstAttribute="centerX" secondItem="0kH-hR-jTn" secondAttribute="centerX" id="CGV-rq-JJL"/>
+                                    <constraint firstItem="aSI-xK-qYg" firstAttribute="width" secondItem="ARD-A1-r9B" secondAttribute="width" id="9L8-1f-eqO"/>
+                                    <constraint firstItem="6AP-fr-m8U" firstAttribute="centerX" secondItem="0kH-hR-jTn" secondAttribute="centerX" constant="-1" id="CGV-rq-JJL"/>
                                     <constraint firstItem="6AP-fr-m8U" firstAttribute="top" secondItem="0kH-hR-jTn" secondAttribute="bottom" constant="7" id="CbO-Xt-Fxb"/>
                                     <constraint firstItem="Nt6-8P-pCe" firstAttribute="leading" secondItem="ZmH-Kv-lll" secondAttribute="trailing" constant="28" id="F5P-1O-098"/>
                                     <constraint firstItem="ZmH-Kv-lll" firstAttribute="top" secondItem="Nt6-8P-pCe" secondAttribute="top" constant="1" id="GVj-u4-bGp"/>
@@ -783,11 +778,14 @@
                                         <variation key="heightClass=compact" constant="-4"/>
                                     </constraint>
                                     <constraint firstItem="aSI-xK-qYg" firstAttribute="centerX" secondItem="ZmH-Kv-lll" secondAttribute="centerX" id="T0b-XJ-ssi"/>
+                                    <constraint firstItem="ARD-A1-r9B" firstAttribute="leading" secondItem="aSI-xK-qYg" secondAttribute="trailing" constant="20.666666666666657" id="TEt-dU-xaY"/>
                                     <constraint firstItem="ARD-A1-r9B" firstAttribute="centerX" secondItem="Nt6-8P-pCe" secondAttribute="centerX" id="Uc0-Qd-Mpx"/>
                                     <constraint firstItem="6AP-fr-m8U" firstAttribute="baseline" secondItem="ARD-A1-r9B" secondAttribute="baseline" id="aRA-vu-0UZ"/>
                                     <constraint firstItem="Nt6-8P-pCe" firstAttribute="leading" secondItem="ZmH-Kv-lll" secondAttribute="trailing" constant="23" id="bAb-xW-nYN"/>
                                     <constraint firstItem="ZmH-Kv-lll" firstAttribute="bottom" secondItem="Nt6-8P-pCe" secondAttribute="bottom" id="cDb-hP-h2C"/>
                                     <constraint firstAttribute="bottom" secondItem="ARD-A1-r9B" secondAttribute="bottom" constant="13" id="fRk-8W-7xe"/>
+                                    <constraint firstItem="6AP-fr-m8U" firstAttribute="leading" secondItem="ARD-A1-r9B" secondAttribute="trailing" constant="20.666666666666686" id="fS7-Y1-y2d"/>
+                                    <constraint firstItem="6AP-fr-m8U" firstAttribute="width" secondItem="ARD-A1-r9B" secondAttribute="width" id="fq6-eg-ylP"/>
                                     <constraint firstItem="ARD-A1-r9B" firstAttribute="leading" secondItem="aSI-xK-qYg" secondAttribute="trailing" constant="63" id="fuN-qc-RSp"/>
                                     <constraint firstItem="6AP-fr-m8U" firstAttribute="top" secondItem="0kH-hR-jTn" secondAttribute="bottom" constant="6" id="lwg-9c-Mes"/>
                                     <constraint firstItem="Nt6-8P-pCe" firstAttribute="top" secondItem="0kH-hR-jTn" secondAttribute="top" id="o3m-v5-PXg"/>
@@ -1150,7 +1148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gLR-5z-jSz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2845.5999999999999" y="1214.8425787106448"/>
+            <point key="canvasLocation" x="2844.9275362318845" y="1213.858695652174"/>
         </scene>
         <!--Results Set View Controller-->
         <scene sceneID="76U-WY-iXG">
