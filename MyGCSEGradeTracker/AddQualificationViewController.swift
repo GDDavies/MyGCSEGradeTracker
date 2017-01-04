@@ -151,7 +151,8 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
             switch indexPath.row {
             case 0:
                 cell?.labelOutlet.text = "\(NSLocalizedString("Qualification Name", comment: ""))" 
-                cell?.placeholderTextOutlet.placeholder = "\(NSLocalizedString("e.g. Maths", comment: ""))" 
+                cell?.placeholderTextOutlet.placeholder = "\(NSLocalizedString("e.g. Maths", comment: ""))"
+                cell?.placeholderTextOutlet.autocapitalizationType = .words
             case 1:
                 cell?.labelOutlet.text = "\(NSLocalizedString("No. of Components", comment: ""))" 
                 cell?.placeholderTextOutlet.placeholder = "\(NSLocalizedString("e.g.", comment: "")) 4" 
