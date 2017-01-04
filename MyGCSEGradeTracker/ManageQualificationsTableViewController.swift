@@ -22,7 +22,9 @@ class ManageQualificationsTableViewController: UITableViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.topItem?.title = "\(NSLocalizedString("Manage", comment: ""))" 
         navigationItem.rightBarButtonItem = self.editButtonItem
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "\(NSLocalizedString("Dismiss", comment: ""))", style: .plain, target: self, action: #selector(dismissView)) 
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "\(NSLocalizedString("Dismiss", comment: ""))", style: .plain, target: self, action: #selector(dismissView))
+        navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 52/255.0, green: 152/255.0, blue: 219/255.0, alpha: 1.0)
+        navigationItem.leftBarButtonItem?.tintColor = UIColor(red: 52/255.0, green: 152/255.0, blue: 219/255.0, alpha: 1.0)
     }
 
     override func didReceiveMemoryWarning() {

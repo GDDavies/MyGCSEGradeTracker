@@ -22,7 +22,7 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
     
     let colorsArray = [
         UIColor(red: 46/255.0, green: 204/255.0, blue: 113/255.0, alpha: 1.0),
-        UIColor(red: 52/255.0, green: 152/255.0, blue: 219/255.0, alpha: 1.0),
+        //UIColor(red: 52/255.0, green: 152/255.0, blue: 219/255.0, alpha: 1.0),
         UIColor(red: 155/255.0, green: 89/255.0, blue: 182/255.0, alpha: 1.0),
         UIColor(red: 241/255.0, green: 196/255.0, blue: 15/255.0, alpha: 1.0),
         UIColor(red: 230/255.0, green: 126/255.0, blue: 34/255.0, alpha: 1.0),

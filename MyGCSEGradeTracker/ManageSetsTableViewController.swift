@@ -35,6 +35,8 @@ class ManageSetsTableViewController: UITableViewController {
 
         self.title = selectedQualification.name
         navigationItem.rightBarButtonItem = self.editButtonItem
+        navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 52/255.0, green: 152/255.0, blue: 219/255.0, alpha: 1.0)
+        navigationItem.leftBarButtonItem?.tintColor = UIColor(red: 52/255.0, green: 152/255.0, blue: 219/255.0, alpha: 1.0)
         numberOfSets = results.count / components.count
     }
     
