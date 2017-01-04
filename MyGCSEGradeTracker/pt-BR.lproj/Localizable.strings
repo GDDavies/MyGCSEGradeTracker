@@ -5,6 +5,9 @@
   Created by George Davies on 03/01/2017.
   Copyright © 2017 George Davies. All rights reserved.
 */
+
+"AddQualificationImage1" = "addqualificationimagePortuguese";
+
 //QualCollectionView
 "Qualifications" = "Matéria";
 "Components:" = "Unidades";

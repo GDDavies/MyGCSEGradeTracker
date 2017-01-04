@@ -14,7 +14,7 @@ class QualificationCollectionView: UICollectionViewController, SKProductsRequest
     
     var sourceCell: UICollectionViewCell?
     
-    let imageView = UIImageView(image: UIImage(named: "AddQualificationImage1")!)
+    let imageView = UIImageView(image: UIImage(named: NSLocalizedString("AddQualificationImage1", comment: "")))
     
     let userDefaultsKey = "HasUpgradedUserDefaultsKey"
     var hasUpgradedBool: Bool?
