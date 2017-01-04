@@ -71,18 +71,8 @@ class ManageSetsTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "SetCell", for: indexPath)
                 
-        cell.textLabel?.text = "\(NSLocalizedString("Set", comment: "")) \(indexPath.row + 1)" 
-        
-        
-        //**** Maybe date here instead of results
-        var detailResultsArray = ""
-        
-        for result in setResults {
-            detailResultsArray += String(result.result) + "% "
-        }
-        
-        cell.detailTextLabel?.text = "\(detailResultsArray)"
-        
+        cell.textLabel?.text = "\(NSLocalizedString("Set", comment: "")) \(indexPath.row + 1)"
+        cell.detailTextLabel?.text = formattedSetDate(date: setResults[0].date)
         return cell
     }
     
@@ -125,5 +115,11 @@ class ManageSetsTableViewController: UITableViewController {
             controller.selectedQualification = selectedQualification
             controller.selectedSet = row! + 1
         }
+    }
+    
+    func formattedSetDate(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        return dateFormatter.string(from: date)
     }
 }
