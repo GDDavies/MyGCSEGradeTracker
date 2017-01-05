@@ -48,6 +48,10 @@
 "Edit Components" = "Edit Components";
 "Please input the number of components" = "Please input the number of components";
 "Component" = "Component";
+"Invalid Qualification Name" = "Invalid Qualification Name";
+"A qualification with this name already exists, please change it and try again" = "A qualification with this name already exists, please change it and try again";
+"Component Mismatch" = "The number of components does not match the weightings. Please check this";
+"The number of components does not match the weightings. Please check this" = "The number of components does not match the weightings. Please check this";
 
 //Quals
 "Add Results" = "Add Results";

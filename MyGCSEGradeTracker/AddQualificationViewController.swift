@@ -37,7 +37,6 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
     
     @IBAction func cancelAddQualification(sender: AnyObject) {
         dismiss(animated: true, completion: nil)
-        
     }
     
     @IBAction func saveQualification(_ sender: Any) {
@@ -243,13 +242,9 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
         var i = 0
         if let numOfComponents = textViewOutput[1] {
             while i < Int(numOfComponents)! {
-                print("component weighting count = \(componentWeightings.count)")
                 if componentWeightings[i] != nil && componentWeightings[i] != 0 {
-                    print("component weighting = \(componentWeightings[i]) for \(i)")
                     sum += Int(componentWeightings[i]!)
                     i += 1
-                } else {
-                    return false
                 }
             }
         }
@@ -260,14 +255,6 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
             return false
         }
     }
-    
-//    func validateQualificationName() -> Bool {
-//        if textViewOutput[0] != nil && textViewOutput[1] != nil {
-//            return true
-//        }else{
-//            return false
-//        }
-//    }
 
     func validateNumberOfRows() -> Bool {
         if let textViewOne = textViewOutput[1] {
@@ -285,12 +272,10 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
             if let qualName = textViewOutput[0] {
                 if qual.name == qualName {
                     return false
-                } else {
-                    return true
                 }
             }
         }
-        return false
+        return true
     }
     
     func updateComponentRows() {
