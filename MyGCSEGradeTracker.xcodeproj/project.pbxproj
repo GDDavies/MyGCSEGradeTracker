@@ -16,6 +16,7 @@
 		935CC77F1DEDC7C200A6DEFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 935CC77D1DEDC7C200A6DEFA /* LaunchScreen.storyboard */; };
 		935CC78A1DEDC7C200A6DEFA /* MyGCSEGradeTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935CC7891DEDC7C200A6DEFA /* MyGCSEGradeTrackerTests.swift */; };
 		935CC7951DEDC7C200A6DEFA /* MyGCSEGradeTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935CC7941DEDC7C200A6DEFA /* MyGCSEGradeTrackerUITests.swift */; };
+		937016AC1E1EBF5B00DAFC4C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937016AB1E1EBF5B00DAFC4C /* CustomTextField.swift */; };
 		939EFEBE1DEDC8D700368533 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFEBA1DEDC8D700368533 /* Component.swift */; };
 		939EFEBF1DEDC8D700368533 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFEBB1DEDC8D700368533 /* Grade.swift */; };
 		939EFEC01DEDC8D700368533 /* Qualification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EFEBC1DEDC8D700368533 /* Qualification.swift */; };
@@ -73,6 +74,7 @@
 		935CC7901DEDC7C200A6DEFA /* MyGCSEGradeTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyGCSEGradeTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		935CC7941DEDC7C200A6DEFA /* MyGCSEGradeTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGCSEGradeTrackerUITests.swift; sourceTree = "<group>"; };
 		935CC7961DEDC7C200A6DEFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		937016AB1E1EBF5B00DAFC4C /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		939EFEBA1DEDC8D700368533 /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		939EFEBB1DEDC8D700368533 /* Grade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		939EFEBC1DEDC8D700368533 /* Qualification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Qualification.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				935CC7741DEDC7C200A6DEFA /* AppDelegate.swift */,
 				932DAB8F1DF1DA1300EEDF3D /* CustomTableViewCell.swift */,
 				939EFEC31DEDC90B00368533 /* CustomQualificationCollectionViewCell.swift */,
+				937016AB1E1EBF5B00DAFC4C /* CustomTextField.swift */,
 				939EFEC41DEDC90B00368533 /* QualificationCollectionView.swift */,
 				93E96CAF1DF0A6DE0063EA62 /* AddQualificationViewController.swift */,
 				939EFEC51DEDC90B00368533 /* QualificationsViewController.swift */,
@@ -531,6 +534,7 @@
 				93CD28651DFF08C5008AB12A /* ManageQualificationsTableViewController.swift in Sources */,
 				939EFEC81DEDC90B00368533 /* CustomQualificationCollectionViewCell.swift in Sources */,
 				939EFECA1DEDC90B00368533 /* QualificationsViewController.swift in Sources */,
+				937016AC1E1EBF5B00DAFC4C /* CustomTextField.swift in Sources */,
 				93CFBCEF1E09697100538555 /* ManageSetsTableViewController.swift in Sources */,
 				93EBC4D91E0F3E1F00FF861F /* SACountingLabel.swift in Sources */,
 				939EFEBF1DEDC8D700368533 /* Grade.swift in Sources */,
