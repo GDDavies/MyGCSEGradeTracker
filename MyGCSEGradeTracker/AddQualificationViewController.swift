@@ -16,9 +16,9 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var buttonBtmConstraint: NSLayoutConstraint!
     
     var numRowsSection1 = 1
-    var textViewOutput = ["",""]
+    var textViewOutput: [Int:String] = [:]
     
-    var componentWeightings = [String]()
+    var componentWeightings: [Int:Int] = [:]
     var componentTitleArray = [String]()
     var componentsIndexPath = [IndexPath]()
     
@@ -40,33 +40,36 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     @IBAction func saveQualification(_ sender: Any) {
-        if validateWeightings() && validateQualificationName() {
-            
-            addNewQualification()
-            addNewComponents()
-            Flurry.logEvent("Added-Qualification")
-            dismiss(animated: true, completion: nil)
-            
-        } else if textViewOutput[0] == "" {
-            
-            let alert = UIAlertController(title: "\(NSLocalizedString("Qualification Name Missing", comment: ""))", message: "\(NSLocalizedString("Please enter a name for the qualification", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) 
+        if textViewOutput[0] == nil || textViewOutput[0] == "" {
+            let alert = UIAlertController(title: "\(NSLocalizedString("Qualification Name Missing", comment: ""))", message: "\(NSLocalizedString("Please enter a name for the qualification", comment: ""))", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) 
             self.present(alert, animated: true, completion: nil)
             
-        } else if textViewOutput[1] == "" {
+        } else if textViewOutput[1] == nil || textViewOutput[1] == "" {
             
             let alert = UIAlertController(title: "\(NSLocalizedString("Components Missing", comment: ""))", message: "\(NSLocalizedString("Please input the number of components", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) 
             alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) 
             self.present(alert, animated: true, completion: nil)
             
-        } else if validateWeightings() == false && validateQualificationName() {
+        } else if !validateWeightings() { //&& validateQualificationName() {
             
             let alert = UIAlertController(title: "\(NSLocalizedString("Incorrect Weightings", comment: ""))", message: "\(NSLocalizedString("Combined component weightings should equal 100%", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) 
             alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) 
             self.present(alert, animated: true, completion: nil)
-
-        } else {
             
+        }else if !validateNumberOfRows() {
+            
+            let alert = UIAlertController(title: "\(NSLocalizedString("Component Mismatch", comment: ""))", message: "\(NSLocalizedString("The number of components does not match the weightings. Please check this.", comment: ""))", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil) //***
+        
+        } else  if validateWeightings() && validateQualificationName() { // Correct weightings and qual name and number of sets entered
+            addNewQualification()
+            addNewComponents()
+            Flurry.logEvent("Added-Qualification")
+            dismiss(animated: true, completion: nil)
+        } else {
+        //*** Possibly redundant ***//
             let alert = UIAlertController(title: "\(NSLocalizedString("Missing Information", comment: ""))", message: "\(NSLocalizedString("Please enter the required information", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) 
             alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) 
             self.present(alert, animated: true, completion: nil)
@@ -75,21 +78,29 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
     
     func validateWeightings() -> Bool {
         var sum = 0
-        for component in componentWeightings {
-            if component != "" {
-                sum += Int(component)!
+        var i = 0
+        if let numOfComponents = textViewOutput[1] {
+            while i < Int(numOfComponents)! {
+                print("component weighting count = \(componentWeightings.count)")
+                if componentWeightings[i] != nil && componentWeightings[i] != 0 {
+                    print("component weighting = \(componentWeightings[i]) for \(i)")
+                    sum += Int(componentWeightings[i]!)
+                    i += 1
+                } else {
+                    return false
+                }
             }
         }
         if sum == 100 {
             return true
         } else {
+            print("sum = \(sum)")
             return false
         }
     }
     
     func validateQualificationName() -> Bool {
-        
-        if textViewOutput[0] != "" && textViewOutput[1] != "" {
+        if textViewOutput[0] != nil && textViewOutput[1] != nil {
             return true
         }else{
             return false
@@ -132,7 +143,6 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         if section == 0 {
             return 2
         } else {
@@ -143,49 +153,54 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell: CustomTableViewCell?
-        
         if indexPath.section == 0 {
-            
             cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! CustomTableViewCell?
             
             switch indexPath.row {
             case 0:
                 cell?.labelOutlet.text = "\(NSLocalizedString("Qualification Name", comment: ""))" 
-                cell?.placeholderTextOutlet.placeholder = "\(NSLocalizedString("e.g. Maths", comment: ""))"
                 cell?.placeholderTextOutlet.autocapitalizationType = .words
+                if textViewOutput[0] != nil {
+                    cell?.placeholderTextOutlet.text = textViewOutput[0]
+                } else {
+                    cell?.placeholderTextOutlet.placeholder = "\(NSLocalizedString("e.g. Maths", comment: ""))"
+                }
             case 1:
                 cell?.labelOutlet.text = "\(NSLocalizedString("No. of Components", comment: ""))" 
-                cell?.placeholderTextOutlet.placeholder = "\(NSLocalizedString("e.g.", comment: "")) 4" 
                 cell?.placeholderTextOutlet.keyboardType = UIKeyboardType.numberPad
+                if textViewOutput[1] != nil {
+                    cell?.placeholderTextOutlet.text = textViewOutput[1]
+                } else {
+                    cell?.placeholderTextOutlet.placeholder = "\(NSLocalizedString("e.g.", comment: "")) 4"
+                }
             default:
                 break
             }
             cell?.selectionStyle = .none
-            
             cell?.placeholderTextOutlet.tag = indexPath.row
             cell?.placeholderTextOutlet.addTarget(self, action: #selector(textViewValueChange), for: .editingChanged)
         }
         
         if indexPath.section == 1 && indexPath.row == 0 {
-            
             cell = tableView.dequeueReusableCell(withIdentifier: "Cell2") as! CustomTableViewCell?
-            cell?.labelOutlet.text = "\(NSLocalizedString("Edit Components", comment: ""))" 
+            cell?.labelOutlet.text = "\(NSLocalizedString("Edit Components", comment: ""))"
+            cell?.labelOutlet.font = UIFont(name:"HelveticaNeue-Bold", size: 17.0)
             cell?.accessoryType = .disclosureIndicator
             
             
         } else if indexPath.section == 1 && indexPath.row != 0 {
-            cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! CustomTableViewCell?
+            cell = tableView.dequeueReusableCell(withIdentifier: "Cell3") as! CustomTableViewCell?
             cell?.placeholderTextOutlet.tag = indexPath.row + 1
             cell?.selectionStyle = .none
             cell?.placeholderTextOutlet.addTarget(self, action: #selector(textViewValueChange), for: .editingChanged)
-            cell?.placeholderTextOutlet.keyboardType = UIKeyboardType.decimalPad
+            cell?.placeholderTextOutlet.keyboardType = UIKeyboardType.numberPad
             
             if componentTitleArray.isEmpty {
-                cell?.labelOutlet.text = ""
-                cell?.placeholderTextOutlet.placeholder = ""
+//                cell?.labelOutlet.text = ""
+//                cell?.placeholderTextOutlet.placeholder = ""
             }else{
-                cell?.labelOutlet.text = componentTitleArray[indexPath.row - 1]
-                cell?.placeholderTextOutlet.placeholder = "\(NSLocalizedString("e.g.", comment: "")) \(100 / componentTitleArray.count)%" 
+                cell?.labelOutlet.text = "Component \(indexPath.row)"
+                cell?.placeholderTextOutlet.placeholder = "\(NSLocalizedString("e.g.", comment: "")) \(100 / Int(textViewOutput[1]!)!)%"
             }
         }
         
@@ -193,16 +208,19 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func textViewValueChange(sender: UITextField) {
-        
         let currentValue = sender.text
         let textRow = sender.tag
         
         if textRow < 2 {
-            textViewOutput.remove(at: textRow)
-            textViewOutput.insert(currentValue!, at: textRow)
+            textViewOutput.removeValue(forKey: textRow)
+            if currentValue != nil && currentValue != "" {
+                textViewOutput.updateValue(currentValue!, forKey: textRow)
+            }
         } else {
-            componentWeightings.remove(at: textRow - 2)
-            componentWeightings.insert(currentValue!, at: textRow - 2)
+            componentWeightings.removeValue(forKey: textRow - 2)
+            if currentValue != nil && currentValue != "" {
+                    componentWeightings.updateValue(Int(currentValue!)!, forKey: textRow - 2)
+            }
         }
     }
     
@@ -213,53 +231,53 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
         switch (indexPath.section, indexPath.row) {
         case (1, 0):
             
-            if textViewOutput[1] == "" {
+            if textViewOutput[1] == nil {
                 
                 let alert = UIAlertController(title: "\(NSLocalizedString("Missing Information", comment: ""))", message: "\(NSLocalizedString("Please input the number of components", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) 
                 alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) 
                 self.present(alert, animated: true, completion: nil)
                 
-            }else {
+            }else{
                 DispatchQueue.main.async {
                     tableView.scrollToRow(at: indexPath, at: .top, animated: true)
                 }
-                
                 if componentsIndexPath.isEmpty {
                     updateComponentRows()
-                } else if tableView.numberOfRows(inSection: 1) == Int(textViewOutput[1])! + 1 {
+                } else if validateNumberOfRows() {
+                    // Do nothing when 'Edit Components' pressed but number of components hasn't changed
                 } else {
-                    
                     for i in 1...componentTitleArray.count {
                         if let cell = tableView.cellForRow(at: IndexPath(row: i, section: 1)) as? CustomTableViewCell {
                             cell.placeholderTextOutlet.text = ""
                         }
                     }
-                    numRowsSection1 = 1
-                    tableView.deleteRows(at: componentsIndexPath, with: .automatic)
-                    componentsIndexPath.removeAll()
-                    componentTitleArray.removeAll()
-                    componentWeightings.removeAll()
-                    
-                    updateComponentRows()
                 }
+                updateAndShowNumberOfComponentCells()
             }
-            
         default:
             break
         }
-
+    }
+    
+    func validateNumberOfRows() -> Bool {
+        if let textViewOne = textViewOutput[1] {
+            if tableView.numberOfRows(inSection: 1) == Int(textViewOne)! + 1 {
+                return true
+            } else {
+                return false
+            }
+        }
+        return false
     }
     
     func updateComponentRows() {
-        for i in 0..<Int(textViewOutput[1])! {
+        if let numOfComponents = textViewOutput[1] {
+        for i in 0..<Int(numOfComponents)! {
             componentsIndexPath.append(IndexPath(row: i + 1, section: 1))
             componentTitleArray.append("\(NSLocalizedString("Component", comment: "")) \(i + 1)") 
-            componentWeightings.append("")
-            
+            }
+        numRowsSection1 = Int(numOfComponents)! + 1
         }
-        
-        numRowsSection1 = Int(textViewOutput[1])! + 1
-        
         tableView.beginUpdates()
         tableView.insertRows(at: componentsIndexPath, with: .automatic)
         tableView.endUpdates()
@@ -270,9 +288,10 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
         
         try! realm.write {
             let newQualification = Qualification()
-            
-            newQualification.name = textViewOutput[0]
-            newQualification.numberOfComponents = Int(textViewOutput[1])!
+            if textViewOutput[0] != nil && textViewOutput[1] != nil {
+            newQualification.name = textViewOutput[0]!
+            newQualification.numberOfComponents = Int(textViewOutput[1]!)!
+            }
             
             realm.add(newQualification)
             self.addedQualification = newQualification
@@ -282,23 +301,30 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
     
     func addNewComponents() {
         let realm = try! Realm()
-        
-        let parameters = ["Number-of-Components" : Int(textViewOutput[1])!]
+        let parameters = ["Number-of-Components" : Int(textViewOutput[1]!)!]
         Flurry.logEvent("Added-Components", withParameters: parameters)
         
         var i = 1
-        while i <= Int(textViewOutput[1])! {
+        while i <= Int(textViewOutput[1]!)! {
             
             try! realm.write {
-                
                 let newComponents = Component()
                 
                 newComponents.name = "\(NSLocalizedString("Component", comment: "")) \(i)" 
-                newComponents.qualification = textViewOutput[0]
-                newComponents.weighting = (Double(componentWeightings[i - 1])! / 100)
+                newComponents.qualification = textViewOutput[0]!
+                newComponents.weighting = (Double(componentWeightings[i - 1]!) / 100)
                 i += 1
                 realm.add(newComponents)
             }            
         }
+    }
+    
+    func updateAndShowNumberOfComponentCells() {
+        numRowsSection1 = 1
+        tableView.deleteRows(at: componentsIndexPath, with: .automatic)
+        componentsIndexPath.removeAll()
+        componentTitleArray.removeAll()
+        componentWeightings.removeAll()
+        updateComponentRows()
     }
 }
