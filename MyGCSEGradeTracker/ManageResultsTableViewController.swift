@@ -19,7 +19,7 @@ class ManageResultsTableViewController: UITableViewController {
     
     var results: Results<Result> {
         get {
-            return try! Realm().objects(Result.self).filter("qualification == '\(selectedQualification.name)' AND set == \(selectedSet!)")
+            return try! Realm().objects(Result.self).filter("qualification == %@ AND set == %d", selectedQualification.name, selectedSet!)
         }
     }
 

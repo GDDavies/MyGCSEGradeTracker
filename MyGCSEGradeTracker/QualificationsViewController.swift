@@ -52,26 +52,26 @@ class QualificationsViewController: UIViewController {
     let realm = try! Realm()
     var results: Results<Result> {
         get {
-            return try! Realm().objects(Result.self).filter("qualification == '\(selectedQual!)'")
+            return try! Realm().objects(Result.self).filter("qualification == %@", selectedQual!)
         }
     }
     var components: Results<Component> {
         get {
-            return try! Realm().objects(Component.self).filter("qualification == '\(selectedQual!)'")
+            return try! Realm().objects(Component.self).filter("qualification == %@", selectedQual!)
         }
     }
     var qualifications: Results<Qualification> {
         get {
-            return try! Realm().objects(Qualification.self).filter("name == '\(selectedQual!)'")
+            return try! Realm().objects(Qualification.self).filter("name == %@", selectedQual!)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // Hide toolbar
         navigationController?.setToolbarHidden(true, animated: false)
         
-        //Banner Advert
+        //Banner advert
         bannerView.adUnitID = "ca-app-pub-2293319568548111/6520329187"
         bannerView.rootViewController = self
         let request = GADRequest()
@@ -225,7 +225,7 @@ class QualificationsViewController: UIViewController {
         while i <= numberOfSets {
             var setResults: Results<Result> {
                 get {
-                    return try! Realm().objects(Result.self).filter("qualification == '\(selectedQual!)' AND set == \(i)")
+                    return try! Realm().objects(Result.self).filter("qualification == %@ AND set == %d",selectedQual!,i)
                 }
             }
             var x = 0

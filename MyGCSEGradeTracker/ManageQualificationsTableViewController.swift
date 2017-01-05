@@ -74,19 +74,19 @@ class ManageQualificationsTableViewController: UITableViewController {
                 //delete from datasource!
                 var deletedQualification: Results<Qualification> {
                     get {
-                        return try! Realm().objects(Qualification.self).filter("name == '\(qualToDelete)'")
+                        return try! Realm().objects(Qualification.self).filter("name == %@", qualToDelete)
                     }
                 }
                 
                 var deletedResults: Results<Result> {
                     get {
-                        return try! Realm().objects(Result.self).filter("qualification == '\(qualToDelete)'")
+                        return try! Realm().objects(Result.self).filter("qualification == %@", qualToDelete)
                     }
                 }
                 
                 var deletedComponents: Results<Component> {
                     get {
-                        return try! Realm().objects(Component.self).filter("qualification == '\(qualToDelete)'")
+                        return try! Realm().objects(Component.self).filter("qualification == %@", qualToDelete)
                     }
                 }
                 

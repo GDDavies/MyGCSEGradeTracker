@@ -38,19 +38,19 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
     
     var results: Results<Result> {
         get {
-            return try! Realm().objects(Result.self).filter("qualification == '\(selectedQual!)'")
+            return try! Realm().objects(Result.self).filter("qualification == %@", selectedQual!)
         }
     }
     
     var components: Results<Component> {
         get {
-            return try! Realm().objects(Component.self).filter("qualification == '\(selectedQual!)'")
+            return try! Realm().objects(Component.self).filter("qualification == %@", selectedQual!)
         }
     }
     
     var qualifications: Results<Qualification> {
         get {
-            return try! Realm().objects(Qualification.self).filter("name == '\(selectedQual!)'")
+            return try! Realm().objects(Qualification.self).filter("name == %@", selectedQual!)
         }
     }
     

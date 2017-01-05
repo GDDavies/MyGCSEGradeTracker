@@ -20,13 +20,13 @@ class ManageSetsTableViewController: UITableViewController {
     
     var results: Results<Result> {
         get {
-            return try! Realm().objects(Result.self).filter("qualification == '\(selectedQualification.name)'")
+            return try! Realm().objects(Result.self).filter("qualification == %@", selectedQualification.name)
         }
     }
     
     var components: Results<Component> {
         get {
-            return try! Realm().objects(Component.self).filter("qualification == '\(selectedQualification.name)'")
+            return try! Realm().objects(Component.self).filter("qualification == %@", selectedQualification.name)
         }
     }
     
@@ -65,7 +65,7 @@ class ManageSetsTableViewController: UITableViewController {
         
         var setResults: Results<Result> {
             get {
-                return try! Realm().objects(Result.self).filter("qualification == '\(selectedQualification.name)' AND set == \(indexPath.row + 1)")
+                return try! Realm().objects(Result.self).filter("qualification == %@ AND set == %d", selectedQualification.name, indexPath.row + 1)
             }
         }
         
@@ -84,7 +84,7 @@ class ManageSetsTableViewController: UITableViewController {
             
             var editedResults: Results<Result> {
                 get {
-                    return try! Realm().objects(Result.self).filter("qualification == '\(selectedQualification.name)' AND set == \(indexPath.row + 1)")
+                    return try! Realm().objects(Result.self).filter("qualification == %@ AND set == %d", selectedQualification.name, indexPath.row + 1)
                 }
             }
             var i = 0
