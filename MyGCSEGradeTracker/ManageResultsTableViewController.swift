@@ -26,7 +26,6 @@ class ManageResultsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "\(NSLocalizedString("Set", comment: "")) \(selectedSet!)"
-        navigationItem.leftBarButtonItem?.tintColor = UIColor(red: 52/255.0, green: 152/255.0, blue: 219/255.0, alpha: 1.0)
     }
 
     override func didReceiveMemoryWarning() {

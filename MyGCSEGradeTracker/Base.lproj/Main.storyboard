@@ -128,7 +128,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yps-VD-r13">
                                 <rect key="frame" x="0.0" y="662.33333333333348" width="414" height="73.666666666666629"/>
-                                <color key="backgroundColor" red="0.20392156862745098" green="0.59607843137254901" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
                                 <state key="normal" title="Save Qualification">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -164,7 +164,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="vnI-wb-8Cr">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="m0c-5a-Zw1">
-                            <color key="tintColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelAddQualificationWithSender:" destination="feH-6R-aqw" id="tSm-oV-aOg"/>
                             </connections>
@@ -183,7 +183,7 @@
         <scene sceneID="Y5A-Zw-h9v">
             <objects>
                 <collectionViewController id="2eA-AJ-MhI" customClass="QualificationCollectionView" customModule="MyGCSEGradeTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="heV-Yf-9LD">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="heV-Yf-9LD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -239,7 +239,7 @@
                     </collectionView>
                     <toolbarItems>
                         <barButtonItem title="Add Target" id="eSh-mt-QmR">
-                            <color key="tintColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="addTargetButton:" destination="2eA-AJ-MhI" id="uvT-Gj-rY4"/>
                             </connections>
@@ -247,13 +247,13 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="kSQ-Fo-ith">
                         <barButtonItem key="leftBarButtonItem" title="Manage" id="O7f-r8-2uj">
-                            <color key="tintColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="C0w-2u-gvA" kind="show" identifier="ManageQualifications" id="tSl-Cy-IhF"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="e8R-Ve-TTD">
-                            <color key="tintColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="addQualification:" destination="2eA-AJ-MhI" id="Vvo-c2-KBC"/>
                                 <segue destination="ldH-tc-xNC" kind="presentation" identifier="AddQual" id="ubA-eS-cR0"/>
@@ -1295,7 +1295,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="dax-mW-9d8">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="K6K-Dx-vfv">
-                            <color key="tintColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelAddResults:" destination="NAt-C3-ImJ" id="M8l-CG-o4G"/>
                             </connections>

@@ -100,7 +100,6 @@ class QualificationsViewController: UIViewController {
         changeLastThree.textColor = UIColor.lightGray
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "\(NSLocalizedString("Add Results", comment: ""))", style: .plain, target: self, action: #selector(addResultsTapped))
-        navigationItem.rightBarButtonItem?.tintColor = UIColor(red: 52/255.0, green: 152/255.0, blue: 219/255.0, alpha: 1.0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
