@@ -138,7 +138,7 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
         if section == 0 {
             return "\(NSLocalizedString("Qualification Details", comment: ""))" 
         } else {
-            return "\(NSLocalizedString("Components", comment: ""))" 
+            return "\(NSLocalizedString("Component Weightings", comment: ""))" 
         }
     }
     

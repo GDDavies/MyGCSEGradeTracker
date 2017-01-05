@@ -36,12 +36,13 @@
 "OK" = "OK";
 "Components Missing" = "Campo incompleto";
 "Please input the number of components" = "Introduza o número de unidades";
-"Incorrect Weightings" = "Peso incorreto";
+"Incorrect Weightings" = "Pesos incorreto";
 "Combined component weightings should equal 100%" = "A soma dos pesos devem igualar 100%";
 "Missing Information" = "Informação incompleta";
 "Please enter the required information" = "Favor introduzir a informação requerida";
 "Qualification Details" = "Detalhes da Matéria";
 "Components" = "Unidades";
+"Component Weightings" = "Pesos de Unidades";
 "Qualification Name" = "Nome da Matéria";
 "No. of Components" = "Número de Unidades";
 "e.g. Maths" = "ex. Matemática";
