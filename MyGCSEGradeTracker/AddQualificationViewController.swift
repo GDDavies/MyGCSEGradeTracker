@@ -41,6 +41,7 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
     
     @IBAction func saveQualification(_ sender: Any) {
         if textViewOutput[0] == nil || textViewOutput[0] == "" {
+            
             let alert = UIAlertController(title: "\(NSLocalizedString("Qualification Name Missing", comment: ""))", message: "\(NSLocalizedString("Please enter a name for the qualification", comment: ""))", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) 
             self.present(alert, animated: true, completion: nil)
@@ -245,13 +246,14 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
                 if componentWeightings[i] != nil && componentWeightings[i] != 0 {
                     sum += Int(componentWeightings[i]!)
                     i += 1
+                }else{
+                    i += 1
                 }
             }
         }
         if sum == 100 {
             return true
         } else {
-            print("sum = \(sum)")
             return false
         }
     }
