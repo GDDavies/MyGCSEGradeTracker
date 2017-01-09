@@ -58,6 +58,13 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
             alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) 
             self.present(alert, animated: true, completion: nil)
             
+        } else if Int(textViewOutput[1]!)! > 12 {
+            
+            let alert = UIAlertController(title: "\(NSLocalizedString("Over Component Limit", comment: ""))", message: "\(NSLocalizedString("There is a limit of 12 Components per qualification, please enter fewer than 12", comment: ""))", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil) //***
+
+            
         } else if !validateWeightings() {
             
             let alert = UIAlertController(title: "\(NSLocalizedString("Incorrect Weightings", comment: ""))", message: "\(NSLocalizedString("Combined component weightings should equal 100%", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) 
@@ -336,5 +343,14 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
         componentTitleArray.removeAll()
         componentWeightings.removeAll()
         updateComponentRows()
+    }
+    
+    func animate() {
+        for cell in self.tableView.visibleCells {
+            cell.frame = CGRect(x: 320, y: cell.frame.origin.y, width: cell.frame.size.width, height: cell.frame.size.height)
+            UIView.animate(withDuration: 1.0) {
+                cell.frame = CGRect(x: 0, y: cell.frame.origin.y, width: cell.frame.size.width, height: cell.frame.size.height)
+            }
+        }
     }
 }
