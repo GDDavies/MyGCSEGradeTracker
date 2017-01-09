@@ -91,7 +91,7 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func saveResults() {
-        
+        view.endEditing(true)
         for i in 1...components.count {
             
             var resultTypeString: String?
@@ -120,7 +120,17 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func saveResultSet(_ sender: UIButton) {
-        if resultsDictionary.count == components.count && resultsValidated() {
+        if !resultsValidated() {
+            if resultType.titleForSegment(at: resultType.selectedSegmentIndex) == "\(NSLocalizedString("Grade", comment: ""))" {
+                let alert = UIAlertController(title: "\(NSLocalizedString("Invalid Result", comment: ""))", message: "\(NSLocalizedString("Please enter results between 1-9", comment: ""))", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "\(NSLocalizedString("Invalid Result", comment: ""))", message: "\(NSLocalizedString("Please enter results between 0-100", comment: ""))", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        } else if resultsDictionary.count == components.count && resultsValidated() {
             saveResults()
             
             let realm = try! Realm()
@@ -129,16 +139,6 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
             }
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadResults"), object: nil)
             _ = self.navigationController?.popViewController(animated: true)
-        } else if !resultsValidated() {
-            if resultType.titleForSegment(at: resultType.selectedSegmentIndex) == "\(NSLocalizedString("Grade", comment: ""))" {
-                let alert = UIAlertController(title: "\(NSLocalizedString("Invalid Result", comment: ""))", message: "\(NSLocalizedString("Please enter results between 1-9", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) 
-                alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) 
-                self.present(alert, animated: true, completion: nil)
-            } else {
-                let alert = UIAlertController(title: "\(NSLocalizedString("Invalid Result", comment: ""))", message: "\(NSLocalizedString("Please enter results between 0-100", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) 
-                alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) 
-                self.present(alert, animated: true, completion: nil)
-            }
         } else {
             let alert = UIAlertController(title: "\(NSLocalizedString("Missing Information", comment: ""))", message: "\(NSLocalizedString("Please enter a result for each component", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) 
             alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) 
