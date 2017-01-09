@@ -55,6 +55,7 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func cancelAddResults(_ sender: Any) {
+        view.endEditing(true)
         dismiss(animated: true, completion: nil)
     }
     

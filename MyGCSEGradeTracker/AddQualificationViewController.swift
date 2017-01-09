@@ -36,6 +36,7 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     @IBAction func cancelAddQualification(sender: AnyObject) {
+        view.endEditing(true)
         dismiss(animated: true, completion: nil)
     }
     
@@ -290,11 +291,11 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
     
     func updateComponentRows() {
         if let numOfComponents = textViewOutput[1] {
-        for i in 0..<Int(numOfComponents)! {
-            componentsIndexPath.append(IndexPath(row: i + 1, section: 1))
-            componentTitleArray.append("\(NSLocalizedString("Component", comment: "")) \(i + 1)") 
+            for i in 0..<Int(numOfComponents)! {
+                componentsIndexPath.append(IndexPath(row: i + 1, section: 1))
+                componentTitleArray.append("\(NSLocalizedString("Component", comment: "")) \(i + 1)")
             }
-        numRowsSection1 = Int(numOfComponents)! + 1
+            numRowsSection1 = Int(numOfComponents)! + 1
         }
         tableView.beginUpdates()
         tableView.insertRows(at: componentsIndexPath, with: .automatic)
