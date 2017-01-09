@@ -50,6 +50,12 @@
 "Edit Components" = "Modificar Unidades";
 "Please input the number of components." = "Por favor adicione o número de Unidades";
 "Component" = "Unidade";
+"Invalid Qualification Name" = "";
+"A qualification with this name already exists, please change it and try again" = "";
+"Component Mismatch" = "";
+"The number of components does not match the weightings. Please check this" = "";
+"Over Component Limit" = "";
+"There is a limit of 12 Components per qualification, please enter fewer than 12" = "";
 
 //Quals
 "Add Results" = "Adicionar Resultado";

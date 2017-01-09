@@ -78,6 +78,7 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
             self.present(alert, animated: true, completion: nil) //***
             
         } else  if validateWeightings() && validateQualName() { // Correct weightings and qual name and number of sets entered
+            view.endEditing(true)
             addNewQualification()
             addNewComponents()
             Flurry.logEvent("Added-Qualification")
@@ -343,14 +344,5 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
         componentTitleArray.removeAll()
         componentWeightings.removeAll()
         updateComponentRows()
-    }
-    
-    func animate() {
-        for cell in self.tableView.visibleCells {
-            cell.frame = CGRect(x: 320, y: cell.frame.origin.y, width: cell.frame.size.width, height: cell.frame.size.height)
-            UIView.animate(withDuration: 1.0) {
-                cell.frame = CGRect(x: 0, y: cell.frame.origin.y, width: cell.frame.size.width, height: cell.frame.size.height)
-            }
-        }
     }
 }
