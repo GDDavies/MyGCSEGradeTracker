@@ -59,13 +59,6 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
             alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) 
             self.present(alert, animated: true, completion: nil)
             
-        } else if Int(textViewOutput[1]!)! > 12 {
-            
-            let alert = UIAlertController(title: "\(NSLocalizedString("Over Component Limit", comment: ""))", message: "\(NSLocalizedString("There is a limit of 12 Components per qualification, please enter fewer than 12", comment: ""))", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil) //***
-
-            
         } else if !validateWeightings() {
             
             let alert = UIAlertController(title: "\(NSLocalizedString("Incorrect Weightings", comment: ""))", message: "\(NSLocalizedString("Combined component weightings should equal 100%", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) 
@@ -224,6 +217,12 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
                 alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) 
                 self.present(alert, animated: true, completion: nil)
                 
+            } else if Int(textViewOutput[1]!)! > 12 {
+                
+                let alert = UIAlertController(title: "\(NSLocalizedString("Over Component Limit", comment: ""))", message: "\(NSLocalizedString("There is a limit of 12 Components per qualification, please enter fewer than 12", comment: ""))", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil) //***
+                
             }else{
                 DispatchQueue.main.async {
                     tableView.scrollToRow(at: indexPath, at: .top, animated: true)
@@ -238,8 +237,8 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
                             cell.placeholderTextOutlet.text = ""
                         }
                     }
+                    updateAndShowNumberOfComponentCells()
                 }
-                updateAndShowNumberOfComponentCells()
             }
         default:
             break
@@ -289,6 +288,19 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
         return true
     }
     
+//    func updateComponentRows() {
+//        if let numOfComponents = textViewOutput[1] {
+//            for i in 0..<Int(numOfComponents)! {
+//                componentsIndexPath.append(IndexPath(row: i + 1, section: 1))
+//                componentTitleArray.append("\(NSLocalizedString("Component", comment: "")) \(i + 1)")
+//            }
+//            numRowsSection1 = Int(numOfComponents)! + 1
+//        }
+//        tableView.beginUpdates()
+//        tableView.insertRows(at: componentsIndexPath, with: .automatic)
+//        tableView.endUpdates()
+//    }
+    
     func updateComponentRows() {
         if let numOfComponents = textViewOutput[1] {
             for i in 0..<Int(numOfComponents)! {
@@ -298,7 +310,8 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
             numRowsSection1 = Int(numOfComponents)! + 1
         }
         tableView.beginUpdates()
-        tableView.insertRows(at: componentsIndexPath, with: .automatic)
+        print(componentsIndexPath)
+        tableView.insertRows(at: componentsIndexPath, with: .right)
         tableView.endUpdates()
     }
     
@@ -340,7 +353,9 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
     
     func updateAndShowNumberOfComponentCells() {
         numRowsSection1 = 1
-        tableView.deleteRows(at: componentsIndexPath, with: .automatic)
+        tableView.beginUpdates()
+        tableView.deleteRows(at: componentsIndexPath, with: .none)
+        tableView.endUpdates()
         componentsIndexPath.removeAll()
         componentTitleArray.removeAll()
         componentWeightings.removeAll()
