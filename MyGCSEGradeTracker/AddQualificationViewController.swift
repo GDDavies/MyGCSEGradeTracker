@@ -47,7 +47,7 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
             alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) 
             self.present(alert, animated: true, completion: nil)
             
-        } else if !validateQualName() {
+        } else if !validateQualName(quals: qualifications, qualName: textViewOutput[0]!) {
             
             let alert = UIAlertController(title: "\(NSLocalizedString("Invalid Qualification Name", comment: ""))", message: "\(NSLocalizedString("A qualification with this name already exists, please change it and try again", comment: ""))", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil))
@@ -59,19 +59,19 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
             alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) 
             self.present(alert, animated: true, completion: nil)
             
-        } else if !validateWeightings() {
+        } else if !validateWeightings(components: Int(textViewOutput[1]!)!, weightings: componentWeightings) {
             
             let alert = UIAlertController(title: "\(NSLocalizedString("Incorrect Weightings", comment: ""))", message: "\(NSLocalizedString("Combined component weightings should equal 100%", comment: ""))", preferredStyle: UIAlertControllerStyle.alert) 
             alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil)) 
             self.present(alert, animated: true, completion: nil)
             
-        }else if !validateNumberOfRows() {
+        }else if !validateNumberOfRows(components: Int(textViewOutput[1]!)!) {
             
             let alert = UIAlertController(title: "\(NSLocalizedString("Component Mismatch", comment: ""))", message: "\(NSLocalizedString("The number of components does not match the weightings. Please check this", comment: ""))", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "\(NSLocalizedString("OK", comment: ""))", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil) //***
             
-        } else  if validateWeightings() && validateQualName() { // Correct weightings and qual name and number of sets entered
+        } else  if validateWeightings(components: Int(textViewOutput[1]!)!, weightings: componentWeightings) && validateQualName(quals: qualifications, qualName: textViewOutput[0]!) { // Correct weightings and qual name and number of sets entered
             view.endEditing(true)
             addNewQualification()
             addNewComponents()
@@ -229,7 +229,7 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
                 }
                 if componentsIndexPath.isEmpty {
                     updateComponentRows()
-                } else if validateNumberOfRows() {
+                } else if validateNumberOfRows(components: Int(textViewOutput[1]!)!) {
                     // Do nothing when 'Edit Components' pressed but number of components hasn't changed
                 } else {
                     for i in 1...componentTitleArray.count {
@@ -246,17 +246,15 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     // MARK: Form input validation
-    func validateWeightings() -> Bool {
+    func validateWeightings(components: Int, weightings: Dictionary<Int, Int>) -> Bool {
         var sum = 0
         var i = 0
-        if let numOfComponents = textViewOutput[1] {
-            while i < Int(numOfComponents)! {
-                if componentWeightings[i] != nil && componentWeightings[i] != 0 {
-                    sum += Int(componentWeightings[i]!)
-                    i += 1
-                }else{
-                    i += 1
-                }
+        while i < components {
+            if weightings[i] != nil && weightings[i] != 0 {
+                sum += weightings[i]!
+                i += 1
+            }else{
+                i += 1
             }
         }
         if sum == 100 {
@@ -266,27 +264,25 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
         }
     }
 
-    func validateNumberOfRows() -> Bool {
-        if let textViewOne = textViewOutput[1] {
-            if tableView.numberOfRows(inSection: 1) == Int(textViewOne)! + 1 {
+    func validateNumberOfRows(components: Int) -> Bool {
+            if tableView.numberOfRows(inSection: 1) == components + 1 {
                 return true
             } else {
                 return false
             }
-        }
-        return false
     }
     
-    func validateQualName() -> Bool {
-        for qual in qualifications {
-            if let qualName = textViewOutput[0] {
+    func validateQualName(quals: Results<Qualification>, qualName: String) -> Bool {
+        print(quals)
+        for qual in quals {
                 if qual.name == qualName {
                     return false
                 }
-            }
         }
         return true
     }
+    
+    // MARK: 
     
 //    func updateComponentRows() {
 //        if let numOfComponents = textViewOutput[1] {
