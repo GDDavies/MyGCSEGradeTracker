@@ -96,7 +96,7 @@ class ManageQualificationsTableViewController: UITableViewController {
                     self.realm.delete(deletedComponents)
                 }
                 
-                tableView.deleteRows(at: [indexPath], with: .fade)
+                tableView.deleteRows(at: [indexPath], with: .top)
                 tableView.endUpdates()
             })
             

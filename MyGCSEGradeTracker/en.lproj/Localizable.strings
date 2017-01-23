@@ -50,7 +50,7 @@
 "Component" = "Component";
 "Invalid Qualification Name" = "Invalid Qualification Name";
 "A qualification with this name already exists, please change it and try again" = "A qualification with this name already exists, please change it and try again";
-"Component Mismatch" = "The number of components does not match the weightings. Please check this";
+"Component Mismatch" = "Component Mismatch";
 "The number of components does not match the weightings. Please check this" = "The number of components does not match the weightings. Please check this";
 "Over Component Limit" = "Over Component Limit";
 "There is a limit of 12 Components per qualification, please enter fewer than 12" = "There is a limit of 12 Components per qualification, please enter fewer than 12";

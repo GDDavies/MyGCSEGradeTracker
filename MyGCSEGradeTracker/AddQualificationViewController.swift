@@ -172,7 +172,7 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
             cell?.selectionStyle = .none
             cell?.placeholderTextOutlet.addTarget(self, action: #selector(textViewValueChange), for: .editingChanged)
             cell?.placeholderTextOutlet.keyboardType = UIKeyboardType.numberPad
-            
+                        
             if componentTitleArray.isEmpty {
 //                cell?.labelOutlet.text = ""
 //                cell?.placeholderTextOutlet.placeholder = ""

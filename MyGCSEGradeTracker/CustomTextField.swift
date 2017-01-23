@@ -5,7 +5,7 @@
 //  Created by George Davies on 05/01/2017.
 //  Copyright © 2017 George Davies. All rights reserved.
 //
-
+import Foundation
 import UIKit
 
 @IBDesignable
@@ -22,3 +22,4 @@ class CustomTextField: UITextField {
         return textRect(forBounds: bounds)
     }
 }
+

@@ -101,7 +101,7 @@ class ManageSetsTableViewController: UITableViewController {
             }
             numberOfSets = results.count / components.count
             
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.deleteRows(at: [indexPath], with: .top)
             tableView.reloadData()
         }
     }

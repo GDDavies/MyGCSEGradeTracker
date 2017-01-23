@@ -50,12 +50,12 @@
 "Edit Components" = "Modificar Unidades";
 "Please input the number of components." = "Por favor adicione o número de Unidades";
 "Component" = "Unidade";
-"Invalid Qualification Name" = "";
-"A qualification with this name already exists, please change it and try again" = "";
-"Component Mismatch" = "";
-"The number of components does not match the weightings. Please check this" = "";
-"Over Component Limit" = "";
-"There is a limit of 12 Components per qualification, please enter fewer than 12" = "";
+"Invalid Qualification Name" = "Nome Inválido";
+"A qualification with this name already exists, please change it and try again" = "Esta Máteria já existe, por favor modifique e tente novamente";
+"Component Mismatch" = "Erro";
+"The number of components does not match the weightings. Please check this" = "Número de unidades não equivale aos pesos. Por favor verifique";
+"Over Component Limit" = " O limite de Unidades foi ultrapassado";
+"There is a limit of 12 Components per qualification, please enter fewer than 12" = "Existe um limite de 12 Unidades por matéria, por favor adicione um valor inferior ao indicado";
 
 //Quals
 "Add Results" = "Adicionar Resultado";
