@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     @IBOutlet weak var resultType: UISegmentedControl!
     var selectedQual: String?
@@ -206,8 +206,15 @@ class ResultsSetViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.placeholderTextOutlet.tag = indexPath.row
         cell.placeholderTextOutlet.addTarget(self, action: #selector(textViewValueChange), for: .editingChanged)
         cell.placeholderTextOutlet.keyboardType = UIKeyboardType.numberPad
+        cell.placeholderTextOutlet.delegate = self
         cell.selectionStyle = .none
         return cell
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let allowedCharacters = CharacterSet.decimalDigits
+        let characterSet = CharacterSet(charactersIn: string)
+        return allowedCharacters.isSuperset(of: characterSet)
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {

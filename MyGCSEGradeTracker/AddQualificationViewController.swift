@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 import Flurry_iOS_SDK
 
-class AddQualificationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate {
+class AddQualificationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var buttonBtmConstraint: NSLayoutConstraint!
@@ -146,6 +146,7 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
             case 1:
                 cell?.labelOutlet.text = "\(NSLocalizedString("No. of Components", comment: ""))" 
                 cell?.placeholderTextOutlet.keyboardType = UIKeyboardType.numberPad
+                cell?.placeholderTextOutlet.delegate = self
                 if textViewOutput[1] != nil {
                     cell?.placeholderTextOutlet.text = textViewOutput[1]
                 } else {
@@ -172,7 +173,8 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
             cell?.selectionStyle = .none
             cell?.placeholderTextOutlet.addTarget(self, action: #selector(textViewValueChange), for: .editingChanged)
             cell?.placeholderTextOutlet.keyboardType = UIKeyboardType.numberPad
-                        
+            cell?.placeholderTextOutlet.delegate = self
+            
             if componentTitleArray.isEmpty {
 //                cell?.labelOutlet.text = ""
 //                cell?.placeholderTextOutlet.placeholder = ""
@@ -183,8 +185,13 @@ class AddQualificationViewController: UIViewController, UITableViewDelegate, UIT
                 }
             }
         }
-        
         return cell!
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let allowedCharacters = CharacterSet.decimalDigits
+        let characterSet = CharacterSet(charactersIn: string)
+        return allowedCharacters.isSuperset(of: characterSet)
     }
     
     func textViewValueChange(sender: UITextField) {
