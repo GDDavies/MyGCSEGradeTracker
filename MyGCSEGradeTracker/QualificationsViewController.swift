@@ -23,6 +23,8 @@ class QualificationsViewController: UIViewController {
     
     @IBOutlet weak var lineChartView: LineChartView!
     
+    @IBOutlet weak var lineChartViewWidthConstraint: NSLayoutConstraint!
+    
     let animationDuration = 1.5
     
     @IBOutlet weak var progressView: KDCircularProgress!
@@ -351,6 +353,17 @@ class QualificationsViewController: UIViewController {
             return sum
         }
         return 0.0
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        let screenSize = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        print(screenHeight)
+        if screenHeight == 480 {
+            if UIDevice.current.orientation.isLandscape {
+                lineChartViewWidthConstraint.constant = -25
+            }
+        }
     }
 }
 
